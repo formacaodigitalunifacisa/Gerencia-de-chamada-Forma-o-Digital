@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Histórico de Voluntários - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>
+                Formação<br>
+                Digital
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="../home.html">
+                Início
+            </a>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Alunos
+                </span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Voluntários
+                </span>
+
+                <a href="adicionar-voluntario.html">
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html">
+                    Listar voluntários
+                </a>
+
+                <a href="pesquisar-voluntario.html">
+                    Pesquisar voluntário
+                </a>
+
+                <a href="excluir-voluntario.html">
+                    Excluir voluntário
+                </a>
+
+                <a href="chamada-voluntarios.html">
+                    Chamada
+                </a>
+
+                <a
+                        href="historico-voluntarios.html"
+                        class="active"
+                >
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Turmas
+                </span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <button
+                id="btnLogout"
+                class="btn-sair"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- ========================================== -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ========================================== -->
+        <!-- TOPO -->
+        <!-- ========================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h1>
+                        Histórico de voluntários
+                    </h1>
+
+                    <p>
+                        Consulte o histórico de presença dos voluntários.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span id="administrador">
+                    Carregando...
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================== -->
+        <!-- DESTAQUE -->
+        <!-- ========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h2>
+                        Histórico de presença
+                    </h2>
+
+                    <p>
+                        Acompanhe as presenças, faltas e o percentual de cada voluntário.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- CARD DO HISTÓRICO -->
+        <!-- ========================================== -->
+
+        <section class="card historico-card">
+
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Histórico de presença
+                        </h2>
+
+                        <p>
+                            Consulte os registros de todos os voluntários cadastrados.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================================== -->
+            <!-- TABELA -->
+            <!-- ========================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Nome</th>
+
+                        <th>Turma</th>
+
+                        <th>Curso</th>
+
+                        <th>Presenças</th>
+
+                        <th>Faltas</th>
+
+                        <th>Percentual de presença</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaVoluntarios">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ========================================== -->
+            <!-- MENSAGEM -->
+            <!-- ========================================== -->
+
+            <p
+                    id="mensagem"
+                    class="mensagem"
+            ></p>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const API = "http://localhost:3000";
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta = await fetch(
+                `${API}/api/administrador/me`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            document.getElementById(
+                "administrador"
+            ).textContent =
+                `Administrador: ${dados.administrador.nome}`;
+
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // CARREGAR HISTÓRICO
+    // ==========================================
+
+    async function carregarHistorico() {
+
+        const tabela =
+            document.getElementById(
+                "tabelaVoluntarios"
+            );
+
+
+        const mensagem =
+            document.getElementById(
+                "mensagem"
+            );
+
+
+        tabela.innerHTML = "";
+
+        mensagem.textContent = "";
+
+        mensagem.className =
+            "mensagem";
+
+
+        try {
+
+            // ==========================================
+            // BUSCAR TODOS OS VOLUNTÁRIOS
+            // ==========================================
+
+            const resposta =
+                await fetch(
+                    `${API}/api/voluntarios`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os voluntários."
+                );
+
+            }
+
+
+            const voluntarios =
+                await resposta.json();
+
+
+            // ==========================================
+            // NENHUM VOLUNTÁRIO
+            // ==========================================
+
+            if (
+                !Array.isArray(voluntarios) ||
+                voluntarios.length === 0
+            ) {
+
+                mensagem.textContent =
+                    "Nenhum voluntário cadastrado.";
+
+                return;
+
+            }
+
+
+            // ==========================================
+            // ORDENAR POR NOME
+            // ==========================================
+
+            voluntarios.sort(
+                (a, b) =>
+                    String(a.nome || "").localeCompare(
+                        String(b.nome || ""),
+                        "pt-BR"
+                    )
+            );
+
+
+            // ==========================================
+            // BUSCAR HISTÓRICO DE CADA VOLUNTÁRIO
+            // ==========================================
+
+            for (
+                const voluntario
+                of voluntarios
+                ) {
+
+                let presencas = 0;
+
+                let faltas = 0;
+
+
+                try {
+
+                    const respostaHistorico =
+                        await fetch(
+                            `${API}/api/voluntarios/pesquisar/${encodeURIComponent(voluntario.id)}`,
+                            {
+                                credentials: "include"
+                            }
+                        );
+
+
+                    if (respostaHistorico.ok) {
+
+                        const dadosHistorico =
+                            await respostaHistorico.json();
+
+
+                        /*
+                         * A API pode retornar:
+                         *
+                         * 1. Uma lista:
+                         *    [
+                         *       {
+                         *          presencas: 2,
+                         *          faltas: 1
+                         *       }
+                         *    ]
+                         *
+                         * 2. Um objeto:
+                         *    {
+                         *       presencas: 2,
+                         *       faltas: 1
+                         *    }
+                         *
+                         * Por isso tratamos os dois formatos.
+                         */
+
+                        const registro =
+                            Array.isArray(dadosHistorico)
+                                ? dadosHistorico[0]
+                                : dadosHistorico;
+
+
+                        if (
+                            registro &&
+                            typeof registro === "object"
+                        ) {
+
+                            presencas =
+                                Number(
+                                    registro.presencas ?? 0
+                                );
+
+
+                            faltas =
+                                Number(
+                                    registro.faltas ?? 0
+                                );
+
+                        }
+
+                    }
+
+
+                } catch (erro) {
+
+                    console.error(
+                        `Erro ao buscar histórico do voluntário ${voluntario.id}:`,
+                        erro
+                    );
+
+                }
+
+
+                // ==========================================
+                // CALCULAR TOTAL
+                // ==========================================
+
+                const total =
+                    presencas + faltas;
+
+
+                // ==========================================
+                // CALCULAR PERCENTUAL
+                // ==========================================
+
+                let percentual = 0;
+
+
+                if (total > 0) {
+
+                    percentual =
+                        (presencas / total) * 100;
+
+                }
+
+
+                // ==========================================
+                // CRIAR LINHA
+                // ==========================================
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${voluntario.id}
+                    </td>
+
+                    <td>
+                        ${voluntario.nome || ""}
+                    </td>
+
+                    <td>
+                        ${voluntario.turma || ""}
+                    </td>
+
+                    <td>
+                        ${voluntario.curso || ""}
+                    </td>
+
+                    <td>
+                        ${presencas}
+                    </td>
+
+                    <td>
+                        ${faltas}
+                    </td>
+
+                    <td>
+                        ${percentual.toFixed(1)}%
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar o histórico:",
+                erro
+            );
+
+
+            mensagem.textContent =
+                erro.message ||
+                "Erro ao carregar o histórico.";
+
+
+            mensagem.className =
+                "mensagem erro";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await fetch(
+                    `${API}/api/login/logout`,
+                    {
+
+                        method: "POST",
+
+                        credentials: "include"
+
+                    }
+                );
+
+            } finally {
+
+                window.location.href =
+                    "../login.html";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    verificarAdministrador();
+
+    carregarHistorico();
+
+</script>
+
+</body>
+
+</html>

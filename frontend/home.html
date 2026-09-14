@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Formação Digital - Início</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+
+            <span>Digital</span>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                    href="home.html"
+                    class="ativo"
+            >
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <div class="menu-grupo">
+
+                <div class="menu-titulo">
+                    👨‍🎓
+                    <span>Alunos</span>
+                </div>
+
+                <a href="alunos/adicionar-aluno.html">
+                    ➕ Adicionar aluno
+                </a>
+
+                <a href="alunos/atualizar-aluno.html">
+                    ✏️ Atualizar aluno
+                </a>
+
+                <a href="alunos/listar-alunos.html">
+                    📋 Listar alunos
+                </a>
+
+                <a href="alunos/pesquisar-aluno.html">
+                    🔎 Pesquisar aluno
+                </a>
+
+                <a href="alunos/excluir-aluno.html">
+                    🗑️ Excluir aluno
+                </a>
+
+                <a href="alunos/chamada-alunos.html">
+                    📝 Chamada
+                </a>
+
+                <a href="alunos/historico-alunos.html">
+                    📊 Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <div class="menu-titulo">
+                    🤝
+                    <span>Voluntários</span>
+                </div>
+
+                <a href="voluntarios/adicionar-voluntario.html">
+                    ➕ Adicionar voluntário
+                </a>
+
+                <a href="voluntarios/atualizar-voluntario.html">
+                    ✏️ Atualizar voluntário
+                </a>
+
+                <a href="voluntarios/listar-voluntarios.html">
+                    📋 Listar voluntários
+                </a>
+
+                <a href="voluntarios/pesquisar-voluntario.html">
+                    🔎 Pesquisar voluntário
+                </a>
+
+                <a href="voluntarios/excluir-voluntario.html">
+                    🗑️ Excluir voluntário
+                </a>
+
+                <a href="voluntarios/chamada-voluntarios.html">
+                    📝 Chamada
+                </a>
+
+                <a href="voluntarios/historico-voluntarios.html">
+                    📊 Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <div class="menu-titulo">
+                    🏫
+                    <span>Turmas</span>
+                </div>
+
+                <a href="turmas/adicionar-turma.html">
+                    ➕ Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="sidebar-admin">
+
+            <div class="sidebar-admin-nome">
+
+                👤
+
+                <span id="nomeAdministradorMenu">
+                    Administrador:
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ==========================================
+             CABEÇALHO
+        =========================================== -->
+
+        <header class="topbar">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <h2>
+                    Formação <span>Digital</span>
+                </h2>
+
+            </div>
+
+
+
+            <!-- ADMINISTRADOR -->
+
+            <div class="admin-area">
+
+                <div class="admin-info">
+
+                    <span>
+                        Olá, Administrador!
+                    </span>
+
+                    <strong id="nomeAdministrador">
+                        Carregando...
+                    </strong>
+
+                </div>
+
+
+                <button
+                        id="btnLogout"
+                        class="btn-sair"
+                        type="button"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ==========================================
+             ÁREA DE BOAS-VINDAS
+        =========================================== -->
+
+        <section class="welcome">
+
+
+            <div class="welcome-content">
+
+
+                <div class="welcome-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <path
+                                d="M4 21 32 8l28 13-28 13L4 21Z"
+                                fill="currentColor"
+                        />
+
+                        <path
+                                d="M13 27v15c7 6 14 9 19 9s12-3 19-9V27l-19 9-19-9Z"
+                                fill="currentColor"
+                                opacity=".9"
+                        />
+
+                        <path
+                                d="M57 23v17"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                        <circle
+                                cx="57"
+                                cy="43"
+                                r="3"
+                                fill="currentColor"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="welcome-text">
+
+                    <h2>
+
+                        Bem-vindo,
+
+                        <span id="nomeBoasVindas">
+                            Administrador
+                        </span>!
+
+                    </h2>
+
+
+                    <p>
+                        Aqui você pode gerenciar alunos,
+                        voluntários, turmas,<br>
+                        realizar chamadas e consultar o histórico do projeto.
+                    </p>
+
+
+                    <div class="welcome-divider">
+
+                        <span></span>
+
+                        <svg
+                                viewBox="0 0 64 64"
+                                aria-hidden="true"
+                        >
+
+                            <path
+                                    d="M8 20 32 9l24 11-24 11L8 20Z"
+                                    fill="currentColor"
+                            />
+
+                            <path
+                                    d="M16 27v13c6 5 11 7 16 7s10-2 16-7V27l-16 8-16-8Z"
+                                    fill="currentColor"
+                            />
+
+                        </svg>
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CARDS PRINCIPAIS
+        =========================================== -->
+
+        <section class="cards">
+
+
+            <!-- ======================================
+                 ALUNOS
+            ======================================= -->
+
+            <a
+                    href="alunos/alunos.html"
+                    class="card"
+            >
+
+                <div class="card-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <circle
+                                cx="24"
+                                cy="23"
+                                r="10"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="45"
+                                cy="27"
+                                r="8"
+                                fill="currentColor"
+                        />
+
+                        <path
+                                d="M7 52c1-10 8-16 17-16s16 6 17 16H7Z"
+                                fill="currentColor"
+                        />
+
+                        <path
+                                d="M37 40c8 0 14 4 16 12H37c1-4 1-8 0-12Z"
+                                fill="currentColor"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Alunos
+                    </h3>
+
+
+                    <p>
+                        Gerencie os alunos
+                        do projeto.
+                    </p>
+
+                </div>
+
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+
+            <!-- ======================================
+                 VOLUNTÁRIOS
+            ======================================= -->
+
+            <a
+                    href="voluntarios/voluntarios.html"
+                    class="card"
+            >
+
+                <div class="card-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <path
+                                d="M32 53S10 40 10 24c0-8 6-13 13-13 5 0 8 3 9 6 2-3 5-6 10-6 7 0 13 5 13 13 0 16-23 29-23 29Z"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linejoin="round"
+                        />
+
+                        <path
+                                d="M18 37c-5-1-9-4-11-8-2-4 0-7 3-7 3 0 6 3 8 6"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                        <path
+                                d="M46 37c5-1 9-4 11-8 2-4 0-7-3-7-3 0-6 3-8 6"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Voluntários
+                    </h3>
+
+
+                    <p>
+                        Gerencie os voluntários
+                        do projeto.
+                    </p>
+
+                </div>
+
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+
+            <!-- ======================================
+                 FAZER CHAMADA
+            ======================================= -->
+
+            <div
+                    class="card card-chamada"
+                    id="cardChamada"
+                    role="button"
+                    tabindex="0"
+            >
+
+                <div class="card-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <rect
+                                x="11"
+                                y="15"
+                                width="42"
+                                height="39"
+                                rx="5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                        />
+
+                        <path
+                                d="M20 9v11M44 9v11M11 27h42"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                        <circle
+                                cx="22"
+                                cy="36"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="32"
+                                cy="36"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="42"
+                                cy="36"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="22"
+                                cy="45"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="32"
+                                cy="45"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="42"
+                                cy="45"
+                                r="2.5"
+                                fill="currentColor"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Fazer Chamada
+                    </h3>
+
+
+                    <p>
+                        Registre a presença
+                        dos alunos e voluntários.
+                    </p>
+
+                </div>
+
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 HISTÓRICO
+            ======================================= -->
+
+
+            <div
+                    class="card card-historico"
+                    id="cardHistorico"
+                    role="button"
+                    tabindex="0"
+            >
+
+                <div class="card-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <path
+                                d="M12 8h29l11 11v37H12V8Z"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linejoin="round"
+                        />
+
+                        <path
+                                d="M41 8v13h11"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                        />
+
+                        <path
+                                d="M20 28h17M20 36h12"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                        <circle
+                                cx="43"
+                                cy="46"
+                                r="8"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                        />
+
+                        <path
+                                d="M43 42v5l3 2"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Histórico
+                    </h3>
+
+
+                    <p>
+                        Consulte o histórico
+                        do projeto.
+                    </p>
+
+                </div>
+
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 ADICIONAR TURMA
+            ======================================= -->
+
+            <a
+                    href="turmas/adicionar-turma.html"
+                    class="card"
+            >
+
+                <div class="card-icon">
+
+                    <svg
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                    >
+
+                        <circle
+                                cx="24"
+                                cy="23"
+                                r="10"
+                                fill="currentColor"
+                        />
+
+                        <circle
+                                cx="45"
+                                cy="27"
+                                r="8"
+                                fill="currentColor"
+                        />
+
+                        <path
+                                d="M7 52c1-10 8-16 17-16s16 6 17 16H7Z"
+                                fill="currentColor"
+                        />
+
+                        <path
+                                d="M46 39v16M38 47h16"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Adicionar Turma
+                    </h3>
+
+
+                    <p>
+                        Crie e gerencie as turmas
+                        do projeto.
+                    </p>
+
+                </div>
+
+
+                <div class="card-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MODAL — ESCOLHER TIPO DE CHAMADA
+        =========================================== -->
+
+        <div
+                class="modal-chamada"
+                id="modalChamada"
+        >
+
+            <div class="modal-chamada-conteudo">
+
+
+                <!-- BOTÃO FECHAR -->
+
+                <button
+                        type="button"
+                        class="modal-chamada-fechar"
+                        id="fecharModalChamada"
+                        aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+
+
+                <!-- ÍCONE -->
+
+                <div class="modal-chamada-icon">
+
+                    📝
+
+                </div>
+
+
+
+                <!-- TÍTULO -->
+
+                <h2>
+                    Fazer Chamada
+                </h2>
+
+
+                <p>
+                    Escolha quem deseja chamar.
+                </p>
+
+
+
+                <!-- OPÇÕES -->
+
+                <div class="opcoes-chamada">
+
+
+                    <!-- ALUNOS -->
+
+                    <a
+                            href="alunos/chamada-alunos.html"
+                            class="opcao-chamada opcao-alunos"
+                    >
+
+                        <div class="opcao-chamada-icone">
+                            👨‍🎓
+                        </div>
+
+
+                        <div class="opcao-chamada-texto">
+
+                            <strong>
+                                Chamada dos Alunos
+                            </strong>
+
+                            <span>
+                                Registrar presença dos alunos
+                            </span>
+
+                        </div>
+
+
+                        <div class="opcao-chamada-seta">
+                            →
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- VOLUNTÁRIOS -->
+
+                    <a
+                            href="voluntarios/chamada-voluntarios.html"
+                            class="opcao-chamada opcao-voluntarios"
+                    >
+
+                        <div class="opcao-chamada-icone">
+                            🤝
+                        </div>
+
+
+                        <div class="opcao-chamada-texto">
+
+                            <strong>
+                                Chamada dos Voluntários
+                            </strong>
+
+                            <span>
+                                Registrar presença dos voluntários
+                            </span>
+
+                        </div>
+
+
+                        <div class="opcao-chamada-seta">
+                            →
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             MODAL — ESCOLHER TIPO DE HISTÓRICO
+        =========================================== -->
+
+        <div
+                class="modal-historico"
+                id="modalHistorico"
+        >
+
+            <div class="modal-historico-conteudo">
+
+
+                <!-- BOTÃO FECHAR -->
+
+                <button
+                        type="button"
+                        class="modal-historico-fechar"
+                        id="fecharModalHistorico"
+                        aria-label="Fechar"
+                >
+                    ×
+                </button>
+
+
+
+                <!-- ÍCONE -->
+
+                <div class="modal-historico-icon">
+
+                    📊
+
+                </div>
+
+
+
+                <!-- TÍTULO -->
+
+                <h2>
+                    Histórico
+                </h2>
+
+
+                <p>
+                    Escolha qual histórico deseja consultar.
+                </p>
+
+
+
+                <!-- OPÇÕES -->
+
+                <div class="opcoes-historico">
+
+
+                    <!-- ALUNOS -->
+
+                    <a
+                            href="alunos/historico-alunos.html"
+                            class="opcao-historico opcao-historico-alunos"
+                    >
+
+                        <div class="opcao-historico-icone">
+                            👨‍🎓
+                        </div>
+
+
+                        <div class="opcao-historico-texto">
+
+                            <strong>
+                                Histórico dos Alunos
+                            </strong>
+
+                            <span>
+                                Consultar o histórico dos alunos
+                            </span>
+
+                        </div>
+
+
+                        <div class="opcao-historico-seta">
+                            →
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- VOLUNTÁRIOS -->
+
+                    <a
+                            href="voluntarios/historico-voluntarios.html"
+                            class="opcao-historico opcao-historico-voluntarios"
+                    >
+
+                        <div class="opcao-historico-icone">
+                            🤝
+                        </div>
+
+
+                        <div class="opcao-historico-texto">
+
+                            <strong>
+                                Histórico dos Voluntários
+                            </strong>
+
+                            <span>
+                                Consultar o histórico dos voluntários
+                            </span>
+
+                        </div>
+
+
+                        <div class="opcao-historico-seta">
+                            →
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             ACESSOS RÁPIDOS
+        =========================================== -->
+
+        <section class="home-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Acessos rápidos
+                    </h2>
+
+
+                    <p>
+                        Acesse rapidamente as principais funções.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="quick-actions">
+
+
+                <a href="alunos/chamada-alunos.html">
+
+                    <div class="quick-icon">
+                        📝
+                    </div>
+
+                    <span>
+                        Chamada dos alunos
+                    </span>
+
+                    <div class="quick-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <a href="voluntarios/chamada-voluntarios.html">
+
+                    <div class="quick-icon">
+                        📝
+                    </div>
+
+                    <span>
+                        Chamada dos voluntários
+                    </span>
+
+                    <div class="quick-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <a href="alunos/historico-alunos.html">
+
+                    <div class="quick-icon">
+                        📊
+                    </div>
+
+                    <span>
+                        Histórico dos alunos
+                    </span>
+
+                    <div class="quick-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <a href="voluntarios/historico-voluntarios.html">
+
+                    <div class="quick-icon">
+                        📊
+                    </div>
+
+                    <span>
+                        Histórico dos voluntários
+                    </span>
+
+                    <div class="quick-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script>
+
+
+    const API = "http://localhost:3000";
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR LOGADO
+    // ==========================================
+
+    async function carregarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            const administrador =
+                dados.administrador;
+
+
+            document.getElementById(
+                "nomeAdministrador"
+            ).textContent =
+                administrador.nome;
+
+
+            document.getElementById(
+                "nomeAdministradorMenu"
+            ).textContent =
+                administrador.nome;
+
+
+            document.getElementById(
+                "nomeBoasVindas"
+            ).textContent =
+                administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+
+                if (resposta.ok) {
+
+                    window.location.href =
+                        "login.html";
+
+                }
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao sair:",
+                    erro
+                );
+
+            }
+
+        }
+    );
+
+
+
+
+
+    // ==========================================
+    // MODAL — FAZER CHAMADA
+    // ==========================================
+
+    const cardChamada =
+        document.getElementById("cardChamada");
+
+    const modalChamada =
+        document.getElementById("modalChamada");
+
+    const fecharModalChamada =
+        document.getElementById("fecharModalChamada");
+
+
+
+    // ABRIR MODAL
+
+    cardChamada.addEventListener(
+        "click",
+        function () {
+
+            modalChamada.classList.add("aberto");
+
+        }
+    );
+
+
+
+    // ABRIR COM ENTER
+
+    cardChamada.addEventListener(
+        "keydown",
+        function (evento) {
+
+            if (
+                evento.key === "Enter" ||
+                evento.key === " "
+            ) {
+
+                evento.preventDefault();
+
+                modalChamada.classList.add("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // FECHAR PELO X
+
+    fecharModalChamada.addEventListener(
+        "click",
+        function () {
+
+            modalChamada.classList.remove("aberto");
+
+        }
+    );
+
+
+
+    // FECHAR CLICANDO FORA
+
+    modalChamada.addEventListener(
+        "click",
+        function (evento) {
+
+            if (
+                evento.target === modalChamada
+            ) {
+
+                modalChamada.classList.remove("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // FECHAR COM ESC
+
+    document.addEventListener(
+        "keydown",
+        function (evento) {
+
+            if (
+                evento.key === "Escape" &&
+                modalChamada.classList.contains("aberto")
+            ) {
+
+                modalChamada.classList.remove("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // MODAL — HISTÓRICO
+    // ==========================================
+
+    const cardHistorico =
+        document.getElementById("cardHistorico");
+
+    const modalHistorico =
+        document.getElementById("modalHistorico");
+
+    const fecharModalHistorico =
+        document.getElementById("fecharModalHistorico");
+
+
+
+    // ABRIR MODAL
+
+    cardHistorico.addEventListener(
+        "click",
+        function () {
+
+            modalHistorico.classList.add("aberto");
+
+        }
+    );
+
+
+
+    // ABRIR COM ENTER
+
+    cardHistorico.addEventListener(
+        "keydown",
+        function (evento) {
+
+            if (
+                evento.key === "Enter" ||
+                evento.key === " "
+            ) {
+
+                evento.preventDefault();
+
+                modalHistorico.classList.add("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // FECHAR PELO X
+
+    fecharModalHistorico.addEventListener(
+        "click",
+        function () {
+
+            modalHistorico.classList.remove("aberto");
+
+        }
+    );
+
+
+
+    // FECHAR CLICANDO FORA
+
+    modalHistorico.addEventListener(
+        "click",
+        function (evento) {
+
+            if (
+                evento.target === modalHistorico
+            ) {
+
+                modalHistorico.classList.remove("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // FECHAR COM ESC
+
+    document.addEventListener(
+        "keydown",
+        function (evento) {
+
+            if (
+                evento.key === "Escape" &&
+                modalHistorico.classList.contains("aberto")
+            ) {
+
+                modalHistorico.classList.remove("aberto");
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    carregarAdministrador();
+
+</script>
+
+
+</body>
+
+</html>

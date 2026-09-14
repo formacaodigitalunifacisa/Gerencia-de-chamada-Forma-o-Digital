@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Excluir Aluno - Formação Digital</title>
+
+  <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- ==========================================
+       MENU LATERAL
+  ========================================== -->
+
+  <aside class="sidebar">
+
+    <div class="logo">
+
+      <h2>Formação</h2>
+      <h2>Digital</h2>
+
+    </div>
+
+
+    <nav class="menu">
+
+      <a href="../home.html">
+        🏠
+        <span>Início</span>
+      </a>
+
+
+      <div class="menu-titulo">
+        ALUNOS
+      </div>
+
+
+      <a href="adicionar-aluno.html">
+        ➕
+        <span>Adicionar aluno</span>
+      </a>
+
+
+      <a href="atualizar-aluno.html">
+        ✏️
+        <span>Atualizar aluno</span>
+      </a>
+
+
+      <a href="listar-alunos.html">
+        📋
+        <span>Listar alunos</span>
+      </a>
+
+
+      <a href="pesquisar-aluno.html">
+        🔎
+        <span>Pesquisar aluno</span>
+      </a>
+
+
+      <a href="excluir-aluno.html"
+         class="ativo">
+        🗑️
+        <span>Excluir aluno</span>
+      </a>
+
+
+      <a href="chamada-alunos.html">
+        📝
+        <span>Chamada</span>
+      </a>
+
+
+      <a href="historico-alunos.html">
+        📊
+        <span>Histórico</span>
+      </a>
+
+
+      <div class="menu-titulo">
+        VOLUNTÁRIOS
+      </div>
+
+
+      <a href="../voluntarios/adicionar-voluntario.html">
+        👤
+        <span>Voluntários</span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- ==========================================
+       CONTEÚDO PRINCIPAL
+  ========================================== -->
+
+  <main class="main-content">
+
+
+    <!-- ======================================
+         TOPO
+    ======================================= -->
+
+    <header class="topbar">
+
+      <div class="topbar-page-info">
+
+        <div class="page-icon">
+          🗑️
+        </div>
+
+        <div>
+
+          <h1>
+            Excluir aluno
+          </h1>
+
+          <p>
+            Remova um aluno do sistema de forma rápida e segura.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="admin-area">
+
+        <div class="admin-info">
+
+          <div>
+
+                        <span>
+                            Olá, Administrador!
+                        </span>
+
+            <strong>
+              Bem-vindo ao sistema
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <button class="btn-sair">
+          🚪 Sair
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- ======================================
+         ÁREA PRINCIPAL
+    ======================================= -->
+
+    <section class="page-hero">
+
+      <div class="page-hero-content">
+
+        <div class="page-hero-icon">
+          🗑️
+        </div>
+
+        <div>
+
+          <h2>
+            Excluir aluno
+          </h2>
+
+          <p>
+            Remova um aluno do sistema de forma rápida e segura.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         FORMULÁRIO
+    ======================================= -->
+
+    <section class="form-container excluir-aluno">
+
+
+      <div class="form-title">
+
+        <div class="form-title-icon">
+          👨‍🎓
+        </div>
+
+        <div>
+
+          <h2>
+            Excluir aluno
+          </h2>
+
+          <p>
+            Informe id do aluno que deseja excluir.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <form id="formExcluirAluno">
+
+
+        <!-- =================================
+             MATRÍCULA
+        ================================== -->
+
+        <div class="form-group">
+
+          <label for="id">
+            ID do aluno
+          </label>
+
+
+          <input
+                  type="text"
+                  id="id"
+                  name="id"
+                  placeholder="Digite o id"
+                  min="1"
+                  required
+          >
+
+        </div>
+
+
+        <!-- =================================
+             AVISO
+        ================================== -->
+
+        <div class="excluir-aviso">
+
+                    <span class="excluir-aviso-icon">
+                        ⚠️
+                    </span>
+
+          <div>
+
+            <strong>
+              Atenção
+            </strong>
+
+            <p>
+              A exclusão do aluno é uma ação que deve ser realizada com cuidado.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================
+             MENSAGEM
+        ================================== -->
+
+        <div
+                id="mensagem"
+                class="mensagem"
+                style="display: none;"
+        ></div>
+
+
+        <!-- =================================
+             BOTÕES
+        ================================== -->
+
+        <div class="acoes">
+
+          <a
+                  href="../home.html"
+                  class="btn-secundario"
+          >
+            ← Voltar
+          </a>
+
+
+          <button
+                  type="submit"
+                  class="btn-danger"
+          >
+            Excluir aluno
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+  const API = "http://localhost:3000";
+
+  const form = document.getElementById("formExcluirAluno");
+
+  const mensagem = document.getElementById("mensagem");
+
+
+  form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const id =
+            document.getElementById("id").value.trim();
+
+
+    if (!id) {
+
+      mensagem.style.display = "block";
+
+      mensagem.className = "mensagem erro";
+
+      mensagem.textContent =
+              "Informe o ID do aluno.";
+
+      return;
+
+    }
+
+
+    // ==========================================
+    // CONFIRMAÇÃO
+    // ==========================================
+
+    const confirmar = confirm(
+            "Tem certeza que deseja excluir o aluno de ID " +
+            id +
+            "?"
+    );
+
+
+    if (!confirmar) {
+
+      return;
+
+    }
+
+
+    // ==========================================
+    // EXCLUSÃO
+    // ==========================================
+
+    try {
+
+      const resposta = await fetch(
+              `${API}/api/alunos/${encodeURIComponent(id)}`,
+              {
+                method: "DELETE",
+                credentials: "include"
+              }
+      );
+
+
+      const dados = await resposta.json();
+
+
+      if (!resposta.ok) {
+
+        throw new Error(
+                dados.mensagem ||
+                "Não foi possível excluir o aluno."
+        );
+
+      }
+
+
+      // ==========================================
+      // SUCESSO
+      // ==========================================
+
+      mensagem.style.display = "block";
+
+      mensagem.className = "mensagem sucesso";
+
+      mensagem.textContent =
+              dados.mensagem ||
+              "Aluno excluído com sucesso!";
+
+
+      form.reset();
+
+
+    } catch (erro) {
+
+      // ==========================================
+      // ERRO
+      // ==========================================
+
+      mensagem.style.display = "block";
+
+      mensagem.className = "mensagem erro";
+
+      mensagem.textContent =
+              erro.message ||
+              "Erro ao excluir aluno.";
+
+    }
+
+  });
+
+
+</script>
+
+</body>
+
+</html>

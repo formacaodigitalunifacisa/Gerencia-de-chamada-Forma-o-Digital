@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pesquisar Voluntário - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação<br>Digital</h2>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="../home.html">
+                Início
+            </a>
+
+            <!-- ALUNOS -->
+
+            <div class="menu-grupo">
+
+                <span>Alunos</span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+            <!-- VOLUNTÁRIOS -->
+
+            <div class="menu-grupo">
+
+                <span>Voluntários</span>
+
+                <a href="adicionar-voluntario.html">
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html">
+                    Listar voluntários
+                </a>
+
+                <a
+                        href="pesquisar-voluntario.html"
+                        class="active"
+                >
+                    Pesquisar voluntário
+                </a>
+
+                <a href="excluir-voluntario.html">
+                    Excluir voluntário
+                </a>
+
+                <a href="chamada-voluntarios.html">
+                    Chamada
+                </a>
+
+                <a href="historico-voluntarios.html">
+                    Histórico
+                </a>
+
+            </div>
+
+            <!-- TURMAS -->
+
+            <div class="menu-grupo">
+
+                <span>Turmas</span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+        <!-- BOTÃO SAIR -->
+
+        <button
+                id="btnSair"
+                class="btn-sair"
+                type="button"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="main-content">
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    🔎
+                </div>
+
+                <div>
+
+                    <h1>
+                        Pesquisar Voluntário
+                    </h1>
+
+                    <p>
+                        Pesquise um voluntário pelo nome ou ID.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMINISTRADOR -->
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    🔎
+                </div>
+
+                <div>
+
+                    <h2>
+                        Encontre um voluntário
+                    </h2>
+
+                    <p>
+                        Pesquise rapidamente pelo nome ou pelo ID cadastrado.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARD DE PESQUISA -->
+
+        <section class="card form-container">
+
+            <div class="card-header-content">
+
+                <div>
+
+                    <div class="card-header-icon">
+                        🔍
+                    </div>
+
+
+                    <h2>
+                        Buscar voluntário
+                    </h2>
+
+                    <p>
+                        Digite o nome ou o ID do voluntário.
+                    </p>
+
+
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+
+            <form id="formPesquisa">
+
+                <div class="form-group">
+
+                    <label for="valor">
+                        Nome ou ID
+                    </label>
+
+                    <input
+                            type="text"
+                            id="valor"
+                            name="valor"
+                            placeholder="Digite o nome ou ID"
+                            autocomplete="off"
+                            required
+                    >
+
+                </div>
+
+
+                <button
+                        type="submit"
+                        class="btn-primary">
+
+                    <span>🔎</span>
+                    Pesquisar
+
+                </button>
+
+            </form>
+
+
+            <!-- MENSAGEM -->
+
+            <div
+                    id="mensagem"
+                    class="mensagem"
+            ></div>
+
+        </section>
+
+
+        <!-- RESULTADO DA PESQUISA -->
+
+        <section
+                id="resultado"
+                class="card historico-card"
+                style="display: none;"
+        >
+
+            <div class="card-header-content">
+
+                <div class="card-header-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <h2>
+                        Resultado da pesquisa
+                    </h2>
+
+                    <p>
+                        Informações encontradas para o voluntário pesquisado.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Nome</th>
+
+                        <th>Turma</th>
+
+                        <th>Curso</th>
+
+                        <th>Presenças</th>
+
+                        <th>Faltas</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaResultado">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    // ==========================================
+    // CONFIGURAÇÃO
+    // ==========================================
+
+    const API =
+        "http://localhost:3000";
+
+
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
+
+    const formPesquisa =
+        document.getElementById("formPesquisa");
+
+    const valorInput =
+        document.getElementById("valor");
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+    const resultado =
+        document.getElementById("resultado");
+
+    const tabela =
+        document.getElementById("tabelaResultado");
+
+    const nomeAdministrador =
+        document.getElementById("nomeAdministrador");
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            if (
+                !dados ||
+                !dados.administrador
+            ) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // PESQUISAR VOLUNTÁRIO
+    // ==========================================
+
+    formPesquisa.addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const valor =
+                valorInput.value.trim();
+
+
+            // LIMPAR RESULTADO ANTERIOR
+
+            tabela.innerHTML = "";
+
+            resultado.style.display =
+                "none";
+
+            mensagem.textContent = "";
+
+            mensagem.className =
+                "mensagem";
+
+
+            // VERIFICAR CAMPO
+
+            if (!valor) {
+
+                mensagem.textContent =
+                    "Digite um nome ou ID para pesquisar.";
+
+                mensagem.className =
+                    "mensagem erro";
+
+                return;
+
+            }
+
+
+            try {
+
+
+                // ==========================================
+                // REQUISIÇÃO AO BACKEND
+                // ==========================================
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/voluntarios/pesquisar/${encodeURIComponent(valor)}`,
+                        {
+                            method: "GET",
+                            credentials: "include"
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                // ==========================================
+                // VERIFICAR RESPOSTA
+                // ==========================================
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.mensagem ||
+                        "Voluntário não encontrado."
+                    );
+
+                }
+
+
+                if (
+                    !Array.isArray(dados) ||
+                    dados.length === 0
+                ) {
+
+                    throw new Error(
+                        "Nenhum voluntário encontrado."
+                    );
+
+                }
+
+
+                // ==========================================
+                // MOSTRAR RESULTADOS
+                // ==========================================
+
+                for (
+                    const voluntario of dados
+                    ) {
+
+
+                    const linha =
+                        document.createElement("tr");
+
+
+                    const presencas =
+                        Number(
+                            voluntario.presencas
+                        ) || 0;
+
+
+                    const faltas =
+                        Number(
+                            voluntario.faltas
+                        ) || 0;
+
+
+                    linha.innerHTML = `
+
+                        <td>
+                            ${voluntario.id ?? ""}
+                        </td>
+
+                        <td>
+                            ${voluntario.nome ?? ""}
+                        </td>
+
+                        <td>
+                            ${voluntario.turma ?? ""}
+                        </td>
+
+                        <td>
+                            ${voluntario.curso ?? ""}
+                        </td>
+
+                        <td>
+                            ${presencas}
+                        </td>
+
+                        <td>
+                            ${faltas}
+                        </td>
+
+                    `;
+
+
+                    tabela.appendChild(
+                        linha
+                    );
+
+                }
+
+
+                // MOSTRAR TABELA
+
+                resultado.style.display =
+                    "block";
+
+
+                // MENSAGEM DE SUCESSO
+
+                mensagem.textContent =
+                    `${dados.length} voluntário(s) encontrado(s).`;
+
+                mensagem.className =
+                    "mensagem sucesso";
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao pesquisar voluntário:",
+                    erro
+                );
+
+
+                resultado.style.display =
+                    "none";
+
+
+                mensagem.textContent =
+                    erro.message ||
+                    "Não foi possível pesquisar o voluntário.";
+
+                mensagem.className =
+                    "mensagem erro";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnSair")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer logout:",
+                        erro
+                    );
+
+                }
+
+
+                window.location.href =
+                    "../login.html";
+
+            }
+        );
+
+
+    // ==========================================
+    // INICIALIZAÇÃO
+    // ==========================================
+
+    verificarAdministrador();
+
+</script>
+
+</body>
+
+</html>

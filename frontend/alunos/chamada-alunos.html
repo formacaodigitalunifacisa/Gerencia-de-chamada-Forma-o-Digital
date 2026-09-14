@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Chamada de alunos - Formação Digital</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+
+    <!-- =====================================================
+         ESTILO ESPECÍFICO DA CHAMADA
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           ÁREA PRINCIPAL DA CHAMADA
+        ====================================================== */
+
+        .chamada-container {
+            background: #ffffff !important;
+            color: #1f2937 !important;
+        }
+
+
+        /* =====================================================
+           TÍTULO DO FORMULÁRIO
+        ====================================================== */
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+
+        .form-title-icon {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #e0efff;
+
+            border-radius: 14px;
+
+            font-size: 25px;
+        }
+
+
+        .form-title h2 {
+            margin: 0 0 5px;
+
+            color: #1557c0;
+
+            font-size: 22px;
+        }
+
+
+        .form-title p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           CAMPO TURMA
+        ====================================================== */
+
+        .campo {
+            margin-bottom: 25px;
+        }
+
+
+        .campo label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        .campo select {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid #cbdced;
+
+            border-radius: 11px;
+
+            background: #f8fbff;
+
+            color: #1f2937;
+
+            font-size: 15px;
+
+            outline: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .campo select:focus {
+            border-color: #2563eb;
+
+            box-shadow:
+                    0 0 0 3px
+                    rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =====================================================
+           BOTÃO INICIAR CHAMADA
+        ====================================================== */
+
+        .botao-iniciar-container {
+            display: flex;
+
+            justify-content: center;
+
+            margin: 30px 0;
+        }
+
+
+        .btn-iniciar-chamada {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            min-width: 230px;
+
+            padding: 15px 25px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                    135deg,
+                    #1557c0,
+                    #2563eb
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                    0 8px 20px
+                    rgba(37, 99, 235, 0.20);
+
+            transition: 0.2s;
+        }
+
+
+        .btn-iniciar-chamada:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 12px 25px
+                    rgba(37, 99, 235, 0.28);
+        }
+
+
+        .btn-iniciar-chamada:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           ÁREA DA CONTAGEM
+        ====================================================== */
+
+        .contador-inicial {
+            display: none;
+
+            min-height: 330px;
+
+            margin-top: 25px;
+
+            border-radius: 20px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #e8f4ff,
+                            #d7ebff
+                    );
+
+            border: 1px solid #c5e0ff;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+
+        .contador-inicial.ativo {
+            display: flex;
+        }
+
+
+        .contador-titulo {
+            color: #1557c0;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contador-numero {
+            width: 130px;
+
+            height: 130px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 65px;
+
+            font-weight: 800;
+
+            box-shadow:
+                    0 12px 30px
+                    rgba(37, 99, 235, 0.25);
+
+            animation: pulsar 1s ease-in-out;
+        }
+
+
+        @keyframes pulsar {
+
+            0% {
+                transform: scale(0.6);
+
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =====================================================
+           ÁREA DA CHAMADA
+        ====================================================== */
+
+        #areaChamada {
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #eaf5ff,
+                            #dceeff
+                    );
+
+            border: 1px solid #c7e1ff;
+
+            text-align: center;
+        }
+
+
+        #areaChamada.ativo {
+            display: block;
+        }
+
+
+        /* =====================================================
+           CONTADOR DE ALUNOS
+        ====================================================== */
+
+        .contador-alunos {
+            margin-bottom: 20px;
+
+            color: #2563eb;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CARD DO ALUNO
+        ====================================================== */
+
+        .aluno-atual {
+            width: 100%;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding: 30px 25px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow:
+                    0 8px 25px
+                    rgba(37, 99, 235, 0.12);
+
+            border: 1px solid #dcecff;
+        }
+
+
+        /* =====================================================
+           AVATAR
+        ====================================================== */
+
+        .aluno-avatar-grande {
+            width: 90px;
+
+            height: 90px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #5da5f5,
+                            #2563eb
+                    );
+
+            color: white;
+
+            font-size: 38px;
+
+            font-weight: 700;
+
+            box-shadow:
+                    0 8px 20px
+                    rgba(37, 99, 235, 0.20);
+        }
+
+
+        /* =====================================================
+           NOME DO ALUNO
+        ====================================================== */
+
+        .aluno-atual h3 {
+            margin: 0 0 8px;
+
+            color: #1557c0 !important;
+
+            font-size: 29px;
+
+            font-weight: 800;
+        }
+
+
+        .aluno-id {
+            display: block;
+
+            margin-bottom: 25px;
+
+            color: #64748b !important;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           TEXTO DE ORIENTAÇÃO
+        ====================================================== */
+
+        .texto-presenca {
+            margin-bottom: 18px;
+
+            color: #334155 !important;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           BOTÕES PRESENTE / AUSENTE
+        ====================================================== */
+
+        .botoes-presenca {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            width: 100%;
+        }
+
+
+        .btn-presenca {
+            min-height: 62px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+
+        /* =====================================================
+           BOTÃO PRESENTE
+        ====================================================== */
+
+        .btn-presente {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #16a34a,
+                            #22c55e
+                    );
+
+            box-shadow:
+                    0 7px 18px
+                    rgba(22, 163, 74, 0.20);
+        }
+
+
+        .btn-presente:hover {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #15803d,
+                            #16a34a
+                    );
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           BOTÃO AUSENTE
+        ====================================================== */
+
+        .btn-ausente {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #dc2626,
+                            #ef4444
+                    );
+
+            box-shadow:
+                    0 7px 18px
+                    rgba(220, 38, 38, 0.20);
+        }
+
+
+        .btn-ausente:hover {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #b91c1c,
+                            #dc2626
+                    );
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           BOTÕES DESABILITADOS
+        ====================================================== */
+
+        .btn-presenca:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           ÁREA DE FINALIZAÇÃO
+        ====================================================== */
+
+        .chamada-finalizada {
+            display: none;
+
+            padding: 35px;
+
+            margin-top: 25px;
+
+            border-radius: 18px;
+
+            background: #ecfdf5;
+
+            border: 1px solid #bbf7d0;
+
+            text-align: center;
+        }
+
+
+        .chamada-finalizada.ativo {
+            display: block;
+        }
+
+
+        .chamada-finalizada-icon {
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            color: white;
+
+            font-size: 38px;
+
+            font-weight: bold;
+        }
+
+
+        .chamada-finalizada strong {
+            display: block;
+
+            color: #166534;
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .chamada-finalizada span {
+            color: #15803d;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           AÇÕES
+        ====================================================== */
+
+        .chamada-acoes {
+            display: none;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .chamada-acoes.ativo {
+            display: flex;
+        }
+
+
+        .btn-principal {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .btn-principal:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-1px);
+        }
+
+
+        .btn-principal:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+
+
+        .btn-secundario {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #e5efff;
+
+            color: #1557c0;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .btn-secundario:hover {
+            background: #d5e6ff;
+        }
+
+
+        /* =====================================================
+           MENSAGENS
+        ====================================================== */
+
+        .mensagem {
+            margin-top: 20px;
+
+            padding: 14px 16px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .mensagem.sucesso {
+            background: #dcfce7;
+
+            color: #166534 !important;
+
+            border: 1px solid #bbf7d0;
+        }
+
+
+        .mensagem.erro {
+            background: #fee2e2;
+
+            color: #991b1b !important;
+
+            border: 1px solid #fecaca;
+        }
+
+
+        /* =====================================================
+           MENSAGEM INICIAL
+        ====================================================== */
+
+        .mensagem-inicial {
+            padding: 40px 20px;
+
+            text-align: center;
+
+            background: #f8fbff;
+
+            border: 1px solid #dcecff;
+
+            border-radius: 15px;
+
+            color: #334155;
+        }
+
+
+        .mensagem-inicial-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .mensagem-inicial strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #1557c0;
+
+            font-size: 17px;
+        }
+
+
+        .mensagem-inicial span {
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVIDADE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            #areaChamada {
+                padding: 18px;
+            }
+
+
+            .aluno-atual {
+                padding: 25px 18px;
+            }
+
+
+            .aluno-atual h3 {
+                font-size: 24px;
+            }
+
+
+            .botoes-presenca {
+                grid-template-columns: 1fr;
+            }
+
+
+            .btn-presenca {
+                min-height: 58px;
+            }
+
+
+            .contador-inicial {
+                min-height: 280px;
+            }
+
+
+            .contador-numero {
+                width: 105px;
+
+                height: 105px;
+
+                font-size: 52px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+    <!-- =====================================================
+         MENU LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+
+            <h2>Digital</h2>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="../home.html">
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <div class="menu-titulo">
+                ALUNOS
+            </div>
+
+
+            <a href="adicionar-aluno.html">
+                ➕
+                <span>Adicionar aluno</span>
+            </a>
+
+
+            <a href="atualizar-aluno.html">
+                ✏️
+                <span>Atualizar aluno</span>
+            </a>
+
+
+            <a href="listar-alunos.html">
+                📋
+                <span>Listar alunos</span>
+            </a>
+
+
+            <a href="pesquisar-aluno.html">
+                🔎
+                <span>Pesquisar aluno</span>
+            </a>
+
+
+            <a href="excluir-aluno.html">
+                🗑️
+                <span>Excluir aluno</span>
+            </a>
+
+
+            <a href="chamada-alunos.html"
+               class="ativo">
+
+                📝
+
+                <span>Chamada</span>
+
+            </a>
+
+
+            <a href="historico-alunos.html">
+                📊
+                <span>Histórico</span>
+            </a>
+
+
+            <div class="menu-titulo">
+                VOLUNTÁRIOS
+            </div>
+
+
+            <a href="../voluntarios/adicionar-voluntario.html">
+                👤
+                <span>Voluntários</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPO
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    📝
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Chamada de alunos
+                    </h1>
+
+
+                    <p>
+                        Registre a presença dos alunos da turma.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DESTAQUE
+        ================================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    📝
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Registrar chamada
+                    </h2>
+
+
+                    <p>
+                        Selecione uma turma e registre a presença de cada aluno.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CARD PRINCIPAL
+        ================================================== -->
+
+        <section class="form-container chamada-container">
+
+
+            <!-- =================================================
+                 TÍTULO
+            ================================================== -->
+
+            <div class="form-title">
+
+                <div class="form-title-icon">
+                    👥
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Selecionar turma
+                    </h2>
+
+
+                    <p>
+                        Escolha a turma para iniciar a chamada.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SELEÇÃO DA TURMA
+            ================================================== -->
+
+            <div class="campo">
+
+                <label for="turma">
+                    Turma
+                </label>
+
+
+                <select id="turma">
+
+                    <option value="">
+                        Selecione uma turma
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOTÃO INICIAR
+            ================================================== -->
+
+            <div
+                    class="botao-iniciar-container"
+                    id="containerIniciar"
+                    style="display: none;"
+            >
+
+                <button
+                        type="button"
+                        id="btnIniciar"
+                        class="btn-iniciar-chamada"
+                >
+
+                    ▶
+
+                    Iniciar chamada
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTAGEM 3 2 1
+            ================================================== -->
+
+            <div
+                    id="contadorInicial"
+                    class="contador-inicial"
+            >
+
+                <div class="contador-titulo">
+                    Iniciando chamada em
+                </div>
+
+
+                <div
+                        id="numeroContador"
+                        class="contador-numero"
+                >
+                    3
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ÁREA DA CHAMADA
+            ================================================== -->
+
+            <div
+                    id="areaChamada"
+            >
+
+                <div
+                        id="contadorAlunos"
+                        class="contador-alunos"
+                >
+                </div>
+
+
+                <div
+                        id="alunoAtual"
+                        class="aluno-atual"
+                >
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CHAMADA FINALIZADA
+            ================================================== -->
+
+            <div
+                    id="chamadaFinalizada"
+                    class="chamada-finalizada"
+            >
+
+                <div class="chamada-finalizada-icon">
+                    ✓
+                </div>
+
+
+                <strong>
+                    Todos os alunos foram marcados!
+                </strong>
+
+
+                <span>
+                    Confira a chamada e clique em "Salvar chamada".
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MENSAGEM
+            ================================================== -->
+
+            <div
+                    id="mensagem"
+                    class="mensagem"
+                    style="display: none;"
+            >
+            </div>
+
+
+
+            <!-- =================================================
+                 BOTÕES
+            ================================================== -->
+
+            <div
+                    class="chamada-acoes"
+                    id="acoes"
+            >
+
+                <button
+                        type="button"
+                        class="btn-secundario"
+                        onclick="window.location.href='../home.html'"
+                >
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="btn-principal"
+                        id="btnSalvar"
+                >
+
+                    Salvar chamada
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    // ========================================================
+    // CONFIGURAÇÃO
+    // ========================================================
+
+    const API =
+        "http://localhost:3000";
+
+
+    // ========================================================
+    // ELEMENTOS
+    // ========================================================
+
+    const selectTurma =
+        document.getElementById("turma");
+
+
+    const containerIniciar =
+        document.getElementById("containerIniciar");
+
+
+    const btnIniciar =
+        document.getElementById("btnIniciar");
+
+
+    const contadorInicial =
+        document.getElementById("contadorInicial");
+
+
+    const numeroContador =
+        document.getElementById("numeroContador");
+
+
+    const areaChamada =
+        document.getElementById("areaChamada");
+
+
+    const contadorAlunos =
+        document.getElementById("contadorAlunos");
+
+
+    const alunoAtual =
+        document.getElementById("alunoAtual");
+
+
+    const chamadaFinalizada =
+        document.getElementById("chamadaFinalizada");
+
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    const acoes =
+        document.getElementById("acoes");
+
+
+    const btnSalvar =
+        document.getElementById("btnSalvar");
+
+
+    const nomeAdministrador =
+        document.getElementById("nomeAdministrador");
+
+
+
+    // ========================================================
+    // VARIÁVEIS
+    // ========================================================
+
+    let alunos = [];
+
+    let alunosDaTurma = [];
+
+    let indiceAtual = 0;
+
+    let chamada = [];
+
+    let chamadaIniciada = false;
+
+    let processando = false;
+
+
+
+    // ========================================================
+    // CARREGAR ADMINISTRADOR
+    // ========================================================
+
+    async function carregarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            nomeAdministrador.textContent =
+                "Administrador";
+
+        }
+
+    }
+
+
+
+    // ========================================================
+    // CARREGAR ALUNOS
+    // ========================================================
+
+    async function carregarAlunos() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/alunos`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível buscar os alunos."
+                );
+
+            }
+
+
+            alunos =
+                await resposta.json();
+
+
+            carregarTurmas();
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar alunos:",
+                erro
+            );
+
+
+            mostrarMensagem(
+                "Não foi possível carregar os alunos.",
+                "erro"
+            );
+
+        }
+
+    }
+
+
+
+    // ========================================================
+    // CARREGAR TURMAS
+    // ========================================================
+
+    function carregarTurmas() {
+
+        selectTurma.innerHTML = `
+
+            <option value="">
+                Selecione uma turma
+            </option>
+
+        `;
+
+
+        const turmas = [];
+
+
+        for (const aluno of alunos) {
+
+            if (
+                aluno.turma &&
+                !turmas.includes(aluno.turma)
+            ) {
+
+                turmas.push(aluno.turma);
+
+            }
+
+        }
+
+
+        turmas.sort(
+            (a, b) =>
+                String(a).localeCompare(
+                    String(b),
+                    "pt-BR",
+                    {
+                        numeric: true
+                    }
+                )
+        );
+
+
+        for (const turma of turmas) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value =
+                turma;
+
+
+            option.textContent =
+                turma;
+
+
+            selectTurma.appendChild(
+                option
+            );
+
+        }
+
+    }
+
+
+
+    // ========================================================
+    // ESCOLHER TURMA
+    // ========================================================
+
+    selectTurma.addEventListener(
+        "change",
+        function() {
+
+            const turma =
+                selectTurma.value;
+
+
+            // Resetar tudo
+
+            containerIniciar.style.display =
+                "none";
+
+
+            contadorInicial.classList.remove(
+                "ativo"
+            );
+
+
+            areaChamada.classList.remove(
+                "ativo"
+            );
+
+
+            chamadaFinalizada.classList.remove(
+                "ativo"
+            );
+
+
+            acoes.classList.remove(
+                "ativo"
+            );
+
+
+            mensagem.style.display =
+                "none";
+
+
+            indiceAtual = 0;
+
+            chamada = [];
+
+            chamadaIniciada = false;
+
+            processando = false;
+
+
+            alunosDaTurma = [];
+
+
+            if (!turma) {
+
+                return;
+
+            }
+
+
+            // =================================================
+            // FILTRAR ALUNOS
+            // =================================================
+
+            alunosDaTurma =
+                alunos
+                    .filter(
+                        aluno =>
+                            String(aluno.turma) ===
+                            String(turma)
+                    )
+                    .sort(
+                        (a, b) =>
+                            String(a.nome).localeCompare(
+                                String(b.nome),
+                                "pt-BR"
+                            )
+                    );
+
+
+            if (
+                alunosDaTurma.length === 0
+            ) {
+
+                mostrarMensagem(
+                    "Não existem alunos cadastrados nessa turma.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            // Mostrar botão iniciar
+
+            containerIniciar.style.display =
+                "flex";
+
+        }
+    );
+
+
+
+    // ========================================================
+    // INICIAR CHAMADA
+    // ========================================================
+
+    btnIniciar.addEventListener(
+        "click",
+        function() {
+
+            if (
+                alunosDaTurma.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            btnIniciar.disabled =
+                true;
+
+
+            containerIniciar.style.display =
+                "none";
+
+
+            iniciarContagem();
+
+        }
+    );
+
+
+
+    // ========================================================
+    // CONTAGEM 3 2 1
+    // ========================================================
+
+    function iniciarContagem() {
+
+        contadorInicial.classList.add(
+            "ativo"
+        );
+
+
+        let segundos = 3;
+
+
+        mostrarNumeroContador(
+            segundos
+        );
+
+
+        const intervalo =
+            setInterval(
+                function() {
+
+                    segundos--;
+
+
+                    if (
+                        segundos > 0
+                    ) {
+
+                        mostrarNumeroContador(
+                            segundos
+                        );
+
+                    } else {
+
+                        clearInterval(
+                            intervalo
+                        );
+
+
+                        contadorInicial.classList.remove(
+                            "ativo"
+                        );
+
+
+                        chamadaIniciada =
+                            true;
+
+
+                        indiceAtual = 0;
+
+                        chamada = [];
+
+
+                        mostrarAlunoAtual();
+
+                    }
+
+                },
+                1000
+            );
+
+    }
+
+
+
+    // ========================================================
+    // MOSTRAR NÚMERO DO TIMER
+    // ========================================================
+
+    function mostrarNumeroContador(numero) {
+
+        numeroContador.textContent =
+            numero;
+
+
+        // Reiniciar animação
+
+        numeroContador.style.animation =
+            "none";
+
+
+        void numeroContador.offsetWidth;
+
+
+        numeroContador.style.animation =
+            "pulsar 1s ease-in-out";
+
+    }
+
+
+
+    // ========================================================
+    // MOSTRAR ALUNO ATUAL
+    // ========================================================
+
+    function mostrarAlunoAtual() {
+
+        const aluno =
+            alunosDaTurma[indiceAtual];
+
+
+        if (!aluno) {
+
+            finalizarChamada();
+
+            return;
+
+        }
+
+
+        processando =
+            false;
+
+
+        areaChamada.classList.add(
+            "ativo"
+        );
+
+
+        contadorAlunos.textContent =
+            `Aluno ${indiceAtual + 1} de ${alunosDaTurma.length}`;
+
+
+        const primeiraLetra =
+            String(aluno.nome)
+                .charAt(0)
+                .toUpperCase();
+
+
+        alunoAtual.innerHTML = `
+
+            <div class="aluno-avatar-grande">
+
+                ${primeiraLetra}
+
+            </div>
+
+
+            <h3>
+                ${aluno.nome}
+            </h3>
+
+
+            <span class="aluno-id">
+                ID: ${aluno.id}
+            </span>
+
+
+            <div class="texto-presenca">
+
+                Marque a situação do aluno:
+
+            </div>
+
+
+            <div class="botoes-presenca">
+
+                <button
+                        type="button"
+                        class="btn-presenca btn-presente"
+                        onclick="registrarPresenca(true)"
+                >
+
+                    ✓
+
+                    Presente
+
+                </button>
+
+
+                <button
+                        type="button"
+                        class="btn-presenca btn-ausente"
+                        onclick="registrarPresenca(false)"
+                >
+
+                    ✕
+
+                    Ausente
+
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    // ========================================================
+    // REGISTRAR PRESENÇA
+    // ========================================================
+
+    function registrarPresenca(presente) {
+
+        if (processando) {
+
+            return;
+
+        }
+
+
+        processando =
+            true;
+
+
+        const aluno =
+            alunosDaTurma[indiceAtual];
+
+
+        if (!aluno) {
+
+            return;
+
+        }
+
+
+        // =================================================
+        // SALVAR RESPOSTA
+        // =================================================
+
+        chamada.push({
+
+            id:
+            aluno.id,
+
+            presente:
+            presente
+
+        });
+
+
+        // =================================================
+        // DESABILITAR BOTÕES
+        // =================================================
+
+        const botoes =
+            document.querySelectorAll(
+                ".btn-presenca"
+            );
+
+
+        botoes.forEach(
+            botao =>
+                botao.disabled = true
+        );
+
+
+        // =================================================
+        // IR DIRETAMENTE PARA O PRÓXIMO
+        // =================================================
+
+        setTimeout(
+            function() {
+
+                indiceAtual++;
+
+
+                if (
+                    indiceAtual >=
+                    alunosDaTurma.length
+                ) {
+
+                    finalizarChamada();
+
+                } else {
+
+                    mostrarAlunoAtual();
+
+                }
+
+            },
+            250
+        );
+
+    }
+
+
+
+    // ========================================================
+    // FINALIZAR CHAMADA
+    // ========================================================
+
+    function finalizarChamada() {
+
+        areaChamada.classList.remove(
+            "ativo"
+        );
+
+
+        chamadaFinalizada.classList.add(
+            "ativo"
+        );
+
+
+        acoes.classList.add(
+            "ativo"
+        );
+
+
+        chamadaIniciada =
+            false;
+
+
+        processando =
+            false;
+
+    }
+
+
+
+    // ========================================================
+    // SALVAR CHAMADA
+    // ========================================================
+
+    btnSalvar.addEventListener(
+        "click",
+        async function() {
+
+            const turma =
+                selectTurma.value;
+
+
+            if (!turma) {
+
+                mostrarMensagem(
+                    "Selecione uma turma.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                chamada.length !==
+                alunosDaTurma.length
+            ) {
+
+                mostrarMensagem(
+                    "É necessário marcar todos os alunos.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            btnSalvar.disabled =
+                true;
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/alunos/chamada`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            credentials:
+                                "include",
+
+                            body:
+                                JSON.stringify({
+
+                                    turma:
+                                    turma,
+
+                                    chamada:
+                                    chamada
+
+                                })
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    mostrarMensagem(
+                        dados.mensagem ||
+                        "Não foi possível registrar a chamada.",
+                        "erro"
+                    );
+
+
+                    btnSalvar.disabled =
+                        false;
+
+
+                    return;
+
+                }
+
+
+                mostrarMensagem(
+                    dados.mensagem ||
+                    "Chamada registrada com sucesso.",
+                    "sucesso"
+                );
+
+
+                btnSalvar.style.display =
+                    "none";
+
+
+                const botaoCancelar =
+                    document.querySelector(
+                        ".btn-secundario"
+                    );
+
+
+                if (botaoCancelar) {
+
+                    botaoCancelar.textContent =
+                        "Voltar";
+
+                }
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao registrar chamada:",
+                    erro
+                );
+
+
+                mostrarMensagem(
+                    "Não foi possível conectar ao servidor.",
+                    "erro"
+                );
+
+
+                btnSalvar.disabled =
+                    false;
+
+            }
+
+        }
+    );
+
+
+
+    // ========================================================
+    // MOSTRAR MENSAGEM
+    // ========================================================
+
+    function mostrarMensagem(
+        texto,
+        tipo
+    ) {
+
+        mensagem.textContent =
+            texto;
+
+
+        mensagem.className =
+            "mensagem " + tipo;
+
+
+        mensagem.style.display =
+            "block";
+
+    }
+
+
+
+    // ========================================================
+    // INICIAR SISTEMA
+    // ========================================================
+
+    carregarAdministrador();
+
+    carregarAlunos();
+
+
+</script>
+
+</body>
+
+</html>

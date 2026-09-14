@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Listar Alunos - Formação Digital</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+            <h2>Digital</h2>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="../home.html">
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <!-- ALUNOS -->
+
+            <div class="menu-section">
+
+                <span>Alunos</span>
+
+
+                <a href="adicionar-aluno.html">
+                    ➕
+                    <span>Adicionar aluno</span>
+                </a>
+
+
+                <a href="atualizar-aluno.html">
+                    ✏️
+                    <span>Atualizar aluno</span>
+                </a>
+
+
+                <a href="listar-alunos.html"
+                   class="active">
+                    📋
+                    <span>Listar alunos</span>
+                </a>
+
+
+                <a href="pesquisar-aluno.html">
+                    🔎
+                    <span>Pesquisar aluno</span>
+                </a>
+
+
+                <a href="excluir-aluno.html">
+                    🗑️
+                    <span>Excluir aluno</span>
+                </a>
+
+
+                <a href="chamada-alunos.html">
+                    📝
+                    <span>Chamada</span>
+                </a>
+
+
+                <a href="historico-alunos.html">
+                    📊
+                    <span>Histórico</span>
+                </a>
+
+            </div>
+
+
+            <!-- VOLUNTÁRIOS -->
+
+            <div class="menu-section">
+
+                <span>Voluntários</span>
+
+
+                <a href="../voluntarios/adicionar-voluntario.html">
+                    👤
+                    <span>Adicionar voluntário</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SAIR -->
+
+        <button
+                id="btnSair"
+                class="btn-sair">
+
+            🚪 Sair
+
+        </button>
+
+    </aside>
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <h1>
+                        Lista de Alunos
+                    </h1>
+
+                    <p>
+                        Consulte todos os alunos cadastrados.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             HERO DA PÁGINA
+        =========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+
+                    <h2>
+                        Alunos cadastrados
+                    </h2>
+
+                    <p>
+                        Visualize todos os alunos organizados por turma.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             CARD DA TABELA
+        =========================================== -->
+
+        <section class="card historico-card">
+
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Lista de alunos
+                        </h2>
+
+                        <p>
+                            Confira os alunos cadastrados no sistema.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                        id="btnAtualizar"
+                        class="btn-primary">
+
+                    <span>🔄</span>
+                    Atualizar
+
+                </button>
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+
+            <div
+                    id="mensagem"
+                    class="mensagem">
+            </div>
+
+
+            <!-- ==========================================
+                 TABELA
+            =========================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Nome</th>
+
+                        <th>Turma</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaAlunos">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+    const API =
+        "http://localhost:3000";
+
+
+    const tabelaAlunos =
+        document.getElementById(
+            "tabelaAlunos"
+        );
+
+
+    const mensagem =
+        document.getElementById(
+            "mensagem"
+        );
+
+
+    const nomeAdministrador =
+        document.getElementById(
+            "nomeAdministrador"
+        );
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // LISTAR ALUNOS
+    // ==========================================
+
+    async function carregarAlunos() {
+
+        tabelaAlunos.innerHTML = "";
+
+        mensagem.textContent = "";
+
+        mensagem.className =
+            "mensagem";
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/alunos`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os alunos."
+                );
+
+            }
+
+
+            const alunos =
+                await resposta.json();
+
+
+            if (alunos.length === 0) {
+
+                tabelaAlunos.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="3">
+                            Nenhum aluno cadastrado.
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            alunos.sort(
+                (a, b) =>
+                    a.nome.localeCompare(
+                        b.nome,
+                        "pt-BR"
+                    )
+            );
+
+
+            for (const aluno of alunos) {
+
+                const linha =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${aluno.id}
+                    </td>
+
+                    <td>
+                        ${aluno.nome}
+                    </td>
+
+                    <td>
+                        ${aluno.turma}
+                    </td>
+
+                `;
+
+
+                tabelaAlunos.appendChild(
+                    linha
+                );
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao listar alunos:",
+                erro
+            );
+
+
+            mensagem.textContent =
+                erro.message;
+
+
+            mensagem.classList.add(
+                "erro"
+            );
+
+        }
+
+    }
+
+
+    // ==========================================
+    // BOTÃO ATUALIZAR
+    // ==========================================
+
+    document
+        .getElementById("btnAtualizar")
+        .addEventListener(
+            "click",
+            carregarAlunos
+        );
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnSair")
+        .addEventListener(
+            "click",
+            async () => {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer logout:",
+                        erro
+                    );
+
+                }
+
+
+                window.location.href =
+                    "../login.html";
+
+            }
+        );
+
+
+    // ==========================================
+    // INICIALIZAÇÃO
+    // ==========================================
+
+    verificarAdministrador();
+
+    carregarAlunos();
+
+</script>
+
+</body>
+
+</html>

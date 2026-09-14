@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Formação Digital</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="pagina-index">
+
+
+<main class="index-container">
+
+  <section class="index-card">
+
+    <!-- LOGO -->
+
+    <div class="index-logo">
+      FD
+    </div>
+
+
+    <!-- NOME -->
+
+    <div class="index-brand">
+
+      <h1>
+        Formação Digital
+      </h1>
+
+      <p>
+        Sistema de controle de frequência
+      </p>
+
+    </div>
+
+
+    <!-- CARREGAMENTO -->
+
+    <div class="index-carregando">
+
+      <div class="spinner"></div>
+
+      <div class="index-loading-text">
+
+                <span>
+                    Carregando sistema...
+                </span>
+
+        <small>
+          Aguarde um momento
+        </small>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+</main>
+
+
+
+<script>
+
+  const API = "http://localhost:3000";
+
+
+  // ==========================================
+  // VERIFICAR SESSÃO
+  // ==========================================
+
+  async function verificarSessao() {
+
+    try {
+
+      const resposta =
+              await fetch(
+                      `${API}/api/administrador/me`,
+                      {
+                        credentials: "include"
+                      }
+              );
+
+
+      if (resposta.ok) {
+
+        // ADMINISTRADOR JÁ ESTÁ LOGADO
+
+        window.location.href =
+                "home.html";
+
+      } else {
+
+        // NÃO ESTÁ LOGADO
+
+        window.location.href =
+                "login.html";
+
+      }
+
+
+    } catch (erro) {
+
+      console.error(
+              "Erro ao verificar sessão:",
+              erro
+      );
+
+
+      // SE O BACKEND NÃO ESTIVER DISPONÍVEL,
+      // ENVIA PARA O LOGIN
+
+      window.location.href =
+              "login.html";
+
+    }
+
+  }
+
+
+  // ==========================================
+  // INICIAR
+  // ==========================================
+
+  verificarSessao();
+
+</script>
+
+
+</body>
+
+</html>

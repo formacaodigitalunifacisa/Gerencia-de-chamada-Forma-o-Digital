@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Listar Voluntários - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- MENU LATERAL -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação Digital</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="../home.html">
+                Início
+            </a>
+
+            <!-- ALUNOS -->
+
+            <div class="menu-grupo">
+
+                <span>Alunos</span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+            <!-- VOLUNTÁRIOS -->
+
+            <div class="menu-grupo">
+
+                <span>Voluntários</span>
+
+                <a href="adicionar-voluntario.html">
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html" class="active">
+                    Listar voluntários
+                </a>
+
+                <a href="pesquisar-voluntario.html">
+                    Pesquisar voluntário
+                </a>
+
+                <a href="excluir-voluntario.html">
+                    Excluir voluntário
+                </a>
+
+                <a href="chamada-voluntarios.html">
+                    Chamada
+                </a>
+
+                <a href="historico-voluntarios.html">
+                    Histórico
+                </a>
+
+            </div>
+
+            <!-- TURMAS -->
+
+            <div class="menu-grupo">
+
+                <span>Turmas</span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+        <button id="btnLogout">
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h1>Lista de Voluntários</h1>
+
+                    <p>
+                        Consulte os voluntários cadastrados no sistema
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="admin-info">
+
+                <span>Administrador</span>
+
+                <strong id="administrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- CABEÇALHO DA PÁGINA -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h2>Voluntários cadastrados</h2>
+
+                    <p>
+                        Confira todos os voluntários cadastrados no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CARD DA LISTAGEM -->
+
+        <section class="card historico-card">
+
+            <div class="card-header-content">
+
+                <div class="card-header-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <h2>Lista de voluntários</h2>
+
+                    <p>
+                        Visualize as informações dos voluntários cadastrados.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABELA -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Nome</th>
+
+                        <th>Turma</th>
+
+                        <th>Curso</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaVoluntarios">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <p id="mensagem"></p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+    const API = "http://localhost:3000";
+
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta = await fetch(
+                `${API}/api/administrador/me`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            document.getElementById(
+                "administrador"
+            ).textContent =
+                `Administrador: ${dados.administrador.nome}`;
+
+
+        } catch (erro) {
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // CARREGAR VOLUNTÁRIOS
+    // ==========================================
+
+    async function carregarVoluntarios() {
+
+        const tabela =
+            document.getElementById(
+                "tabelaVoluntarios"
+            );
+
+
+        const mensagem =
+            document.getElementById(
+                "mensagem"
+            );
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/voluntarios`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os voluntários."
+                );
+
+            }
+
+
+            const voluntarios =
+                await resposta.json();
+
+
+            tabela.innerHTML = "";
+
+
+            // NENHUM VOLUNTÁRIO
+
+            if (voluntarios.length === 0) {
+
+                mensagem.textContent =
+                    "Nenhum voluntário cadastrado.";
+
+                return;
+
+            }
+
+
+            // ORDENAR PELO NOME
+
+            voluntarios.sort(
+                (a, b) =>
+                    a.nome.localeCompare(
+                        b.nome,
+                        "pt-BR"
+                    )
+            );
+
+
+            // CRIAR LINHAS
+
+            for (
+                const voluntario
+                of voluntarios
+                ) {
+
+                const linha =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${voluntario.id}
+                    </td>
+
+                    <td>
+                        ${voluntario.nome}
+                    </td>
+
+                    <td>
+                        ${voluntario.turma}
+                    </td>
+
+                    <td>
+                        ${voluntario.curso}
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(erro);
+
+
+            mensagem.textContent =
+                "Erro ao carregar os voluntários.";
+
+            mensagem.className =
+                "mensagem-erro";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await fetch(
+                    `${API}/api/login/logout`,
+                    {
+
+                        method: "POST",
+
+                        credentials: "include"
+
+                    }
+                );
+
+            } finally {
+
+                window.location.href =
+                    "../login.html";
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    verificarAdministrador();
+
+    carregarVoluntarios();
+
+</script>
+
+</body>
+
+</html>

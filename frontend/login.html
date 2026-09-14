@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login - Formação Digital</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="pagina-login">
+
+
+<main class="login-container">
+
+
+    <section class="login-card">
+
+
+        <!-- CABEÇALHO DO LOGIN -->
+
+        <div class="login-logo">
+
+            <div class="login-logo-icone">
+                FD
+            </div>
+
+            <div class="login-brand">
+
+                <h1>
+                    Formação Digital
+                </h1>
+
+                <p>
+                    Sistema de controle de frequência
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TÍTULO -->
+
+        <div class="login-titulo">
+
+            <h2>
+                Bem-vindo!
+            </h2>
+
+            <p>
+                Entre com sua conta de administrador
+            </p>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <form id="formLogin">
+
+
+            <!-- E-MAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="email"
+                        required
+                >
+
+            </div>
+
+
+            <!-- SENHA -->
+
+            <div class="form-group">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+
+                <div class="campo-senha">
+
+                    <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                    >
+
+
+                    <button
+                            type="button"
+                            id="btnMostrarSenha"
+                            class="btn-olho"
+                            aria-label="Mostrar senha"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+
+            <p
+                    id="mensagem"
+                    class="mensagem"
+            ></p>
+
+
+            <!-- BOTÃO -->
+
+            <button
+                    type="submit"
+                    class="btn-primary btn-login"
+            >
+                Entrar
+            </button>
+
+
+        </form>
+
+
+        <!-- RODAPÉ -->
+
+        <div class="login-footer">
+
+            <p>
+                Área exclusiva para administradores
+            </p>
+
+            <p>
+               Dúvidas? contato da criadora
+            </p>
+
+            <p>
+                Email: thay.ewe02@gmail.com
+            </p>
+            <p>
+                Número: (83) 9 9863-7358
+            </p>
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+    const API = "http://localhost:3000";
+
+
+    // ==========================================
+    // LOGIN
+    // ==========================================
+
+    document.getElementById(
+        "formLogin"
+    ).addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                ).value.trim();
+
+
+            const senha =
+                document.getElementById(
+                    "senha"
+                ).value;
+
+
+            const mensagem =
+                document.getElementById(
+                    "mensagem"
+                );
+
+
+            mensagem.textContent = "";
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/login`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            credentials: "include",
+
+                            body: JSON.stringify({
+
+                                email: email,
+
+                                senha: senha
+
+                            })
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                // ==================================
+                // ERRO
+                // ==================================
+
+                if (!resposta.ok) {
+
+                    mensagem.textContent =
+                        dados.mensagem ||
+                        "Não foi possível realizar o login.";
+
+                    mensagem.className =
+                        "mensagem mensagem-erro";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // LOGIN REALIZADO
+                // ==================================
+
+                mensagem.textContent =
+                    dados.mensagem ||
+                    "Login realizado com sucesso.";
+
+                mensagem.className =
+                    "mensagem mensagem-sucesso";
+
+
+                // Ir para a Home
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "home.html";
+
+                    },
+                    500
+                );
+
+
+            } catch (erro) {
+
+                console.error(erro);
+
+
+                mensagem.textContent =
+                    "Não foi possível conectar ao servidor.";
+
+                mensagem.className =
+                    "mensagem mensagem-erro";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR SENHA
+    // ==========================================
+
+    document.getElementById(
+        "btnMostrarSenha"
+    ).addEventListener(
+        "click",
+        function () {
+
+            const senha =
+                document.getElementById(
+                    "senha"
+                );
+
+
+            if (
+                senha.type === "password"
+            ) {
+
+                senha.type = "text";
+
+                this.textContent = "🙈";
+
+                this.setAttribute(
+                    "aria-label",
+                    "Ocultar senha"
+                );
+
+            } else {
+
+                senha.type = "password";
+
+                this.textContent = "👁";
+
+                this.setAttribute(
+                    "aria-label",
+                    "Mostrar senha"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

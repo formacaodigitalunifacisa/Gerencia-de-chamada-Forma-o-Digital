@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Adicionar Turma - Formação Digital</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+            <h2>Digital</h2>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="../home.html">
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <!-- ALUNOS -->
+
+            <div class="menu-section">
+
+                <span>Alunos</span>
+
+
+                <a href="../alunos/adicionar-aluno.html">
+                    ➕
+                    <span>Adicionar aluno</span>
+                </a>
+
+
+                <a href="../alunos/atualizar-aluno.html">
+                    ✏️
+                    <span>Atualizar aluno</span>
+                </a>
+
+
+                <a href="../alunos/listar-alunos.html">
+                    📋
+                    <span>Listar alunos</span>
+                </a>
+
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    🔎
+                    <span>Pesquisar aluno</span>
+                </a>
+
+
+                <a href="../alunos/excluir-aluno.html">
+                    🗑️
+                    <span>Excluir aluno</span>
+                </a>
+
+
+                <a href="../alunos/chamada-alunos.html">
+                    📝
+                    <span>Chamada</span>
+                </a>
+
+
+                <a href="../alunos/historico-alunos.html">
+                    📊
+                    <span>Histórico</span>
+                </a>
+
+            </div>
+
+
+            <!-- VOLUNTÁRIOS -->
+
+            <div class="menu-section">
+
+                <span>Voluntários</span>
+
+
+                <a href="../voluntarios/adicionar-voluntario.html">
+                    👤
+                    <span>Adicionar voluntário</span>
+                </a>
+
+            </div>
+
+
+            <!-- TURMAS -->
+
+            <div class="menu-section">
+
+                <span>Turmas</span>
+
+
+                <a href="adicionar-turma.html"
+                   class="active">
+
+                    🎓
+                    <span>Adicionar turma</span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SAIR -->
+
+        <button
+                id="btnSair"
+                class="btn-sair"
+                type="button">
+
+            🚪 Sair
+
+        </button>
+
+    </aside>
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    🎓
+                </div>
+
+                <div>
+
+                    <h1>
+                        Adicionar Turma
+                    </h1>
+
+                    <p>
+                        Cadastre uma nova turma no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             HERO
+        =========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    🎓
+                </div>
+
+                <div>
+
+                    <h2>
+                        Nova turma
+                    </h2>
+
+                    <p>
+                        Cadastre uma nova turma para organizar os alunos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             FORMULÁRIO
+        =========================================== -->
+
+        <section class="card form-container">
+
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        🎓
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Adicionar turma
+                        </h2>
+
+                        <p>
+                            Informe o nome ou número da turma.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form id="formTurma">
+
+
+                <div class="form-group">
+
+                    <label for="turma">
+                        Nome da turma
+                    </label>
+
+
+                    <input
+                            type="text"
+                            id="turma"
+                            name="turma"
+                            placeholder="Ex.: 1"
+                            required
+                    >
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                            type="submit"
+                            class="btn-primary">
+
+                        <span>＋</span>
+                        Adicionar turma
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- MENSAGEM -->
+
+            <div
+                    id="mensagem"
+                    class="mensagem">
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+    const API =
+        "http://localhost:3000";
+
+
+    const formTurma =
+        document.getElementById("formTurma");
+
+
+    const campoTurma =
+        document.getElementById("turma");
+
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    const nomeAdministrador =
+        document.getElementById("nomeAdministrador");
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // ADICIONAR TURMA
+    // ==========================================
+
+    formTurma.addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const turma =
+                campoTurma.value.trim();
+
+
+            if (!turma) {
+
+                mensagem.textContent =
+                    "Nome da turma é obrigatório.";
+
+                mensagem.className =
+                    "mensagem erro";
+
+                return;
+
+            }
+
+
+            mensagem.textContent =
+                "Cadastrando turma...";
+
+            mensagem.className =
+                "mensagem";
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/turmas`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials: "include",
+
+                            body: JSON.stringify({
+                                turma: turma
+                            })
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.mensagem ||
+                        "Erro ao cadastrar turma."
+                    );
+
+                }
+
+
+                mensagem.textContent =
+                    dados.mensagem ||
+                    "Turma adicionada com sucesso.";
+
+
+                mensagem.className =
+                    "mensagem sucesso";
+
+
+                campoTurma.value = "";
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao cadastrar turma:",
+                    erro
+                );
+
+
+                mensagem.textContent =
+                    erro.message;
+
+
+                mensagem.className =
+                    "mensagem erro";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnSair")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer logout:",
+                        erro
+                    );
+
+                }
+
+
+                window.location.href =
+                    "../login.html";
+
+            }
+        );
+
+
+    // ==========================================
+    // INICIALIZAÇÃO
+    // ==========================================
+
+    verificarAdministrador();
+
+</script>
+
+
+</body>
+
+</html>

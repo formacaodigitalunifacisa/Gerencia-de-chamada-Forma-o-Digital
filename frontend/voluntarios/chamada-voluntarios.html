@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Chamada de Voluntários - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <!-- =====================================================
+         ESTILO ESPECÍFICO DA PÁGINA DE CHAMADA
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           PÁGINA
+        ====================================================== */
+
+        .main-content {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #eef7ff 0%,
+                            #e9f5ff 50%,
+                            #e2f1ff 100%
+                    );
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           TOPO
+        ====================================================== */
+
+        .topbar {
+            min-height: 116px;
+
+            padding: 0 50px 0 58px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom: 1px solid #dcecff;
+
+            box-shadow:
+                    0 2px 12px rgba(37, 99, 235, 0.06);
+        }
+
+
+        .topbar-page-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+        }
+
+
+        .page-icon {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #dceeff;
+
+            font-size: 29px;
+        }
+
+
+        .topbar-page-info h1 {
+            margin: 0;
+
+            color: #1557c0;
+
+            font-size: 27px;
+
+            font-weight: 700;
+        }
+
+
+        .topbar-page-info p {
+            margin-top: 5px;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           ADMINISTRADOR
+        ====================================================== */
+
+        .topbar > .admin-info {
+            display: flex;
+
+            align-items: center;
+
+            min-width: 250px;
+
+            padding: 0;
+
+            background: transparent;
+
+            border: none;
+
+            box-shadow: none;
+
+            text-align: left;
+        }
+
+
+        .topbar > .admin-info::before {
+            content: "👤";
+
+            width: 55px;
+            height: 55px;
+
+            margin-right: 13px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #dceeff;
+
+            font-size: 28px;
+        }
+
+
+        .topbar > .admin-info span {
+            color: #1557c0;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .page-hero {
+            width: calc(100% - 120px);
+
+            max-width: 1400px;
+
+            margin: 35px auto 20px;
+
+            padding: 27px 32px;
+
+            background: transparent;
+
+            border: none;
+
+            box-shadow: none;
+        }
+
+
+        .page-hero-content {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 22px;
+
+            text-align: left;
+        }
+
+
+        .page-hero-icon {
+            width: 88px;
+            height: 88px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #cfe7ff;
+
+            font-size: 42px;
+        }
+
+
+        .page-hero h2 {
+            margin: 0 0 8px;
+
+            color: #1557c0;
+
+            font-size: 36px;
+
+            font-weight: 700;
+        }
+
+
+        .page-hero p {
+            margin: 0;
+
+            color: #4388dc;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           CARD PRINCIPAL
+        ====================================================== */
+
+        .chamada-card {
+            width: calc(100% - 120px);
+
+            max-width: 1000px;
+
+            margin: 10px auto 60px;
+
+            padding: 32px;
+
+            background: #ffffff;
+
+            border: 1px solid #d7e9fb;
+
+            border-radius: 20px;
+
+            box-shadow:
+                    0 8px 25px rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =====================================================
+           CABEÇALHO DO CARD
+        ====================================================== */
+
+        .chamada-card .card-header {
+            margin-bottom: 28px;
+        }
+
+
+        .card-header-content {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .card-header-icon {
+            width: 54px;
+            height: 54px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e2f1ff;
+
+            font-size: 27px;
+        }
+
+
+        .chamada-card .card-header h2 {
+            margin: 0 0 5px;
+
+            color: #124b9c;
+
+            font-size: 22px;
+        }
+
+
+        .chamada-card .card-header p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           SELECIONAR TURMA
+        ====================================================== */
+
+        .chamada-card .form-group {
+            margin-bottom: 25px;
+        }
+
+
+        .chamada-card .form-group label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        .chamada-card .form-group select {
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            background: #f8fbff;
+
+            border: 1px solid #cbdced;
+
+            border-radius: 11px;
+
+            color: #1f2937;
+
+            font-size: 14px;
+
+            outline: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .chamada-card .form-group select:focus {
+            border-color: #2563eb;
+
+            background: white;
+
+            box-shadow:
+                    0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =====================================================
+           BOTÃO INICIAR CHAMADA
+        ====================================================== */
+
+        .btn-iniciar-chamada {
+            width: 100%;
+
+            min-height: 52px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 10px;
+
+            padding: 0 22px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #1762c4,
+                            #2878d8
+                    );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                    0 5px 14px rgba(37, 99, 235, 0.18);
+
+            transition: 0.2s;
+        }
+
+
+        .btn-iniciar-chamada:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 18px rgba(37, 99, 235, 0.24);
+        }
+
+
+        .btn-iniciar-chamada:disabled {
+            opacity: 0.65;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           ÁREA DA CONTAGEM INICIAL
+        ====================================================== */
+
+        .countdown-container {
+            width: 100%;
+
+            min-height: 330px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 25px;
+
+            padding: 30px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #e5f3ff,
+                            #d9edff
+                    );
+
+            border: 1px solid #c5e0fa;
+
+            border-radius: 18px;
+
+            text-align: center;
+        }
+
+
+        .countdown-titulo {
+            margin-bottom: 15px;
+
+            color: #1557c0;
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        .countdown-numero {
+            color: #1557c0;
+
+            font-size: 110px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            animation: aparecerNumero 0.5s ease;
+        }
+
+
+        .countdown-subtitulo {
+            margin-top: 15px;
+
+            color: #4388dc;
+
+            font-size: 17px;
+
+            font-weight: 600;
+        }
+
+
+        @keyframes aparecerNumero {
+
+            from {
+                opacity: 0;
+
+                transform: scale(0.6);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =====================================================
+           ÁREA DA CHAMADA
+        ====================================================== */
+
+        .chamada-container {
+            width: 100%;
+
+            margin: 25px 0 0;
+
+            padding: 28px;
+
+            background:
+                    linear-gradient(
+                            145deg,
+                            #f3f9ff,
+                            #e9f5ff
+                    );
+
+            border: 1px solid #cfe4f8;
+
+            border-radius: 18px;
+
+            box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+
+        /* =====================================================
+           CONTADOR DE VOLUNTÁRIOS
+        ====================================================== */
+
+        .contador-voluntarios {
+            width: fit-content;
+
+            margin: 0 auto 25px;
+
+            padding: 8px 17px;
+
+            background: #dceeff;
+
+            border-radius: 20px;
+
+            color: #1557c0;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           VOLUNTÁRIO ATUAL
+        ====================================================== */
+
+        .voluntario-item {
+            width: 100%;
+
+            min-height: 130px;
+
+            margin: 0;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            background: white;
+
+            border: 1px solid #d5e8fa;
+
+            border-radius: 15px;
+
+            box-shadow:
+                    0 4px 12px rgba(37, 99, 235, 0.07);
+
+            text-align: center;
+        }
+
+
+        .voluntario-item strong {
+            display: block;
+
+            color: #124b9c;
+
+            font-size: 28px;
+
+            font-weight: 700;
+        }
+
+
+        .voluntario-item span {
+            display: block;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            font-weight: 500;
+        }
+
+
+        /* =====================================================
+           BOTÕES PRESENTE / AUSENTE
+        ====================================================== */
+
+        .opcoes-chamada-container {
+            width: 100%;
+
+            margin-top: 20px;
+        }
+
+
+        .opcoes-chamada {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        .opcoes-chamada button {
+            min-height: 65px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                    transform 0.2s,
+                    box-shadow 0.2s,
+                    opacity 0.2s;
+        }
+
+
+        /* =====================================================
+           PRESENTE — VERDE
+        ====================================================== */
+
+        .btn-presente {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #16a34a,
+                            #22c55e
+                    );
+
+            box-shadow:
+                    0 5px 13px rgba(22, 163, 74, 0.20);
+        }
+
+
+        .btn-presente:hover {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #15803d,
+                            #16a34a
+                    );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 17px rgba(22, 163, 74, 0.25);
+        }
+
+
+        /* =====================================================
+           AUSENTE — VERMELHO
+        ====================================================== */
+
+        .btn-ausente {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #dc2626,
+                            #ef4444
+                    );
+
+            box-shadow:
+                    0 5px 13px rgba(220, 38, 38, 0.20);
+        }
+
+
+        .btn-ausente:hover {
+            background:
+                    linear-gradient(
+                            135deg,
+                            #b91c1c,
+                            #dc2626
+                    );
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 17px rgba(220, 38, 38, 0.25);
+        }
+
+
+        .opcoes-chamada button:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =====================================================
+           CONTAGEM / PRÓXIMO
+           Não será mais usada entre voluntários,
+           mas mantemos escondida para compatibilidade.
+        ====================================================== */
+
+        .contagem-proximo {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           ÁREA DO BOTÃO SALVAR
+        ====================================================== */
+
+        .chamada-acoes {
+            width: 100%;
+
+            margin-top: 22px;
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+
+        .chamada-acoes .btn-primary {
+            width: 100%;
+
+            min-height: 53px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            border-radius: 11px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #1762c4,
+                            #2878d8
+                    );
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            box-shadow:
+                    0 5px 14px rgba(37, 99, 235, 0.18);
+        }
+
+
+        .chamada-acoes .btn-primary:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                    0 8px 18px rgba(37, 99, 235, 0.24);
+        }
+
+
+        .btn-arrow {
+            font-size: 22px;
+
+            line-height: 1;
+        }
+
+
+        /* =====================================================
+           MENSAGEM
+        ====================================================== */
+
+        #mensagem {
+            margin-top: 20px;
+
+            text-align: center;
+        }
+
+
+        #mensagem:empty {
+            display: none;
+        }
+
+
+        #mensagem.sucesso {
+            padding: 14px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            border: 1px solid #bbf7d0;
+
+            border-radius: 11px;
+
+            font-weight: 600;
+        }
+
+
+        #mensagem.erro {
+            padding: 14px;
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+            border: 1px solid #fecaca;
+
+            border-radius: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           RESPONSIVIDADE
+        ====================================================== */
+
+        @media (max-width: 850px) {
+
+            .topbar {
+                padding: 20px 30px;
+            }
+
+
+            .page-hero,
+            .chamada-card {
+                width: calc(100% - 60px);
+            }
+
+
+            .page-hero-content {
+                justify-content: flex-start;
+            }
+
+
+            .page-hero h2 {
+                font-size: 30px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .topbar {
+                min-height: auto;
+
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+
+            .topbar-page-info {
+                width: 100%;
+            }
+
+
+            .page-icon {
+                width: 48px;
+                height: 48px;
+
+                font-size: 23px;
+            }
+
+
+            .topbar-page-info h1 {
+                font-size: 21px;
+            }
+
+
+            .topbar-page-info p {
+                font-size: 12px;
+            }
+
+
+            .topbar > .admin-info {
+                min-width: 0;
+            }
+
+
+            .page-hero {
+                width: calc(100% - 30px);
+
+                margin-top: 20px;
+
+                padding: 20px 10px;
+            }
+
+
+            .page-hero-content {
+                gap: 13px;
+            }
+
+
+            .page-hero-icon {
+                width: 65px;
+                height: 65px;
+
+                font-size: 31px;
+            }
+
+
+            .page-hero h2 {
+                font-size: 25px;
+            }
+
+
+            .page-hero p {
+                font-size: 14px;
+            }
+
+
+            .chamada-card {
+                width: calc(100% - 30px);
+
+                padding: 22px;
+
+                margin-top: 5px;
+            }
+
+
+            .card-header-content {
+                align-items: flex-start;
+            }
+
+
+            .card-header-icon {
+                width: 46px;
+                height: 46px;
+
+                font-size: 22px;
+            }
+
+
+            .chamada-card .card-header h2 {
+                font-size: 19px;
+            }
+
+
+            .countdown-container {
+                min-height: 280px;
+
+                padding: 20px;
+            }
+
+
+            .countdown-titulo {
+                font-size: 19px;
+            }
+
+
+            .countdown-numero {
+                font-size: 85px;
+            }
+
+
+            .countdown-subtitulo {
+                font-size: 14px;
+            }
+
+
+            .chamada-container {
+                padding: 18px;
+            }
+
+
+            .voluntario-item {
+                min-height: 115px;
+
+                padding: 20px;
+            }
+
+
+            .voluntario-item strong {
+                font-size: 24px;
+            }
+
+
+            .opcoes-chamada {
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+            }
+
+
+            .opcoes-chamada button {
+                min-height: 55px;
+
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="layout">
+
+
+    <!-- =====================================================
+         MENU LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>
+                Formação<br>
+                Digital
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="../home.html">
+                Início
+            </a>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Alunos
+                </span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Voluntários
+                </span>
+
+                <a href="adicionar-voluntario.html">
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html">
+                    Listar voluntários
+                </a>
+
+                <a href="pesquisar-voluntario.html">
+                    Pesquisar voluntário
+                </a>
+
+                <a href="excluir-voluntario.html">
+                    Excluir voluntário
+                </a>
+
+                <a
+                        href="chamada-voluntarios.html"
+                        class="active"
+                >
+                    Chamada
+                </a>
+
+                <a href="historico-voluntarios.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Turmas
+                </span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <button
+                id="btnLogout"
+                class="btn-sair"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPO
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-page-info">
+
+
+                <div class="page-icon">
+                    👥
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Chamada de voluntários
+                    </h1>
+
+                    <p>
+                        Registre a presença dos voluntários da turma.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span id="administrador">
+                    Carregando...
+                </span>
+
+            </div>
+
+
+        </header>
+
+
+        <!-- =================================================
+             DESTAQUE
+        ================================================== -->
+
+        <section class="page-hero">
+
+
+            <div class="page-hero-content">
+
+
+                <div class="page-hero-icon">
+                    📋
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Registrar chamada
+                    </h2>
+
+                    <p>
+                        Selecione uma turma e marque a presença
+                        de cada voluntário.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CARD DA CHAMADA
+        ================================================== -->
+
+        <section class="card chamada-card">
+
+
+            <!-- =============================================
+                 CABEÇALHO
+            ============================================== -->
+
+            <div class="card-header">
+
+
+                <div class="card-header-content">
+
+
+                    <div class="card-header-icon">
+                        👥
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Chamada de voluntários
+                        </h2>
+
+                        <p>
+                            Escolha a turma para iniciar o registro.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 ESCOLHER TURMA
+            ============================================== -->
+
+            <div class="form-group">
+
+                <label for="turma">
+                    Selecione a turma
+                </label>
+
+
+                <select id="turma">
+
+                    <option value="">
+                        Selecione uma turma
+                    </option>
+
+                </select>
+
+
+                <!-- =========================================
+                     BOTÃO INICIAR
+                ========================================== -->
+
+                <button
+                        id="btnIniciarChamada"
+                        class="btn-iniciar-chamada"
+                        style="display: none;"
+                        type="button"
+                >
+
+                    ▶ Iniciar chamada
+
+                </button>
+
+            </div>
+
+
+            <!-- =============================================
+                 CONTAGEM INICIAL
+            ============================================== -->
+
+            <div
+                    id="countdownContainer"
+                    class="countdown-container"
+                    style="display: none;"
+            >
+
+
+                <div class="countdown-titulo">
+                    Iniciando chamada em
+                </div>
+
+
+                <div
+                        id="countdownNumero"
+                        class="countdown-numero"
+                >
+                    3
+                </div>
+
+
+                <div class="countdown-subtitulo">
+                    Prepare-se...
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 CHAMADA
+            ============================================== -->
+
+            <div
+                    id="chamadaContainer"
+                    class="chamada-container"
+                    style="display: none;"
+            >
+
+
+                <!-- CONTADOR -->
+
+                <div
+                        id="contadorVoluntarios"
+                        class="contador-voluntarios"
+                ></div>
+
+
+                <!-- VOLUNTÁRIO -->
+
+                <div
+                        id="voluntarioAtual"
+                        class="voluntario-item"
+                ></div>
+
+
+                <!-- OPÇÕES -->
+
+                <div
+                        id="opcoesChamada"
+                        class="opcoes-chamada-container"
+                ></div>
+
+
+                <!-- CONTAGEM ANTIGA -->
+
+                <div
+                        id="contagem"
+                        class="contagem-proximo"
+                ></div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 BOTÃO SALVAR
+            ============================================== -->
+
+            <div
+                    class="form-actions chamada-acoes"
+            >
+
+
+                <button
+                        id="btnSalvar"
+                        class="btn-primary"
+                        style="display: none;"
+                        type="button"
+                >
+
+                    <span>
+                        Salvar chamada
+                    </span>
+
+                    <span class="btn-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 MENSAGEM
+            ============================================== -->
+
+            <p
+                    id="mensagem"
+                    class="mensagem"
+            ></p>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<script>
+
+    /* =====================================================
+       API
+    ====================================================== */
+
+    const API = "http://localhost:3000";
+
+
+    /* =====================================================
+       VARIÁVEIS
+    ====================================================== */
+
+    let voluntarios = [];
+
+    let voluntariosDaTurma = [];
+
+    let indiceAtual = 0;
+
+    let chamada = [];
+
+    let processando = false;
+
+    let chamadaIniciada = false;
+
+
+    /* =====================================================
+       ELEMENTOS
+    ====================================================== */
+
+    const selectTurma =
+        document.getElementById("turma");
+
+
+    const btnIniciar =
+        document.getElementById("btnIniciarChamada");
+
+
+    const countdownContainer =
+        document.getElementById("countdownContainer");
+
+
+    const countdownNumero =
+        document.getElementById("countdownNumero");
+
+
+    const chamadaContainer =
+        document.getElementById("chamadaContainer");
+
+
+    const btnSalvar =
+        document.getElementById("btnSalvar");
+
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    /* =====================================================
+       VERIFICAR ADMINISTRADOR
+    ====================================================== */
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta = await fetch(
+                `${API}/api/administrador/me`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            document.getElementById(
+                "administrador"
+            ).textContent =
+                `Olá, ${dados.administrador.nome}!`;
+
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CARREGAR VOLUNTÁRIOS
+    ====================================================== */
+
+    async function carregarVoluntarios() {
+
+        try {
+
+            const resposta = await fetch(
+                `${API}/api/voluntarios`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os voluntários."
+                );
+
+            }
+
+
+            voluntarios =
+                await resposta.json();
+
+
+            carregarTurmas();
+
+
+        } catch (erro) {
+
+            console.error(erro);
+
+
+            mostrarMensagem(
+                "Erro ao carregar os voluntários.",
+                "erro"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CARREGAR TURMAS
+    ====================================================== */
+
+    function carregarTurmas() {
+
+        selectTurma.innerHTML = `
+            <option value="">
+                Selecione uma turma
+            </option>
+        `;
+
+
+        const turmas = [];
+
+
+        for (const voluntario of voluntarios) {
+
+            if (
+                voluntario.turma &&
+                !turmas.includes(voluntario.turma)
+            ) {
+
+                turmas.push(
+                    voluntario.turma
+                );
+
+            }
+
+        }
+
+
+        turmas.sort(
+            (a, b) =>
+                String(a).localeCompare(
+                    String(b),
+                    "pt-BR",
+                    {
+                        numeric: true
+                    }
+                )
+        );
+
+
+        for (const turma of turmas) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value = turma;
+
+            option.textContent = turma;
+
+
+            selectTurma.appendChild(
+                option
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SELECIONAR TURMA
+    ====================================================== */
+
+    selectTurma.addEventListener(
+        "change",
+        function () {
+
+            const turmaSelecionada =
+                this.value;
+
+
+            /* =============================================
+               RESET
+            ============================================== */
+
+            chamadaContainer.style.display =
+                "none";
+
+
+            countdownContainer.style.display =
+                "none";
+
+
+            btnSalvar.style.display =
+                "none";
+
+
+            mensagem.textContent = "";
+
+            mensagem.className =
+                "mensagem";
+
+
+            voluntariosDaTurma = [];
+
+            indiceAtual = 0;
+
+            chamada = [];
+
+            processando = false;
+
+            chamadaIniciada = false;
+
+
+            btnIniciar.disabled =
+                false;
+
+
+            /* =============================================
+               NENHUMA TURMA
+            ============================================== */
+
+            if (!turmaSelecionada) {
+
+                btnIniciar.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            /* =============================================
+               FILTRAR VOLUNTÁRIOS
+            ============================================== */
+
+            voluntariosDaTurma =
+                voluntarios.filter(
+                    voluntario =>
+                        String(
+                            voluntario.turma
+                        ) ===
+                        String(
+                            turmaSelecionada
+                        )
+                );
+
+
+            /* =============================================
+               ORDEM ALFABÉTICA
+            ============================================== */
+
+            voluntariosDaTurma.sort(
+                (a, b) =>
+                    String(a.nome).localeCompare(
+                        String(b.nome),
+                        "pt-BR"
+                    )
+            );
+
+
+            /* =============================================
+               VERIFICAR SE EXISTEM VOLUNTÁRIOS
+            ============================================== */
+
+            if (
+                voluntariosDaTurma.length === 0
+            ) {
+
+                btnIniciar.style.display =
+                    "none";
+
+
+                mostrarMensagem(
+                    "Nenhum voluntário encontrado nessa turma.",
+                    "erro"
+                );
+
+
+                return;
+
+            }
+
+
+            /* =============================================
+               MOSTRAR BOTÃO INICIAR
+            ============================================== */
+
+            btnIniciar.style.display =
+                "flex";
+
+        }
+    );
+
+
+    /* =====================================================
+       INICIAR CHAMADA
+    ====================================================== */
+
+    btnIniciar.addEventListener(
+        "click",
+        function () {
+
+            if (
+                voluntariosDaTurma.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            chamadaIniciada = true;
+
+            indiceAtual = 0;
+
+            chamada = [];
+
+            processando = false;
+
+
+            /* =============================================
+               ESCONDER BOTÃO
+            ============================================== */
+
+            btnIniciar.style.display =
+                "none";
+
+
+            /* =============================================
+               ESCONDER CHAMADA
+            ============================================== */
+
+            chamadaContainer.style.display =
+                "none";
+
+
+            btnSalvar.style.display =
+                "none";
+
+
+            mensagem.textContent = "";
+
+            mensagem.className =
+                "mensagem";
+
+
+            /* =============================================
+               INICIAR CONTAGEM 3, 2, 1
+            ============================================== */
+
+            iniciarCountdown();
+
+        }
+    );
+
+
+    /* =====================================================
+       CONTAGEM INICIAL
+    ====================================================== */
+
+    function iniciarCountdown() {
+
+        countdownContainer.style.display =
+            "flex";
+
+
+        let numero = 3;
+
+
+        mostrarNumeroCountdown(
+            numero
+        );
+
+
+        const intervalo =
+            setInterval(
+                () => {
+
+                    numero--;
+
+
+                    if (numero > 0) {
+
+                        mostrarNumeroCountdown(
+                            numero
+                        );
+
+                    } else {
+
+                        clearInterval(
+                            intervalo
+                        );
+
+
+                        countdownContainer.style.display =
+                            "none";
+
+
+                        mostrarVoluntarioAtual();
+
+                    }
+
+                },
+                1000
+            );
+
+    }
+
+
+    /* =====================================================
+       MOSTRAR NÚMERO DO COUNTDOWN
+    ====================================================== */
+
+    function mostrarNumeroCountdown(numero) {
+
+        countdownNumero.textContent =
+            numero;
+
+
+        countdownNumero.style.animation =
+            "none";
+
+
+        void countdownNumero.offsetWidth;
+
+
+        countdownNumero.style.animation =
+            "aparecerNumero 0.5s ease";
+
+    }
+
+
+    /* =====================================================
+       MOSTRAR VOLUNTÁRIO ATUAL
+    ====================================================== */
+
+    function mostrarVoluntarioAtual() {
+
+        const voluntario =
+            voluntariosDaTurma[
+                indiceAtual
+                ];
+
+
+        /* =============================================
+           TERMINOU
+        ============================================== */
+
+        if (!voluntario) {
+
+            finalizarChamada();
+
+            return;
+
+        }
+
+
+        processando = false;
+
+
+        chamadaContainer.style.display =
+            "block";
+
+
+        /* =============================================
+           CONTADOR
+        ============================================== */
+
+        document.getElementById(
+            "contadorVoluntarios"
+        ).textContent =
+            `Voluntário ${indiceAtual + 1} de ${voluntariosDaTurma.length}`;
+
+
+        /* =============================================
+           NOME
+        ============================================== */
+
+        document.getElementById(
+            "voluntarioAtual"
+        ).innerHTML = `
+
+            <strong>
+                ${escaparHTML(voluntario.nome)}
+            </strong>
+
+            <span>
+                ID: ${escaparHTML(voluntario.id)}
+            </span>
+
+        `;
+
+
+        /* =============================================
+           BOTÕES
+        ============================================== */
+
+
+        document.getElementById(
+            "opcoesChamada"
+        ).innerHTML = `
+
+            <div class="opcoes-chamada">
+
+                <button
+                        type="button"
+                        class="btn-presente"
+                        onclick="registrarPresenca(true)"
+                >
+                    ✓ Presente
+                </button>
+
+
+                <button
+                        type="button"
+                        class="btn-ausente"
+                        onclick="registrarPresenca(false)"
+                >
+                    ✕ Ausente
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       REGISTRAR PRESENÇA
+    ====================================================== */
+
+    function registrarPresenca(presente) {
+
+        if (processando) {
+
+            return;
+
+        }
+
+
+        processando = true;
+
+
+        const voluntario =
+            voluntariosDaTurma[
+                indiceAtual
+                ];
+
+
+        /* =============================================
+           SALVAR RESPOSTA
+        ============================================== */
+
+        chamada.push({
+
+            id: voluntario.id,
+
+            presente: presente
+
+        });
+
+
+        /* =============================================
+           DESABILITAR BOTÕES
+        ============================================== */
+
+        const botoes =
+            document.querySelectorAll(
+                "#opcoesChamada button"
+            );
+
+
+        botoes.forEach(
+            botao => {
+                botao.disabled = true;
+            }
+        );
+
+
+        /* =============================================
+           PRÓXIMO VOLUNTÁRIO
+
+           SEM CONTAGEM.
+
+           Vai imediatamente para o próximo.
+        ============================================== */
+
+        indiceAtual++;
+
+
+        setTimeout(
+            () => {
+
+                if (
+                    indiceAtual >=
+                    voluntariosDaTurma.length
+                ) {
+
+                    finalizarChamada();
+
+                } else {
+
+                    mostrarVoluntarioAtual();
+
+                }
+
+            },
+            250
+        );
+
+    }
+
+
+    /* =====================================================
+       FINALIZAR CHAMADA
+    ====================================================== */
+
+    function finalizarChamada() {
+
+        chamadaContainer.style.display =
+            "none";
+
+
+        btnSalvar.style.display =
+            "flex";
+
+
+        mostrarMensagem(
+            "Todos os voluntários foram marcados. Clique em Salvar chamada.",
+            "sucesso"
+        );
+
+    }
+
+
+    /* =====================================================
+       SALVAR CHAMADA
+    ====================================================== */
+
+    btnSalvar.addEventListener(
+        "click",
+        async function () {
+
+            const turma =
+                selectTurma.value;
+
+
+            if (!turma) {
+
+                mostrarMensagem(
+                    "Selecione uma turma.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                chamada.length !==
+                voluntariosDaTurma.length
+            ) {
+
+                mostrarMensagem(
+                    "É necessário marcar todos os voluntários.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            this.disabled = true;
+
+
+            this.querySelector(
+                "span:first-child"
+            ).textContent =
+                "Salvando...";
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/voluntarios/chamada`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            credentials: "include",
+
+                            body:
+                                JSON.stringify({
+
+                                    turma:
+                                    turma,
+
+                                    chamada:
+                                    chamada
+
+                                })
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.mensagem ||
+                        "Erro ao registrar chamada."
+                    );
+
+                }
+
+
+                mostrarMensagem(
+                    dados.mensagem ||
+                    "Chamada registrada com sucesso.",
+                    "sucesso"
+                );
+
+
+                this.style.display =
+                    "none";
+
+
+                /* =====================================
+                   RESETAR ESTADO
+                ====================================== */
+
+                chamada = [];
+
+                indiceAtual = 0;
+
+                chamadaIniciada = false;
+
+
+                /* =====================================
+                   PERMITIR NOVA CHAMADA
+                ====================================== */
+
+                setTimeout(
+                    () => {
+
+                        btnIniciar.style.display =
+                            "flex";
+
+                        btnIniciar.disabled =
+                            false;
+
+                    },
+                    500
+                );
+
+
+            } catch (erro) {
+
+                console.error(erro);
+
+
+                mostrarMensagem(
+                    erro.message ||
+                    "Não foi possível conectar ao servidor.",
+                    "erro"
+                );
+
+
+                this.disabled = false;
+
+
+                this.querySelector(
+                    "span:first-child"
+                ).textContent =
+                    "Salvar chamada";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       MOSTRAR MENSAGEM
+    ====================================================== */
+
+    function mostrarMensagem(
+        texto,
+        tipo
+    ) {
+
+        mensagem.textContent =
+            texto;
+
+
+        mensagem.className =
+            `mensagem ${tipo}`;
+
+    }
+
+
+    /* =====================================================
+       ESCAPAR HTML
+       Evita que nomes vindos da API
+       sejam interpretados como HTML.
+    ====================================================== */
+
+    function escaparHTML(valor) {
+
+        if (
+            valor === null ||
+            valor === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(valor)
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await fetch(
+                    `${API}/api/login/logout`,
+                    {
+                        method: "POST",
+
+                        credentials:
+                            "include"
+                    }
+                );
+
+            } finally {
+
+                window.location.href =
+                    "../login.html";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INICIALIZAÇÃO
+    ====================================================== */
+
+    verificarAdministrador();
+
+    carregarVoluntarios();
+
+</script>
+
+
+</body>
+
+</html>

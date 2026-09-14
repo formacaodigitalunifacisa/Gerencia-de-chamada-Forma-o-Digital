@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pesquisar Aluno - Formação Digital</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+            <h2>Digital</h2>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="../home.html">
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <!-- ALUNOS -->
+
+            <div class="menu-section">
+
+                <span>Alunos</span>
+
+
+                <a href="adicionar-aluno.html">
+                    ➕
+                    <span>Adicionar aluno</span>
+                </a>
+
+
+                <a href="atualizar-aluno.html">
+                    ✏️
+                    <span>Atualizar aluno</span>
+                </a>
+
+
+                <a href="listar-alunos.html">
+                    📋
+                    <span>Listar alunos</span>
+                </a>
+
+
+                <a href="pesquisar-aluno.html"
+                   class="active">
+                    🔎
+                    <span>Pesquisar aluno</span>
+                </a>
+
+
+                <a href="excluir-aluno.html">
+                    🗑️
+                    <span>Excluir aluno</span>
+                </a>
+
+
+                <a href="chamada-alunos.html">
+                    📝
+                    <span>Chamada</span>
+                </a>
+
+
+                <a href="historico-alunos.html">
+                    📊
+                    <span>Histórico</span>
+                </a>
+
+            </div>
+
+
+            <!-- VOLUNTÁRIOS -->
+
+            <div class="menu-section">
+
+                <span>Voluntários</span>
+
+
+                <a href="../voluntarios/adicionar-voluntario.html">
+                    👤
+                    <span>Adicionar voluntário</span>
+                </a>
+
+
+                <a href="../voluntarios/atualizar-voluntario.html">
+                    ✏️
+                    <span>Atualizar voluntário</span>
+                </a>
+
+
+                <a href="../voluntarios/listar-voluntarios.html">
+                    📋
+                    <span>Listar voluntários</span>
+                </a>
+
+
+                <a href="../voluntarios/pesquisar-voluntario.html">
+                    🔎
+                    <span>Pesquisar voluntário</span>
+                </a>
+
+
+                <a href="../voluntarios/excluir-voluntario.html">
+                    🗑️
+                    <span>Excluir voluntário</span>
+                </a>
+
+
+                <a href="../voluntarios/chamada-voluntarios.html">
+                    📝
+                    <span>Chamada</span>
+                </a>
+
+
+                <a href="../voluntarios/historico-voluntarios.html">
+                    📊
+                    <span>Histórico</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SAIR -->
+
+        <button
+                id="btnSair"
+                class="btn-sair"
+                type="button">
+
+            🚪 Sair
+
+        </button>
+
+    </aside>
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    🔎
+                </div>
+
+                <div>
+
+                    <h1>
+                        Pesquisar Aluno
+                    </h1>
+
+                    <p>
+                        Pesquise um aluno pelo nome ou ID.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             HERO
+        =========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    🔎
+                </div>
+
+                <div>
+
+                    <h2>
+                        Encontrar aluno
+                    </h2>
+
+                    <p>
+                        Localize rapidamente um aluno pelo nome ou número de identificação.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             CARD DE PESQUISA
+        =========================================== -->
+
+        <section class="card form-container">
+
+            <div class="card-header-content">
+
+                <div class="card-header-icon">
+                    🔍
+                </div>
+
+                <div>
+
+                    <h2>
+                        Buscar aluno
+                    </h2>
+
+                    <p>
+                        Digite o nome ou o ID do aluno.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formPesquisa">
+
+
+                <div class="form-group">
+
+                    <label for="valor">
+                        Nome ou ID
+                    </label>
+
+
+                    <input
+                            type="text"
+                            id="valor"
+                            name="valor"
+                            placeholder="Digite o nome ou ID"
+                            autocomplete="off"
+                            required
+                    >
+
+                </div>
+
+
+                <button
+                        type="submit"
+                        class="btn-primary">
+
+                    <span>🔎</span>
+                    Pesquisar
+
+                </button>
+
+
+            </form>
+
+
+            <div
+                    id="mensagem"
+                    class="mensagem">
+            </div>
+
+
+        </section>
+
+
+        <!-- ==========================================
+             RESULTADO
+        =========================================== -->
+
+        <section
+                id="resultadoCard"
+                class="card historico-card"
+                style="display: none;">
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Resultado da pesquisa
+                        </h2>
+
+                        <p>
+                            Informações encontradas para o aluno.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Nome</th>
+
+                        <th>Turma</th>
+
+                        <th>Presenças</th>
+
+                        <th>Faltas</th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="resultadoPesquisa">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+    const API =
+        "http://localhost:3000";
+
+
+    const formPesquisa =
+        document.getElementById("formPesquisa");
+
+
+    const valor =
+        document.getElementById("valor");
+
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    const resultadoCard =
+        document.getElementById("resultadoCard");
+
+
+    const resultadoPesquisa =
+        document.getElementById("resultadoPesquisa");
+
+
+    const nomeAdministrador =
+        document.getElementById("nomeAdministrador");
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            if (
+                !dados ||
+                !dados.administrador
+            ) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // PESQUISAR ALUNO
+    // ==========================================
+
+    formPesquisa.addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const valorPesquisa =
+                valor.value.trim();
+
+
+            if (!valorPesquisa) {
+
+                mensagem.textContent =
+                    "Digite um nome ou ID.";
+
+                mensagem.className =
+                    "mensagem erro";
+
+                resultadoCard.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            mensagem.textContent = "";
+
+            mensagem.className =
+                "mensagem";
+
+            resultadoPesquisa.innerHTML = "";
+
+            resultadoCard.style.display =
+                "none";
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/alunos/pesquisar/${encodeURIComponent(valorPesquisa)}`,
+                        {
+                            method: "GET",
+                            credentials: "include"
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.mensagem ||
+                        "Aluno não encontrado."
+                    );
+
+                }
+
+
+                if (
+                    !dados ||
+                    !Array.isArray(dados) ||
+                    dados.length === 0
+                ) {
+
+                    throw new Error(
+                        "Aluno não encontrado."
+                    );
+
+                }
+
+
+                for (const aluno of dados) {
+
+                    const linha =
+                        document.createElement("tr");
+
+
+                    linha.innerHTML = `
+
+                        <td>
+                            ${aluno.id ?? ""}
+                        </td>
+
+                        <td>
+                            ${aluno.nome ?? ""}
+                        </td>
+
+                        <td>
+                            ${aluno.turma ?? ""}
+                        </td>
+
+                        <td>
+                            ${aluno.presencas ?? 0}
+                        </td>
+
+                        <td>
+                            ${aluno.faltas ?? 0}
+                        </td>
+
+                    `;
+
+
+                    resultadoPesquisa.appendChild(
+                        linha
+                    );
+
+                }
+
+
+                resultadoCard.style.display =
+                    "block";
+
+
+                mensagem.textContent =
+                    `${dados.length} aluno(s) encontrado(s).`;
+
+                mensagem.className =
+                    "mensagem sucesso";
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao pesquisar aluno:",
+                    erro
+                );
+
+
+                resultadoCard.style.display =
+                    "none";
+
+
+                mensagem.textContent =
+                    erro.message ||
+                    "Erro ao pesquisar aluno.";
+
+                mensagem.className =
+                    "mensagem erro";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnSair")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer logout:",
+                        erro
+                    );
+
+                }
+
+
+                window.location.href =
+                    "../login.html";
+
+            }
+        );
+
+
+    // ==========================================
+    // INICIALIZAÇÃO
+    // ==========================================
+
+    verificarAdministrador();
+
+</script>
+
+
+</body>
+
+</html>

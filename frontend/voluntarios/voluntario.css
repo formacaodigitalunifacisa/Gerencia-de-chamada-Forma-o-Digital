@@ -1,0 +1,592 @@
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eaf5ff;
+    color: #1559b7;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   FUNDO DECORATIVO
+========================================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 115px;
+    left: -100px;
+    width: 390px;
+    height: 230px;
+    background: #d0e8ff;
+    border-radius: 0 0 250px 0;
+    transform: rotate(-8deg);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    right: -100px;
+    bottom: -90px;
+    width: 500px;
+    height: 300px;
+    background: #d0e8ff;
+    border-radius: 250px 0 0 0;
+    transform: rotate(-15deg);
+    z-index: -2;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.topbar {
+    width: 100%;
+    height: 116px;
+    background: rgba(255, 255, 255, .72);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 55px;
+    border-bottom: 1px solid rgba(130, 180, 230, .15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.logo-icon {
+    width: 84px;
+    height: 70px;
+    color: #155dbd;
+}
+
+.logo-text {
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing: -2px;
+    color: #155dbd;
+}
+
+.logo-text strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ADMINISTRADOR
+========================================================= */
+
+.admin-area {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.admin-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #c8e2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #145ab8;
+}
+
+.admin-icon svg {
+    width: 35px;
+    height: 35px;
+}
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 28px;
+    border-right: 2px solid #c2ddfa;
+}
+
+.admin-info span {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1559b7;
+}
+
+.admin-info strong {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3977c7;
+}
+
+.btn-sair {
+    width: 120px;
+    height: 64px;
+    border: none;
+    border-radius: 13px;
+    background: #155fbd;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.btn-sair:hover {
+    background: #0d4eaa;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   BOTÃO VOLTAR
+========================================================= */
+
+.btn-voltar {
+    position: absolute;
+    top: 155px;
+    left: 52px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 21px;
+
+    background: rgba(255, 255, 255, .92);
+    border-radius: 30px;
+
+    color: #1559b7;
+    font-size: 20px;
+    font-weight: 700;
+
+    box-shadow: 0 5px 18px rgba(45, 112, 184, .08);
+
+    transition: .2s ease;
+}
+
+.btn-voltar:hover {
+    transform: translateX(-3px);
+    background: white;
+}
+
+.btn-voltar svg {
+    width: 27px;
+    height: 27px;
+}
+
+
+/* =========================================================
+   CABEÇALHO DA PÁGINA
+========================================================= */
+
+.page-header {
+    text-align: center;
+    padding-top: 56px;
+}
+
+.titulo-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+.titulo-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(210, 233, 255, .75);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #155fbd;
+}
+
+.titulo-icon svg {
+    width: 58px;
+    height: 58px;
+}
+
+.titulo-principal h1 {
+    font-size: 62px;
+    line-height: 1;
+    color: #1559b7;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.page-header p {
+    margin-top: 12px;
+    font-size: 22px;
+    color: #3977c7;
+}
+
+
+/* =========================================================
+   DECORAÇÃO DO TÍTULO
+========================================================= */
+
+.decoracao {
+    margin: 23px auto 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.decoracao span {
+    width: 95px;
+    height: 3px;
+    background: #4a92e7;
+}
+
+.decoracao svg {
+    width: 47px;
+    height: 47px;
+    color: #155fbd;
+}
+
+
+/* =========================================================
+   ÁREA DOS CARDS
+========================================================= */
+
+.menu-container {
+    width: calc(100% - 220px);
+    max-width: 1320px;
+    margin: 0 auto 70px;
+
+    padding: 31px;
+
+    background: rgba(255, 255, 255, .60);
+
+    border: 2px solid rgba(255, 255, 255, .85);
+
+    border-radius: 28px;
+
+    box-shadow:
+            0 12px 30px rgba(40, 104, 170, .10);
+}
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 29px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    min-height: 128px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 19px 21px;
+
+    border-radius: 19px;
+
+    background:
+            linear-gradient(
+                    135deg,
+                    #1d63c1 0%,
+                    #2169c8 100%
+            );
+
+    color: white;
+
+    box-shadow:
+            0 8px 18px rgba(26, 91, 170, .17);
+
+    transition:
+            transform .22s ease,
+            box-shadow .22s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+            0 13px 25px rgba(26, 91, 170, .24);
+}
+
+
+/* =========================================================
+   ÍCONE DO CARD
+========================================================= */
+
+.card-icon {
+    flex-shrink: 0;
+
+    width: 74px;
+    height: 74px;
+
+    border-radius: 50%;
+
+    background: rgba(112, 180, 240, .60);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+}
+
+.card-icon svg {
+    width: 49px;
+    height: 49px;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO CARD
+========================================================= */
+
+.card-content {
+    flex: 1;
+    min-width: 0;
+
+    margin-left: 24px;
+}
+
+.card-content h2 {
+    font-size: 21px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: white;
+}
+
+.card-content p {
+    font-size: 15px;
+    line-height: 1.3;
+
+    color: white;
+}
+
+
+/* =========================================================
+   SETA
+========================================================= */
+
+.card-arrow {
+    flex-shrink: 0;
+
+    width: 37px;
+    height: 37px;
+
+    border-radius: 50%;
+
+    background: rgba(110, 180, 241, .72);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+    line-height: 1;
+
+    color: white;
+}
+
+
+/* =========================================================
+   CARD HISTÓRICO CENTRAL
+========================================================= */
+
+.card-historico {
+    grid-column: 2;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .menu-container {
+        width: calc(100% - 100px);
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .card-historico {
+        grid-column: auto;
+    }
+
+    .logo-text {
+        font-size: 38px;
+    }
+
+    .titulo-principal h1 {
+        font-size: 52px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .topbar {
+        height: auto;
+        min-height: 100px;
+        padding: 18px 25px;
+    }
+
+    .admin-area {
+        gap: 12px;
+    }
+
+    .admin-icon {
+        display: none;
+    }
+
+    .admin-info {
+        display: none;
+    }
+
+    .btn-sair {
+        width: 90px;
+        height: 50px;
+    }
+
+    .logo-text {
+        font-size: 31px;
+    }
+
+    .logo-icon {
+        width: 60px;
+    }
+
+    .btn-voltar {
+        position: relative;
+        top: auto;
+        left: auto;
+
+        width: fit-content;
+
+        margin: 25px 25px 0;
+    }
+
+    .page-header {
+        padding-top: 35px;
+    }
+
+    .titulo-principal {
+        gap: 15px;
+    }
+
+    .titulo-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .titulo-icon svg {
+        width: 43px;
+        height: 43px;
+    }
+
+    .titulo-principal h1 {
+        font-size: 43px;
+    }
+
+    .page-header p {
+        padding: 0 20px;
+        font-size: 17px;
+    }
+
+    .menu-container {
+        width: calc(100% - 40px);
+        padding: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card-historico {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .logo-text {
+        font-size: 25px;
+    }
+
+    .logo-icon {
+        width: 45px;
+    }
+
+    .titulo-principal h1 {
+        font-size: 36px;
+    }
+
+    .card {
+        min-height: 115px;
+        padding: 15px;
+    }
+
+    .card-icon {
+        width: 62px;
+        height: 62px;
+    }
+
+    .card-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-content {
+        margin-left: 15px;
+    }
+
+    .card-content h2 {
+        font-size: 17px;
+    }
+
+    .card-content p {
+        font-size: 13px;
+    }
+
+    .card-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 21px;
+    }
+}

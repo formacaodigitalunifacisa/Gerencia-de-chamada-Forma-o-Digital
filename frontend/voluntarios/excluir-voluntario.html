@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excluir Voluntário - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>
+                Formação<br>
+                Digital
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="../home.html">
+                Início
+            </a>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Alunos
+                </span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Voluntários
+                </span>
+
+                <a href="adicionar-voluntario.html">
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html">
+                    Listar voluntários
+                </a>
+
+                <a href="pesquisar-voluntario.html">
+                    Pesquisar voluntário
+                </a>
+
+                <a
+                        href="excluir-voluntario.html"
+                        class="active"
+                >
+                    Excluir voluntário
+                </a>
+
+                <a href="chamada-voluntarios.html">
+                    Chamada
+                </a>
+
+                <a href="historico-voluntarios.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span class="menu-titulo">
+                    Turmas
+                </span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <button
+                id="btnLogout"
+                class="btn-sair"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- ========================================== -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ========================================== -->
+        <!-- TOPO -->
+        <!-- ========================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h1>
+                        Excluir voluntário
+                    </h1>
+
+                    <p>
+                        Remova um voluntário cadastrado no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span id="administrador">
+                    Carregando...
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================== -->
+        <!-- DESTAQUE DA PÁGINA -->
+        <!-- ========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Remover voluntário
+                    </h2>
+
+                    <p>
+                        Informe o ID do voluntário que deseja excluir.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- CARD -->
+        <!-- ========================================== -->
+
+        <section class="card form-container excluir-voluntario">
+
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        🗑️
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Excluir voluntário
+                        </h2>
+
+                        <p>
+                            Essa ação removerá o cadastro do voluntário.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form id="formExcluir">
+
+
+                <!-- ========================================== -->
+                <!-- ID -->
+                <!-- ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="id">
+                        ID do voluntário
+                    </label>
+
+                    <input
+                            type="text"
+                            id="id"
+                            name="id"
+                            placeholder="Digite o ID do voluntário"
+                            min="1"
+                            required
+                    >
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- AVISO -->
+                <!-- ========================================== -->
+
+                <div class="excluir-aviso">
+
+                    <span class="excluir-aviso-icon">
+                        ⚠️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Atenção
+                        </strong>
+
+                        <p>
+                            Confira o ID antes de confirmar a exclusão.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- AÇÃO -->
+                <!-- ========================================== -->
+
+                <div class="form-actions">
+
+                    <button
+                            type="submit"
+                            class="btn-danger"
+                    >
+
+                        <span>
+                            Excluir voluntário
+                        </span>
+
+                        <span class="btn-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- ========================================== -->
+            <!-- MENSAGEM -->
+            <!-- ========================================== -->
+
+            <p
+                    id="mensagem"
+                    class="mensagem"
+            ></p>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const API = "http://localhost:3000";
+
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta = await fetch(
+                `${API}/api/administrador/me`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            document.getElementById(
+                "administrador"
+            ).textContent =
+                `Administrador: ${dados.administrador.nome}`;
+
+
+        } catch (erro) {
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // EXCLUIR VOLUNTÁRIO
+    // ==========================================
+
+    document.getElementById(
+        "formExcluir"
+    ).addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const id =
+                document.getElementById(
+                    "id"
+                ).value;
+
+
+            const mensagem =
+                document.getElementById(
+                    "mensagem"
+                );
+
+
+
+            // CONFIRMAÇÃO
+
+            const confirmar =
+                confirm(
+                    `Tem certeza que deseja excluir o voluntário de ID ${id}?`
+                );
+
+
+            if (!confirmar) {
+
+                return;
+
+            }
+
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/voluntarios/${id}`,
+                        {
+
+                            method: "DELETE",
+
+                            credentials: "include"
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+
+                if (!resposta.ok) {
+
+                    mensagem.textContent =
+                        dados.mensagem ||
+                        "Erro ao excluir voluntário.";
+
+                    mensagem.className =
+                        "mensagem-erro";
+
+                    return;
+
+                }
+
+
+
+                mensagem.textContent =
+                    dados.mensagem ||
+                    "Voluntário excluído com sucesso.";
+
+                mensagem.className =
+                    "mensagem-sucesso";
+
+
+
+                document.getElementById(
+                    "formExcluir"
+                ).reset();
+
+
+
+            } catch (erro) {
+
+                console.error(erro);
+
+
+                mensagem.textContent =
+                    "Não foi possível conectar ao servidor.";
+
+                mensagem.className =
+                    "mensagem-erro";
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                await fetch(
+                    `${API}/api/login/logout`,
+                    {
+
+                        method: "POST",
+
+                        credentials: "include"
+
+                    }
+                );
+
+            } finally {
+
+                window.location.href =
+                    "../login.html";
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    verificarAdministrador();
+
+</script>
+
+</body>
+
+</html>

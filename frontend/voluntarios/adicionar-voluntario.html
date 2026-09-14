@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adicionar Voluntário - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+
+    <!-- ========================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>
+                Formação<br>
+                Digital
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="../home.html">
+                Início
+            </a>
+
+
+            <div class="menu-grupo">
+
+                <span>
+                    Alunos
+                </span>
+
+                <a href="../alunos/adicionar-aluno.html">
+                    Adicionar aluno
+                </a>
+
+                <a href="../alunos/atualizar-aluno.html">
+                    Atualizar aluno
+                </a>
+
+                <a href="../alunos/listar-alunos.html">
+                    Listar alunos
+                </a>
+
+                <a href="../alunos/pesquisar-aluno.html">
+                    Pesquisar aluno
+                </a>
+
+                <a href="../alunos/excluir-aluno.html">
+                    Excluir aluno
+                </a>
+
+                <a href="../alunos/chamada-alunos.html">
+                    Chamada
+                </a>
+
+                <a href="../alunos/historico-alunos.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span>
+                    Voluntários
+                </span>
+
+                <a
+                        href="adicionar-voluntario.html"
+                        class="active"
+                >
+                    Adicionar voluntário
+                </a>
+
+                <a href="atualizar-voluntario.html">
+                    Atualizar voluntário
+                </a>
+
+                <a href="listar-voluntarios.html">
+                    Listar voluntários
+                </a>
+
+                <a href="pesquisar-voluntario.html">
+                    Pesquisar voluntário
+                </a>
+
+                <a href="excluir-voluntario.html">
+                    Excluir voluntário
+                </a>
+
+                <a href="chamada-voluntarios.html">
+                    Chamada
+                </a>
+
+                <a href="historico-voluntarios.html">
+                    Histórico
+                </a>
+
+            </div>
+
+
+            <div class="menu-grupo">
+
+                <span>
+                    Turmas
+                </span>
+
+                <a href="../turmas/adicionar-turma.html">
+                    Adicionar turma
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <button
+                id="btnSair"
+                class="btn-sair"
+        >
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- ========================================== -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ========================================== -->
+        <!-- TOPO -->
+        <!-- ========================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <div class="page-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h1>
+                        Adicionar Voluntário
+                    </h1>
+
+                    <p>
+                        Cadastre um novo voluntário no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================== -->
+        <!-- CABEÇALHO DA PÁGINA -->
+        <!-- ========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-content">
+
+                <div class="page-hero-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h2>
+                        Novo voluntário
+                    </h2>
+
+                    <p>
+                        Preencha os dados abaixo para cadastrar um novo voluntário.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- FORMULÁRIO -->
+        <!-- ========================================== -->
+
+        <section class="card form-container">
+
+
+            <div class="card-header">
+
+                <div class="card-header-content">
+
+                    <div class="card-header-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Dados do voluntário
+                        </h2>
+
+                        <p>
+                            Informe os dados necessários para realizar o cadastro.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form id="formVoluntario">
+
+
+                <!-- ========================================== -->
+                <!-- NOME -->
+                <!-- ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+                    <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite o nome do voluntário"
+                            required
+                    >
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- TURMA -->
+                <!-- ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="turma">
+                        Turma
+                    </label>
+
+                    <select
+                            id="turma"
+                            name="turma"
+                            required
+                    >
+
+                        <option
+                                value=""
+                                selected
+                                disabled
+                        >
+                            Carregando turmas...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- CURSO -->
+                <!-- ========================================== -->
+
+                <div class="form-group">
+
+                    <label for="curso">
+                        Curso
+                    </label>
+
+                    <select
+                            id="curso"
+                            name="curso"
+                            required
+                    >
+
+                        <option
+                                value=""
+                                selected
+                                disabled
+                        >
+                            Selecione o curso
+                        </option>
+
+                        <option value="Sistemas de Informação">
+                            Sistemas de Informação
+                        </option>
+
+                        <option value="ADS">
+                            ADS
+                        </option>
+
+                        <option value="Fisioterapia">
+                            Fisioterapia
+                        </option>
+
+                        <option value="Enfermagem">
+                            Enfermagem
+                        </option>
+
+                        <option value="Medicina">
+                            Medicina
+                        </option>
+
+                        <option value="Outro">
+                            Outro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- OUTRO CURSO -->
+                <!-- ========================================== -->
+
+                <div
+                        class="form-group campo-outro-curso"
+                        id="campoOutroCurso"
+                        style="display: none;"
+                >
+
+                    <label for="outroCurso">
+                        Nome do curso
+                    </label>
+
+                    <input
+                            type="text"
+                            id="outroCurso"
+                            name="outroCurso"
+                            placeholder="Digite o nome do curso"
+                    >
+
+                </div>
+
+
+                <!-- ========================================== -->
+                <!-- AÇÕES -->
+                <!-- ========================================== -->
+
+                <div class="form-actions">
+
+                    <button
+                            type="submit"
+                            class="btn-primary"
+                    >
+                        <span>
+                            Adicionar voluntário
+                        </span>
+
+                        <span class="btn-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- ========================================== -->
+            <!-- MENSAGEM -->
+            <!-- ========================================== -->
+
+            <div
+                    id="mensagem"
+                    class="mensagem"
+            ></div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const API =
+        "http://localhost:3000";
+
+
+    const formVoluntario =
+        document.getElementById("formVoluntario");
+
+
+    const nome =
+        document.getElementById("nome");
+
+
+    const turma =
+        document.getElementById("turma");
+
+
+    const curso =
+        document.getElementById("curso");
+
+
+    const outroCurso =
+        document.getElementById("outroCurso");
+
+
+    const campoOutroCurso =
+        document.getElementById("campoOutroCurso");
+
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+
+    const nomeAdministrador =
+        document.getElementById("nomeAdministrador");
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function verificarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // CARREGAR TURMAS
+    // ==========================================
+
+    async function carregarTurmas() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/turmas`,
+                    {
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar as turmas."
+                );
+
+            }
+
+
+            const turmas =
+                await resposta.json();
+
+
+            turma.innerHTML = "";
+
+
+            // ==========================================
+            // OPÇÃO INICIAL
+            // ==========================================
+
+            const opcaoInicial =
+                document.createElement("option");
+
+
+            opcaoInicial.value = "";
+
+            opcaoInicial.textContent =
+                "Selecione uma turma";
+
+            opcaoInicial.disabled = true;
+
+            opcaoInicial.selected = true;
+
+
+            turma.appendChild(opcaoInicial);
+
+
+            // ==========================================
+            // NENHUMA TURMA
+            // ==========================================
+
+            if (
+                !Array.isArray(turmas) ||
+                turmas.length === 0
+            ) {
+
+                opcaoInicial.textContent =
+                    "Nenhuma turma cadastrada";
+
+                return;
+
+            }
+
+
+            // ==========================================
+            // ADICIONAR TURMAS
+            // ==========================================
+
+            for (const turmaItem of turmas) {
+
+                const option =
+                    document.createElement("option");
+
+
+                option.value =
+                    turmaItem.numero;
+
+
+                option.textContent =
+                    turmaItem.nome ||
+                    `Turma ${turmaItem.numero}`;
+
+
+                turma.appendChild(option);
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar turmas:",
+                erro
+            );
+
+
+            turma.innerHTML = "";
+
+
+            const opcaoErro =
+                document.createElement("option");
+
+
+            opcaoErro.value = "";
+
+            opcaoErro.textContent =
+                "Erro ao carregar turmas";
+
+            opcaoErro.disabled = true;
+
+            opcaoErro.selected = true;
+
+
+            turma.appendChild(opcaoErro);
+
+
+            mensagem.textContent =
+                "Não foi possível carregar as turmas.";
+
+            mensagem.className =
+                "mensagem erro";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // MOSTRAR CAMPO "OUTRO CURSO"
+    // ==========================================
+
+    curso.addEventListener(
+        "change",
+        function () {
+
+            if (curso.value === "Outro") {
+
+                campoOutroCurso.style.display =
+                    "block";
+
+                outroCurso.required = true;
+
+            } else {
+
+                campoOutroCurso.style.display =
+                    "none";
+
+                outroCurso.required = false;
+
+                outroCurso.value = "";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // ADICIONAR VOLUNTÁRIO
+    // ==========================================
+
+    formVoluntario.addEventListener(
+        "submit",
+        async function (evento) {
+
+            evento.preventDefault();
+
+
+            const dadosVoluntario = {
+
+                nome:
+                    nome.value.trim(),
+
+                turma:
+                turma.value,
+
+                curso:
+                curso.value,
+
+                outroCurso:
+                    outroCurso.value.trim()
+
+            };
+
+
+            mensagem.textContent =
+                "Cadastrando voluntário...";
+
+            mensagem.className =
+                "mensagem";
+
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/voluntarios`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials: "include",
+
+                            body:
+                                JSON.stringify(
+                                    dadosVoluntario
+                                )
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.mensagem ||
+                        "Erro ao cadastrar voluntário."
+                    );
+
+                }
+
+
+                mensagem.textContent =
+                    "Voluntário cadastrado com sucesso! " +
+                    `ID: ${dados.id}`;
+
+
+                mensagem.className =
+                    "mensagem sucesso";
+
+
+                formVoluntario.reset();
+
+
+                campoOutroCurso.style.display =
+                    "none";
+
+
+                outroCurso.required =
+                    false;
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao cadastrar voluntário:",
+                    erro
+                );
+
+
+                mensagem.textContent =
+                    erro.message;
+
+
+                mensagem.className =
+                    "mensagem erro";
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnSair")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } catch (erro) {
+
+                    console.error(
+                        "Erro ao fazer logout:",
+                        erro
+                    );
+
+                }
+
+
+                window.location.href =
+                    "../login.html";
+
+            }
+        );
+
+
+    // ==========================================
+    // INICIALIZAÇÃO
+    // ==========================================
+
+    verificarAdministrador();
+
+    carregarTurmas();
+
+</script>
+
+
+</body>
+
+</html>

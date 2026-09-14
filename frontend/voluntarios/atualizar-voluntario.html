@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Atualizar Voluntário - Formação Digital</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Formação</h2>
+
+            <span>Digital</span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="../home.html">
+                🏠
+                <span>Início</span>
+            </a>
+
+
+            <div class="menu-titulo">
+                👨‍🎓
+                <span>Alunos</span>
+            </div>
+
+
+            <a href="../alunos/adicionar-aluno.html">
+                ➕
+                <span>Adicionar aluno</span>
+            </a>
+
+
+            <a href="../alunos/atualizar-aluno.html">
+                ✏️
+                <span>Atualizar aluno</span>
+            </a>
+
+
+            <a href="../alunos/listar-alunos.html">
+                📋
+                <span>Listar alunos</span>
+            </a>
+
+
+            <a href="../alunos/pesquisar-aluno.html">
+                🔎
+                <span>Pesquisar aluno</span>
+            </a>
+
+
+            <a href="../alunos/excluir-aluno.html">
+                🗑️
+                <span>Excluir aluno</span>
+            </a>
+
+
+            <a href="../alunos/chamada-alunos.html">
+                📝
+                <span>Chamada</span>
+            </a>
+
+
+            <a href="../alunos/historico-alunos.html">
+                📊
+                <span>Histórico</span>
+            </a>
+
+
+            <div class="menu-titulo">
+                🤝
+                <span>Voluntários</span>
+            </div>
+
+
+            <a href="adicionar-voluntario.html">
+                👤
+                <span>Adicionar voluntário</span>
+            </a>
+
+
+            <a
+                    href="atualizar-voluntario.html"
+                    class="ativo"
+            >
+                ✏️
+                <span>Atualizar voluntário</span>
+            </a>
+
+
+            <a href="listar-voluntarios.html">
+                📋
+                <span>Listar voluntários</span>
+            </a>
+
+
+            <a href="pesquisar-voluntario.html">
+                🔎
+                <span>Pesquisar voluntário</span>
+            </a>
+
+
+            <a href="excluir-voluntario.html">
+                🗑️
+                <span>Excluir voluntário</span>
+            </a>
+
+
+            <a href="chamada-voluntarios.html">
+                📝
+                <span>Chamada</span>
+            </a>
+
+
+            <a href="historico-voluntarios.html">
+                📊
+                <span>Histórico</span>
+            </a>
+
+
+            <div class="menu-titulo">
+                🏫
+                <span>Turmas</span>
+            </div>
+
+
+            <a href="../turmas/adicionar-turma.html">
+                ➕
+                <span>Adicionar turma</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-admin">
+
+            <div class="sidebar-admin-nome">
+
+                👤
+
+                <span id="nomeAdministradorMenu">
+                    Administrador
+                </span>
+
+            </div>
+
+
+            <button
+                    id="btnLogout"
+                    class="btn-sair"
+            >
+                🚪 Sair
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ==========================================
+             TOPO
+        =========================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-page-info">
+
+                <h1>
+                    Atualizar voluntário
+                </h1>
+
+                <p>
+                    Altere os dados de um voluntário cadastrado.
+                </p>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <span>
+                    Administrador
+                </span>
+
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==========================================
+             CABEÇALHO DA PÁGINA
+        =========================================== -->
+
+        <section class="page-hero">
+
+            <div class="page-hero-icon">
+                ✏️
+            </div>
+
+            <div class="page-hero-content">
+
+                <h2>
+                    Atualização de voluntário
+                </h2>
+
+                <p>
+                    Selecione o voluntário e escolha o dado que deseja modificar.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FORMULÁRIO
+        =========================================== -->
+
+        <section class="form-container">
+
+            <div class="form-title">
+
+                <div class="form-title-icon">
+                    🤝
+                </div>
+
+                <div>
+
+                    <h2>
+                        Dados do voluntário
+                    </h2>
+
+                    <p>
+                        Selecione o voluntário e o dado que deseja alterar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formAtualizarVoluntario">
+
+
+                <!-- ==================================
+                     VOLUNTÁRIO
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="voluntario">
+                        Nome do voluntário
+                    </label>
+
+                    <select
+                            id="voluntario"
+                            name="voluntario"
+                            required
+                    >
+
+                        <option
+                                value=""
+                                disabled
+                                selected
+                        >
+                            Selecione o voluntário
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     OPÇÃO
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="opcao">
+                        O que deseja atualizar?
+                    </label>
+
+                    <select
+                            id="opcao"
+                            name="opcao"
+                            required
+                    >
+
+                        <option
+                                value=""
+                                disabled
+                                selected
+                        >
+                            Selecione uma opção
+                        </option>
+
+                        <option value="nome">
+                            Nome
+                        </option>
+
+                        <option value="turma">
+                            Turma
+                        </option>
+
+                        <option value="curso">
+                            Curso
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     NOVO NOME
+                ================================== -->
+
+                <div
+                        class="form-group"
+                        id="campoNovoNome"
+                        style="display: none;"
+                >
+
+                    <label for="novoNome">
+                        Novo nome
+                    </label>
+
+                    <input
+                            type="text"
+                            id="novoNome"
+                            name="novoNome"
+                            placeholder="Digite o novo nome"
+                    >
+
+                </div>
+
+
+
+                <!-- ==================================
+                     NOVA TURMA
+                ================================== -->
+
+                <div
+                        class="form-group"
+                        id="campoNovaTurma"
+                        style="display: none;"
+                >
+
+                    <label for="novaTurma">
+                        Nova turma
+                    </label>
+
+                    <select
+                            id="novaTurma"
+                            name="novaTurma"
+                    >
+
+                        <option
+                                value=""
+                                disabled
+                                selected
+                        >
+                            Selecione a nova turma
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     NOVO CURSO
+                ================================== -->
+
+                <div
+                        class="form-group"
+                        id="campoCurso"
+                        style="display: none;"
+                >
+
+                    <label for="curso">
+                        Novo curso
+                    </label>
+
+                    <select
+                            id="curso"
+                            name="curso"
+                    >
+
+                        <option
+                                value=""
+                                disabled
+                                selected
+                        >
+                            Selecione o novo curso
+                        </option>
+
+                        <option value="Sistemas de Informação">
+                            Sistemas de Informação
+                        </option>
+
+                        <option value="ADS">
+                            ADS
+                        </option>
+
+                        <option value="Fisioterapia">
+                            Fisioterapia
+                        </option>
+
+                        <option value="Enfermagem">
+                            Enfermagem
+                        </option>
+
+                        <option value="Medicina">
+                            Medicina
+                        </option>
+
+                        <option value="Outro">
+                            Outro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     OUTRO CURSO
+                ================================== -->
+
+                <div
+                        class="form-group"
+                        id="campoOutroCurso"
+                        style="display: none;"
+                >
+
+                    <label for="outroCurso">
+                        Informe o curso
+                    </label>
+
+                    <input
+                            type="text"
+                            id="outroCurso"
+                            name="outroCurso"
+                            placeholder="Digite o nome do curso"
+                    >
+
+                </div>
+
+
+
+                <!-- ==================================
+                     MENSAGEM
+                ================================== -->
+
+                <div
+                        id="mensagem"
+                        class="mensagem"
+                        style="display: none;"
+                ></div>
+
+
+
+                <!-- ==================================
+                     BOTÕES
+                ================================== -->
+
+                <div class="acoes">
+
+                    <button
+                            type="button"
+                            class="btn-secondary"
+                            onclick="window.location.href='../home.html'"
+                    >
+                        ← Voltar
+                    </button>
+
+
+                    <button
+                            type="submit"
+                            class="btn-primary"
+                    >
+                        Atualizar voluntário
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
+
+    const form =
+        document.getElementById(
+            "formAtualizarVoluntario"
+        );
+
+
+    const voluntario =
+        document.getElementById(
+            "voluntario"
+        );
+
+
+    const opcao =
+        document.getElementById(
+            "opcao"
+        );
+
+
+    const campoNovoNome =
+        document.getElementById(
+            "campoNovoNome"
+        );
+
+
+    const campoNovaTurma =
+        document.getElementById(
+            "campoNovaTurma"
+        );
+
+
+    const campoCurso =
+        document.getElementById(
+            "campoCurso"
+        );
+
+
+    const campoOutroCurso =
+        document.getElementById(
+            "campoOutroCurso"
+        );
+
+
+    const novoNome =
+        document.getElementById(
+            "novoNome"
+        );
+
+
+    const novaTurma =
+        document.getElementById(
+            "novaTurma"
+        );
+
+
+    const curso =
+        document.getElementById(
+            "curso"
+        );
+
+
+    const outroCurso =
+        document.getElementById(
+            "outroCurso"
+        );
+
+
+    const mensagem =
+        document.getElementById(
+            "mensagem"
+        );
+
+
+    const nomeAdministrador =
+        document.getElementById(
+            "nomeAdministrador"
+        );
+
+
+    const nomeAdministradorMenu =
+        document.getElementById(
+            "nomeAdministradorMenu"
+        );
+
+
+    const API =
+        "http://localhost:3000";
+
+
+
+    // ==========================================
+    // VERIFICAR ADMINISTRADOR
+    // ==========================================
+
+    async function carregarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
+
+
+            nomeAdministradorMenu.textContent =
+                dados.administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // CARREGAR VOLUNTÁRIOS
+    // ==========================================
+
+    async function carregarVoluntarios() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/voluntarios`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            const dados =
+                await resposta.json();
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    dados.mensagem ||
+                    "Não foi possível carregar os voluntários."
+                );
+
+            }
+
+
+            voluntario.innerHTML = "";
+
+
+            const opcaoInicial =
+                document.createElement(
+                    "option"
+                );
+
+
+            opcaoInicial.value = "";
+
+            opcaoInicial.textContent =
+                "Selecione o voluntário";
+
+            opcaoInicial.disabled = true;
+
+            opcaoInicial.selected = true;
+
+
+            voluntario.appendChild(
+                opcaoInicial
+            );
+
+
+            for (const item of dados) {
+
+                const opcaoVoluntario =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                // O VALUE É O ID
+
+                opcaoVoluntario.value =
+                    item.id;
+
+
+                // O QUE APARECE É O NOME
+
+                opcaoVoluntario.textContent =
+                    item.nome;
+
+
+                voluntario.appendChild(
+                    opcaoVoluntario
+                );
+
+            }
+
+
+            if (dados.length === 0) {
+
+                voluntario.innerHTML = "";
+
+
+                const nenhum =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                nenhum.value = "";
+
+                nenhum.textContent =
+                    "Nenhum voluntário cadastrado";
+
+                nenhum.disabled = true;
+
+                nenhum.selected = true;
+
+
+                voluntario.appendChild(
+                    nenhum
+                );
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar voluntários:",
+                erro
+            );
+
+
+            voluntario.innerHTML = "";
+
+
+            const erroOpcao =
+                document.createElement(
+                    "option"
+                );
+
+
+            erroOpcao.value = "";
+
+            erroOpcao.textContent =
+                "Erro ao carregar voluntários";
+
+            erroOpcao.disabled = true;
+
+            erroOpcao.selected = true;
+
+
+            voluntario.appendChild(
+                erroOpcao
+            );
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // CARREGAR TURMAS
+    // ==========================================
+
+    async function carregarTurmas() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/turmas`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            const dados =
+                await resposta.json();
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    dados.mensagem ||
+                    "Não foi possível carregar as turmas."
+                );
+
+            }
+
+
+            novaTurma.innerHTML = "";
+
+
+            const opcaoInicial =
+                document.createElement(
+                    "option"
+                );
+
+
+            opcaoInicial.value = "";
+
+            opcaoInicial.textContent =
+                "Selecione a nova turma";
+
+            opcaoInicial.disabled = true;
+
+            opcaoInicial.selected = true;
+
+
+            novaTurma.appendChild(
+                opcaoInicial
+            );
+
+
+            for (const turma of dados) {
+
+                const opcaoTurma =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                opcaoTurma.value =
+                    turma.voluntarios;
+
+
+                opcaoTurma.textContent =
+                    turma.nome ||
+                    `Turma ${turma.numero}`;
+
+
+                novaTurma.appendChild(
+                    opcaoTurma
+                );
+
+            }
+
+
+            if (dados.length === 0) {
+
+                novaTurma.innerHTML = "";
+
+
+                const nenhuma =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                nenhuma.value = "";
+
+                nenhuma.textContent =
+                    "Nenhuma turma disponível";
+
+                nenhuma.disabled = true;
+
+                nenhuma.selected = true;
+
+
+                novaTurma.appendChild(
+                    nenhuma
+                );
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar turmas:",
+                erro
+            );
+
+
+            novaTurma.innerHTML = "";
+
+
+            const erroOpcao =
+                document.createElement(
+                    "option"
+                );
+
+
+            erroOpcao.value = "";
+
+            erroOpcao.textContent =
+                "Erro ao carregar turmas";
+
+            erroOpcao.disabled = true;
+
+            erroOpcao.selected = true;
+
+
+            novaTurma.appendChild(
+                erroOpcao
+            );
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // MOSTRAR CAMPO DE ACORDO COM A OPÇÃO
+    // ==========================================
+
+    opcao.addEventListener(
+        "change",
+        function () {
+
+            campoNovoNome.style.display =
+                "none";
+
+            campoNovaTurma.style.display =
+                "none";
+
+            campoCurso.style.display =
+                "none";
+
+            campoOutroCurso.style.display =
+                "none";
+
+
+            novoNome.required =
+                false;
+
+            novaTurma.required =
+                false;
+
+            curso.required =
+                false;
+
+            outroCurso.required =
+                false;
+
+
+            // ALTERAR NOME
+
+            if (
+                opcao.value === "nome"
+            ) {
+
+                campoNovoNome.style.display =
+                    "block";
+
+                novoNome.required =
+                    true;
+
+            }
+
+
+            // ALTERAR TURMA
+
+            if (
+                opcao.value === "turma"
+            ) {
+
+                campoNovaTurma.style.display =
+                    "block";
+
+                novaTurma.required =
+                    true;
+
+            }
+
+
+            // ALTERAR CURSO
+
+            if (
+                opcao.value === "curso"
+            ) {
+
+                campoCurso.style.display =
+                    "block";
+
+                curso.required =
+                    true;
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // MOSTRAR OUTRO CURSO
+    // ==========================================
+
+    curso.addEventListener(
+        "change",
+        function () {
+
+            if (
+                curso.value === "Outro"
+            ) {
+
+                campoOutroCurso.style.display =
+                    "block";
+
+                outroCurso.required =
+                    true;
+
+            } else {
+
+                campoOutroCurso.style.display =
+                    "none";
+
+                outroCurso.required =
+                    false;
+
+                outroCurso.value = "";
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // ATUALIZAR VOLUNTÁRIO
+    // ==========================================
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const idVoluntario =
+                voluntario.value;
+
+
+            const opcaoSelecionada =
+                opcao.value;
+
+
+            let nomeNovo = "";
+
+            let turmaNova = "";
+
+            let cursoNovo = "";
+
+            let outroCursoNovo = "";
+
+
+
+            // ==================================
+            // VALIDAÇÕES
+            // ==================================
+
+            if (!idVoluntario) {
+
+                mostrarMensagem(
+                    "Selecione o voluntário.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            if (!opcaoSelecionada) {
+
+                mostrarMensagem(
+                    "Selecione o que deseja atualizar.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+
+            // ==================================
+            // NOVO NOME
+            // ==================================
+
+            if (
+                opcaoSelecionada === "nome"
+            ) {
+
+                nomeNovo =
+                    novoNome.value.trim();
+
+
+                if (!nomeNovo) {
+
+                    mostrarMensagem(
+                        "Informe o novo nome.",
+                        "erro"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+
+            // ==================================
+            // NOVA TURMA
+            // ==================================
+
+            if (
+                opcaoSelecionada === "turma"
+            ) {
+
+                turmaNova =
+                    novaTurma.value;
+
+
+                if (!turmaNova) {
+
+                    mostrarMensagem(
+                        "Selecione a nova turma.",
+                        "erro"
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+
+            // ==================================
+            // NOVO CURSO
+            // ==================================
+
+            if (
+                opcaoSelecionada === "curso"
+            ) {
+
+                cursoNovo =
+                    curso.value;
+
+
+                if (!cursoNovo) {
+
+                    mostrarMensagem(
+                        "Selecione o novo curso.",
+                        "erro"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    cursoNovo === "Outro"
+                ) {
+
+                    outroCursoNovo =
+                        outroCurso.value.trim();
+
+
+                    if (!outroCursoNovo) {
+
+                        mostrarMensagem(
+                            "Informe o nome do outro curso.",
+                            "erro"
+                        );
+
+                        return;
+
+                    }
+
+                }
+
+            }
+
+
+
+            // ==================================
+            // ENVIAR PARA O BACKEND
+            // ==================================
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/voluntarios/atualizar`,
+                        {
+
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials:
+                                "include",
+
+                            body:
+                                JSON.stringify({
+
+                                    id:
+                                    idVoluntario,
+
+                                    novoNome:
+                                    nomeNovo,
+
+                                    novaTurma:
+                                    turmaNova,
+
+                                    curso:
+                                    cursoNovo,
+
+                                    outroCurso:
+                                    outroCursoNovo
+
+                                })
+
+                        }
+                    );
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (!resposta.ok) {
+
+                    mostrarMensagem(
+                        dados.mensagem ||
+                        "Não foi possível atualizar o voluntário.",
+                        "erro"
+                    );
+
+                    return;
+
+                }
+
+
+                mostrarMensagem(
+                    `Voluntário atualizado com sucesso! ID: ${dados.id} | Nome: ${dados.nome} | Turma: ${dados.turma}`,
+                    "sucesso"
+                );
+
+
+                form.reset();
+
+
+                campoNovoNome.style.display =
+                    "none";
+
+
+                campoNovaTurma.style.display =
+                    "none";
+
+
+                campoCurso.style.display =
+                    "none";
+
+
+                campoOutroCurso.style.display =
+                    "none";
+
+
+                novoNome.required =
+                    false;
+
+
+                novaTurma.required =
+                    false;
+
+
+                curso.required =
+                    false;
+
+
+                outroCurso.required =
+                    false;
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao atualizar voluntário:",
+                    erro
+                );
+
+
+                mostrarMensagem(
+                    "Não foi possível conectar ao servidor.",
+                    "erro"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    // ==========================================
+    // MENSAGEM
+    // ==========================================
+
+    function mostrarMensagem(
+        texto,
+        tipo
+    ) {
+
+        mensagem.textContent =
+            texto;
+
+
+        mensagem.className =
+            "mensagem " + tipo;
+
+
+        mensagem.style.display =
+            "block";
+
+    }
+
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    document
+        .getElementById("btnLogout")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+                } finally {
+
+                    window.location.href =
+                        "../login.html";
+
+                }
+
+            }
+        );
+
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    carregarAdministrador();
+
+    carregarVoluntarios();
+
+    carregarTurmas();
+
+</script>
+
+</body>
+
+</html>

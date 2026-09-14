@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Formação Digital - Voluntários</title>
+
+
+    <style>
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eaf5ff;
+            color: #1559b7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+
+        /* =========================================================
+           FUNDO DECORATIVO
+        ========================================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 115px;
+            left: -100px;
+            width: 390px;
+            height: 230px;
+            background: #d0e8ff;
+            border-radius: 0 0 250px 0;
+            transform: rotate(-8deg);
+            z-index: -2;
+        }
+
+
+        body::after {
+            content: "";
+            position: fixed;
+            right: -100px;
+            bottom: -90px;
+            width: 500px;
+            height: 300px;
+            background: #d0e8ff;
+            border-radius: 250px 0 0 0;
+            transform: rotate(-15deg);
+            z-index: -2;
+        }
+
+
+
+        /* =========================================================
+           CABEÇALHO
+        ========================================================= */
+
+        .topbar {
+            width: 100%;
+            height: 116px;
+            background: rgba(255, 255, 255, .72);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 55px;
+            border-bottom: 1px solid rgba(130, 180, 230, .15);
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+        }
+
+
+        .logo-icon {
+            width: 84px;
+            height: 70px;
+            color: #155dbd;
+        }
+
+
+        .logo-text {
+            font-size: 46px;
+            font-weight: 400;
+            letter-spacing: -2px;
+            color: #155dbd;
+        }
+
+
+        .logo-text strong {
+            font-weight: 700;
+        }
+
+
+
+        /* =========================================================
+           ADMINISTRADOR
+        ========================================================= */
+
+        .admin-area {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        .admin-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #c8e2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #145ab8;
+        }
+
+
+        .admin-icon svg {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .admin-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-right: 28px;
+            border-right: 2px solid #c2ddfa;
+        }
+
+
+        .admin-info span {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1559b7;
+        }
+
+
+        .admin-info strong {
+            font-size: 14px;
+            font-weight: 400;
+            color: #3977c7;
+        }
+
+
+        .btn-sair {
+            width: 120px;
+            height: 64px;
+            border: none;
+            border-radius: 13px;
+            background: #155fbd;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+
+        .btn-sair:hover {
+            background: #0d4eaa;
+            transform: translateY(-2px);
+        }
+
+
+
+        /* =========================================================
+           BOTÃO VOLTAR
+        ========================================================= */
+
+        .btn-voltar {
+            position: absolute;
+            top: 155px;
+            left: 52px;
+
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            padding: 14px 21px;
+
+            background: rgba(255, 255, 255, .92);
+            border-radius: 30px;
+
+            color: #1559b7;
+            font-size: 20px;
+            font-weight: 700;
+
+            box-shadow: 0 5px 18px rgba(45, 112, 184, .08);
+
+            transition: .2s ease;
+        }
+
+
+        .btn-voltar:hover {
+            transform: translateX(-3px);
+            background: white;
+        }
+
+
+        .btn-voltar svg {
+            width: 27px;
+            height: 27px;
+        }
+
+
+
+        /* =========================================================
+           CABEÇALHO DA PÁGINA
+        ========================================================= */
+
+        .page-header {
+            text-align: center;
+            padding-top: 56px;
+        }
+
+
+        .titulo-principal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+
+
+        .titulo-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: rgba(210, 233, 255, .75);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #155fbd;
+        }
+
+
+        .titulo-icon svg {
+            width: 58px;
+            height: 58px;
+        }
+
+
+        .titulo-principal h1 {
+            font-size: 62px;
+            line-height: 1;
+            color: #1559b7;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+
+        .page-header p {
+            margin-top: 12px;
+            font-size: 22px;
+            color: #3977c7;
+        }
+
+
+
+        /* =========================================================
+           DECORAÇÃO DO TÍTULO
+        ========================================================= */
+
+        .decoracao {
+            margin: 23px auto 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+
+        .decoracao span {
+            width: 95px;
+            height: 3px;
+            background: #4a92e7;
+        }
+
+
+        .decoracao svg {
+            width: 47px;
+            height: 47px;
+            color: #155fbd;
+        }
+
+
+
+        /* =========================================================
+           ÁREA DOS CARDS
+        ========================================================= */
+
+        .menu-container {
+            width: calc(100% - 220px);
+            max-width: 1320px;
+            margin: 0 auto 70px;
+
+            padding: 31px;
+
+            background: rgba(255, 255, 255, .60);
+
+            border: 2px solid rgba(255, 255, 255, .85);
+
+            border-radius: 28px;
+
+            box-shadow:
+                    0 12px 30px rgba(40, 104, 170, .10);
+        }
+
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+            gap: 29px;
+        }
+
+
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .card {
+            min-height: 128px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 19px 21px;
+
+            border-radius: 19px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #1d63c1 0%,
+                            #2169c8 100%
+                    );
+
+            color: white;
+
+            box-shadow:
+                    0 8px 18px rgba(26, 91, 170, .17);
+
+            transition:
+                    transform .22s ease,
+                    box-shadow .22s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                    0 13px 25px rgba(26, 91, 170, .24);
+        }
+
+
+
+        /* =========================================================
+           ÍCONE DO CARD
+        ========================================================= */
+
+        .card-icon {
+            flex-shrink: 0;
+
+            width: 74px;
+            height: 74px;
+
+            border-radius: 50%;
+
+            background: rgba(112, 180, 240, .60);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+        }
+
+
+        .card-icon svg {
+            width: 49px;
+            height: 49px;
+        }
+
+
+
+        /* =========================================================
+           CONTEÚDO DO CARD
+        ========================================================= */
+
+        .card-content {
+            flex: 1;
+            min-width: 0;
+
+            margin-left: 24px;
+        }
+
+
+        .card-content h2 {
+            font-size: 21px;
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            color: white;
+        }
+
+
+        .card-content p {
+            font-size: 15px;
+            line-height: 1.3;
+
+            color: white;
+        }
+
+
+
+        /* =========================================================
+           SETA
+        ========================================================= */
+
+        .card-arrow {
+            flex-shrink: 0;
+
+            width: 37px;
+            height: 37px;
+
+            border-radius: 50%;
+
+            background: rgba(110, 180, 241, .72);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 26px;
+            line-height: 1;
+
+            color: white;
+        }
+
+
+
+        /* =========================================================
+           CARD HISTÓRICO CENTRAL
+        ========================================================= */
+
+        .card-historico {
+            grid-column: 2;
+        }
+
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+
+            .menu-container {
+                width: calc(100% - 100px);
+            }
+
+
+            .cards {
+                grid-template-columns:
+                        repeat(2, minmax(0, 1fr));
+            }
+
+
+            .card-historico {
+                grid-column: auto;
+            }
+
+
+            .logo-text {
+                font-size: 38px;
+            }
+
+
+            .titulo-principal h1 {
+                font-size: 52px;
+            }
+
+        }
+
+
+
+        @media (max-width: 800px) {
+
+            .topbar {
+                height: auto;
+                min-height: 100px;
+                padding: 18px 25px;
+            }
+
+
+            .admin-area {
+                gap: 12px;
+            }
+
+
+            .admin-icon {
+                display: none;
+            }
+
+
+            .admin-info {
+                display: none;
+            }
+
+
+            .btn-sair {
+                width: 90px;
+                height: 50px;
+            }
+
+
+            .logo-text {
+                font-size: 31px;
+            }
+
+
+            .logo-icon {
+                width: 60px;
+            }
+
+
+            .btn-voltar {
+                position: relative;
+                top: auto;
+                left: auto;
+
+                width: fit-content;
+
+                margin: 25px 25px 0;
+            }
+
+
+            .page-header {
+                padding-top: 35px;
+            }
+
+
+            .titulo-principal {
+                gap: 15px;
+            }
+
+
+            .titulo-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+
+            .titulo-icon svg {
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .titulo-principal h1 {
+                font-size: 43px;
+            }
+
+
+            .page-header p {
+                padding: 0 20px;
+                font-size: 17px;
+            }
+
+
+            .menu-container {
+                width: calc(100% - 40px);
+                padding: 20px;
+            }
+
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .card-historico {
+                grid-column: auto;
+            }
+
+        }
+
+
+
+        @media (max-width: 500px) {
+
+            .logo-text {
+                font-size: 25px;
+            }
+
+
+            .logo-icon {
+                width: 45px;
+            }
+
+
+            .titulo-principal h1 {
+                font-size: 36px;
+            }
+
+
+            .card {
+                min-height: 115px;
+                padding: 15px;
+            }
+
+
+            .card-icon {
+                width: 62px;
+                height: 62px;
+            }
+
+
+            .card-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .card-content {
+                margin-left: 15px;
+            }
+
+
+            .card-content h2 {
+                font-size: 17px;
+            }
+
+
+            .card-content p {
+                font-size: 13px;
+            }
+
+
+            .card-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CABEÇALHO
+========================================================= -->
+
+<header class="topbar">
+
+
+    <div class="logo">
+
+        <svg
+                class="logo-icon"
+                viewBox="0 0 100 80"
+                aria-hidden="true"
+        >
+
+            <path
+                    d="M4 23 L50 4 L96 23 L50 42 Z"
+                    fill="currentColor"
+            />
+
+            <path
+                    d="M18 31 V50 C29 59 40 64 50 64 C60 64 71 59 82 50 V31 L50 44 L18 31Z"
+                    fill="currentColor"
+            />
+
+            <path
+                    d="M89 27 V51"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linecap="round"
+            />
+
+            <circle
+                    cx="89"
+                    cy="57"
+                    r="4"
+                    fill="currentColor"
+            />
+
+        </svg>
+
+
+        <div class="logo-text">
+            Formação <strong>Digital</strong>
+        </div>
+
+    </div>
+
+
+
+    <!-- ADMINISTRADOR -->
+
+    <div class="admin-area">
+
+
+        <div class="admin-icon">
+
+            <svg
+                    viewBox="0 0 64 64"
+                    aria-hidden="true"
+            >
+
+                <circle
+                        cx="32"
+                        cy="21"
+                        r="11"
+                        fill="currentColor"
+                />
+
+                <path
+                        d="M10 56c2-13 10-21 22-21s20 8 22 21H10Z"
+                        fill="currentColor"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <div class="admin-info">
+
+            <span>
+                Olá, <span id="nomeAdministrador">Administrador</span>!
+            </span>
+
+            <strong>
+                Bem-vindo ao sistema
+            </strong>
+
+        </div>
+
+
+        <button
+                type="button"
+                id="btnLogout"
+                class="btn-sair"
+        >
+            Sair
+        </button>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     VOLTAR
+========================================================= -->
+
+<a
+        href="../home.html"
+        class="btn-voltar"
+>
+
+    <svg
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+    >
+
+        <path
+                d="M20 6 L10 16 L20 26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+        />
+
+        <path
+                d="M11 16 H27"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+        />
+
+    </svg>
+
+    Voltar
+
+</a>
+
+
+
+<!-- =========================================================
+     TÍTULO
+========================================================= -->
+
+<section class="page-header">
+
+
+    <div class="titulo-principal">
+
+
+        <div class="titulo-icon">
+
+            <svg
+                    viewBox="0 0 64 64"
+                    aria-hidden="true"
+            >
+
+                <!-- PESSOA CENTRAL -->
+
+                <circle
+                        cx="32"
+                        cy="19"
+                        r="9"
+                        fill="currentColor"
+                />
+
+                <path
+                        d="M15 51c1-11 7-18 17-18s16 7 17 18H15Z"
+                        fill="currentColor"
+                />
+
+
+                <!-- MÃO / APOIO ESQUERDO -->
+
+                <path
+                        d="M12 29c-5 0-8 4-8 9s3 7 7 7h6V29h-5Z"
+                        fill="currentColor"
+                />
+
+
+                <!-- MÃO / APOIO DIREITO -->
+
+                <path
+                        d="M52 29c5 0 8 4 8 9s-3 7-7 7h-6V29h5Z"
+                        fill="currentColor"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <h1>
+            Voluntários
+        </h1>
+
+
+    </div>
+
+
+    <p>
+        Gerencie os voluntários do projeto de forma simples e rápida.
+    </p>
+
+
+    <!-- DECORAÇÃO -->
+
+    <div class="decoracao">
+
+        <span></span>
+
+        <svg
+                viewBox="0 0 64 64"
+                aria-hidden="true"
+        >
+
+            <path
+                    d="M7 21 L32 9 L57 21 L32 33 Z"
+                    fill="currentColor"
+            />
+
+            <path
+                    d="M15 28 V41 C21 46 27 49 32 49 C37 49 43 46 49 41 V28 L32 36 L15 28Z"
+                    fill="currentColor"
+            />
+
+        </svg>
+
+        <span></span>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     MENU DE VOLUNTÁRIOS
+========================================================= -->
+
+<main class="menu-container">
+
+
+    <section class="cards">
+
+
+        <!-- =====================================================
+             ADICIONAR VOLUNTÁRIO
+        ====================================================== -->
+
+        <a
+                href="adicionar-voluntario.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <circle
+                            cx="32"
+                            cy="20"
+                            r="10"
+                            fill="currentColor"
+                    />
+
+                    <path
+                            d="M13 53c1-11 8-18 19-18s18 7 19 18H13Z"
+                            fill="currentColor"
+                    />
+
+                    <path
+                            d="M47 39 V55 M39 47 H55"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Adicionar voluntário
+                </h2>
+
+                <p>
+                    Cadastre um novo voluntário<br>
+                    no sistema.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             LISTAR VOLUNTÁRIOS
+        ====================================================== -->
+
+        <a
+                href="listar-voluntarios.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <circle
+                            cx="13"
+                            cy="18"
+                            r="3"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="13"
+                            cy="32"
+                            r="3"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="13"
+                            cy="46"
+                            r="3"
+                            fill="currentColor"
+                    />
+
+                    <path
+                            d="M22 18 H52"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                    />
+
+                    <path
+                            d="M22 32 H52"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                    />
+
+                    <path
+                            d="M22 46 H52"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Listar voluntários
+                </h2>
+
+                <p>
+                    Visualize todos os voluntários<br>
+                    cadastrados.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             PESQUISAR VOLUNTÁRIO
+        ====================================================== -->
+
+        <a
+                href="pesquisar-voluntario.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <circle
+                            cx="28"
+                            cy="28"
+                            r="16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="5"
+                    />
+
+                    <path
+                            d="M40 40 L54 54"
+                            stroke="currentColor"
+                            stroke-width="6"
+                            stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Pesquisar voluntário
+                </h2>
+
+                <p>
+                    Encontre um voluntário<br>
+                    específico.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             ATUALIZAR VOLUNTÁRIO
+        ====================================================== -->
+
+        <a
+                href="atualizar-voluntario.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <path
+                            d="M13 51 L17 38 L43 12 L52 21 L26 47 Z"
+                            fill="currentColor"
+                    />
+
+                    <path
+                            d="M40 15 L49 24"
+                            stroke="#2169c8"
+                            stroke-width="4"
+                    />
+
+                    <path
+                            d="M13 51 L27 47 L17 38 Z"
+                            fill="currentColor"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Atualizar voluntário
+                </h2>
+
+                <p>
+                    Edite as informações<br>
+                    de um voluntário.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             EXCLUIR VOLUNTÁRIO
+        ====================================================== -->
+
+        <a
+                href="excluir-voluntario.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <path
+                            d="M16 19 H48 V53 H16 Z"
+                            fill="currentColor"
+                            rx="3"
+                    />
+
+                    <path
+                            d="M12 14 H52"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                    />
+
+                    <path
+                            d="M24 14 V9 H40 V14"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Excluir voluntário
+                </h2>
+
+                <p>
+                    Remova um voluntário<br>
+                    do sistema.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             CHAMADA
+        ====================================================== -->
+
+        <a
+                href="chamada-voluntarios.html"
+                class="card"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <rect
+                            x="11"
+                            y="15"
+                            width="42"
+                            height="39"
+                            rx="5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="4"
+                    />
+
+                    <path
+                            d="M20 9 V20 M44 9 V20 M11 27 H53"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                    />
+
+                    <circle
+                            cx="22"
+                            cy="37"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="32"
+                            cy="37"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="42"
+                            cy="37"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="22"
+                            cy="46"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="32"
+                            cy="46"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                    <circle
+                            cx="42"
+                            cy="46"
+                            r="2.5"
+                            fill="currentColor"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Chamada
+                </h2>
+
+                <p>
+                    Registre a presença<br>
+                    dos voluntários.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             HISTÓRICO
+        ====================================================== -->
+
+        <a
+                href="historico-voluntarios.html"
+                class="card card-historico"
+        >
+
+            <div class="card-icon">
+
+                <svg
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                >
+
+                    <circle
+                            cx="32"
+                            cy="32"
+                            r="21"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="5"
+                    />
+
+                    <path
+                            d="M32 19 V33 L41 39"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h2>
+                    Histórico
+                </h2>
+
+                <p>
+                    Consulte o histórico<br>
+                    dos voluntários.
+                </p>
+
+            </div>
+
+
+            <div class="card-arrow">
+                →
+            </div>
+
+        </a>
+
+
+    </section>
+
+</main>
+
+
+
+<script>
+
+    const API = "http://localhost:3000";
+
+
+    // =========================================================
+    // VERIFICAR ADMINISTRADOR
+    // =========================================================
+
+    async function carregarAdministrador() {
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const dados =
+                await resposta.json();
+
+
+            const administrador =
+                dados.administrador;
+
+
+            document.getElementById(
+                "nomeAdministrador"
+            ).textContent =
+                administrador.nome;
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    }
+
+
+
+    // =========================================================
+    // LOGOUT
+    // =========================================================
+
+    document.getElementById(
+        "btnLogout"
+    ).addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API}/api/login/logout`,
+                        {
+                            method: "POST",
+                            credentials: "include"
+                        }
+                    );
+
+
+                if (resposta.ok) {
+
+                    window.location.href =
+                        "../login.html";
+
+                }
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao sair:",
+                    erro
+                );
+
+            }
+
+        }
+    );
+
+
+
+    // =========================================================
+    // INICIAR
+    // =========================================================
+
+    carregarAdministrador();
+
+</script>
+
+
+</body>
+
+</html>
