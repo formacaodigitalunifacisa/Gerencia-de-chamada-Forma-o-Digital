@@ -28,10 +28,23 @@ router.post("/", async (req, res) => {
             email: administrador.email
         };
 
+        req.session.save((erro) => {
 
-        res.json({
-            mensagem: "Login realizado com sucesso.",
-            administrador: administrador
+            if (erro) {
+
+                console.error("Erro ao salvar sessão:", erro);
+
+                return res.status(500).json({
+                    mensagem: "Erro ao salvar a sessão."
+                });
+
+            }
+
+            res.json({
+                mensagem: "Login realizado com sucesso.",
+                administrador: administrador
+            });
+
         });
 
 
