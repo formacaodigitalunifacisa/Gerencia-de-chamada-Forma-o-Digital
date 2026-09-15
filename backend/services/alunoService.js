@@ -2590,7 +2590,7 @@ async function registrarChamada(
 
         nomeTurma,
 
-        "ADICIONAR",
+        "CHAMADA",
 
         `Chamada dos alunos da turma ${nomeTurma} registrada em ${data}.`
     );
