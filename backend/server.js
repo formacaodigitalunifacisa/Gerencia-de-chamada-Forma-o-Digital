@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000;
 // ==========================================
 
 app.use(cors({
-    origin: "http://localhost:5174",
+    origin: "gerencia-formacao-digital-front.vercel.app",
     credentials: true
 }));
 
