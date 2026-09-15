@@ -1,4 +1,6 @@
+
 import express from "express";
+import jwt from "jsonwebtoken";
 
 import {
     realizarLogin
@@ -18,39 +20,71 @@ router.post("/", async (req, res) => {
 
         const { email, senha } = req.body;
 
+
         const administrador = await realizarLogin(
             email,
             senha
         );
-        req.session.administrador = {
-            idAdministrador: administrador.idAdministrador,
-            nome: administrador.nome,
-            email: administrador.email
-        };
 
-        req.session.save((erro) => {
 
-            if (erro) {
+        // ==========================================
+        // CRIAR TOKEN
+        // ==========================================
 
-                console.error("Erro ao salvar sessão:", erro);
+        const segredoToken =
+            process.env.JWT_SECRET;
 
-                return res.status(500).json({
-                    mensagem: "Erro ao salvar a sessão."
-                });
+        if (!segredoToken) {
 
-            }
+            console.error(
+                "JWT_SECRET não configurado."
+            );
 
-            res.json({
-                mensagem: "Login realizado com sucesso.",
-                administrador: administrador
+            return res.status(500).json({
+                mensagem:
+                    "Configuração de autenticação não encontrada."
             });
+        }
 
+
+        const token = jwt.sign(
+            {
+                idAdministrador:
+                    administrador.idAdministrador,
+
+                nome:
+                    administrador.nome,
+
+                email:
+                    administrador.email
+            },
+            segredoToken,
+            {
+                expiresIn: "8h"
+            }
+        );
+
+
+        // ==========================================
+        // RESPOSTA
+        // ==========================================
+
+        res.json({
+            mensagem:
+                "Login realizado com sucesso.",
+
+            token: token,
+
+            administrador: administrador
         });
 
 
     } catch (erro) {
 
-        console.error("Erro ao realizar login:", erro);
+        console.error(
+            "Erro ao realizar login:",
+            erro
+        );
 
         res.status(401).json({
             mensagem: erro.message
@@ -67,21 +101,9 @@ router.post("/", async (req, res) => {
 
 router.post("/logout", (req, res) => {
 
-    req.session.destroy((erro) => {
-
-        if (erro) {
-
-            console.error("Erro ao encerrar sessão:", erro);
-
-            return res.status(500).json({
-                mensagem: "Erro ao sair."
-            });
-        }
-
-        res.json({
-            mensagem: "Logout realizado com sucesso."
-        });
-
+    res.json({
+        mensagem:
+            "Logout realizado com sucesso."
     });
 
 });

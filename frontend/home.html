@@ -1102,70 +1102,130 @@
     // VERIFICAR ADMINISTRADOR LOGADO
     // ==========================================
 
-    async function carregarAdministrador() {
 
-        try {
+// ==========================================
+// VERIFICAR ADMINISTRADOR LOGADO
+// ==========================================
 
-            const resposta =
-                await fetch(
-                    `${API}/api/administrador/me`,
-                    {
-                        method: "GET",
-                        credentials: "include"
-                    }
-                );
+async function carregarAdministrador() {
 
+    try {
 
-            if (!resposta.ok) {
+        // ==========================================
+        // PEGAR TOKEN
+        // ==========================================
 
-                window.location.href =
-                    "login.html";
-
-                return;
-
-            }
-
-
-            const dados =
-                await resposta.json();
-
-
-            const administrador =
-                dados.administrador;
-
-
-            document.getElementById(
-                "nomeAdministrador"
-            ).textContent =
-                administrador.nome;
-
-
-            document.getElementById(
-                "nomeAdministradorMenu"
-            ).textContent =
-                administrador.nome;
-
-
-            document.getElementById(
-                "nomeBoasVindas"
-            ).textContent =
-                administrador.nome;
-
-
-        } catch (erro) {
-
-            console.error(
-                "Erro ao verificar administrador:",
-                erro
+        const token =
+            localStorage.getItem(
+                "tokenAdministrador"
             );
 
+
+        // ==========================================
+        // NÃO TEM TOKEN
+        // ==========================================
+
+        if (!token) {
 
             window.location.href =
                 "login.html";
 
+            return;
         }
 
+
+        // ==========================================
+        // VERIFICAR ADMINISTRADOR
+        // ==========================================
+
+        const resposta =
+            await fetch(
+                `${API}/api/administrador/me`,
+                {
+                    method: "GET",
+
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
+                }
+            );
+
+
+        // ==========================================
+        // TOKEN INVÁLIDO / EXPIRADO
+        // ==========================================
+
+        if (!resposta.ok) {
+
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        // ==========================================
+        // DADOS DO ADMINISTRADOR
+        // ==========================================
+
+        const dados =
+            await resposta.json();
+
+
+        const administrador =
+            dados.administrador;
+
+
+        document.getElementById(
+            "nomeAdministrador"
+        ).textContent =
+            administrador.nome;
+
+
+        document.getElementById(
+            "nomeAdministradorMenu"
+        ).textContent =
+            administrador.nome;
+
+
+        document.getElementById(
+            "nomeBoasVindas"
+        ).textContent =
+            administrador.nome;
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao verificar administrador:",
+            erro
+        );
+
+
+        localStorage.removeItem(
+            "tokenAdministrador"
+        );
+
+        localStorage.removeItem(
+            "administrador"
+        );
+
+        window.location.href =
+            "login.html";
+
     }
+
+}
+
 
 
 

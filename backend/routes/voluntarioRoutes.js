@@ -37,7 +37,7 @@ router.post("/", autenticarAdministrador, async (req, res) => {
             turma,
             curso,
             outroCurso,
-            req.session.administrador
+            req.administrador
         );
 
         console.log("Voluntário cadastrado:", voluntario);
@@ -77,7 +77,7 @@ router.put("/atualizar", autenticarAdministrador, async (req, res) => {
             novaTurma,
             curso,
             outroCurso,
-            req.session.administrador
+            req.administrador
         );
 
         res.json(voluntario);
@@ -157,14 +157,17 @@ router.post("/chamada", autenticarAdministrador, async (req, res) => {
         const resultado = await registrarChamadaVoluntarios(
             turma,
             chamada,
-            req.session.administrador
+            req.administrador
         );
 
         res.json(resultado);
 
     } catch (erro) {
 
-        console.error("Erro ao registrar chamada dos voluntários:", erro);
+        console.error(
+            "Erro ao registrar chamada dos voluntários:",
+            erro
+        );
 
         res.status(400).json({
             mensagem: erro.message
@@ -186,7 +189,7 @@ router.delete("/:id", autenticarAdministrador, async (req, res) => {
 
         const voluntario = await excluirVoluntario(
             id,
-            req.session.administrador
+            req.administrador
         );
 
         res.json(voluntario);

@@ -27,7 +27,7 @@ router.post("/", autenticarAdministrador, async (req, res) => {
 
         const novaTurma = await adicionarTurma(
             turma,
-            req.session.administrador
+            req.administrador
         );
 
 

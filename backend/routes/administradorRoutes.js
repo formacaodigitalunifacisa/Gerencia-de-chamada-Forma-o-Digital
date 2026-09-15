@@ -9,13 +9,17 @@ const router = express.Router();
 // VERIFICAR ADMINISTRADOR LOGADO
 // ==========================================
 
-router.get("/me", autenticarAdministrador, (req, res) => {
+router.get(
+    "/me",
+    autenticarAdministrador,
+    (req, res) => {
 
-    res.json({
-        administrador: req.session.administrador
-    });
+        res.json({
+            administrador: req.administrador
+        });
 
-});
+    }
+);
 
 
 export default router;

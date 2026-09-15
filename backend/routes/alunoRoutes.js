@@ -32,7 +32,7 @@ router.post("/", autenticarAdministrador, async (req, res) => {
         const aluno = await adicionarAluno(
             nome,
             turma,
-            req.session.administrador
+            req.administrador
         );
 
         console.log("Aluno cadastrado:", aluno);
@@ -71,7 +71,7 @@ router.put("/atualizar", autenticarAdministrador, async (req, res) => {
             opcao,
             novoNome,
             novaTurma,
-            req.session.administrador
+            req.administrador
         );
 
 
@@ -141,18 +141,21 @@ router.get("/pesquisar/:valor", async (req, res) => {
 // ==========================================
 
 router.post("/chamada", autenticarAdministrador, async (req, res) => {
+
     try {
+
         const { turma, chamada } = req.body;
 
         const resultado = await registrarChamada(
             turma,
             chamada,
-            req.session.administrador
+            req.administrador
         );
 
         res.json(resultado);
 
     } catch (erro) {
+
         console.error("Erro ao registrar chamada:", erro);
 
         res.status(400).json({
@@ -187,7 +190,7 @@ router.delete("/:id", autenticarAdministrador, async (req, res) => {
 
         const aluno = await excluirAluno(
             id,
-            req.session.administrador
+            req.administrador
         );
 
         res.json(aluno);

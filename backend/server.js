@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import session from "express-session";
 
 import alunoRoutes from "./routes/alunoRoutes.js";
 import voluntarioRoutes from "./routes/voluntarioRoutes.js";
@@ -34,17 +33,7 @@ app.use(express.json());
 
 app.set("trust proxy", 1);
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || "formacao-digital-segredo",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: true,
-        httpOnly: true,
-        sameSite: "none",
-        maxAge: 1000 * 60 * 60 * 8
-    }
-}));
+
 
 
 // ==========================================
