@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const auth = new google.auth.GoogleAuth({
-    keyFile: "./config/credenciais-google.json",
+    credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS),
     scopes: [
         "https://www.googleapis.com/auth/spreadsheets"
     ]
