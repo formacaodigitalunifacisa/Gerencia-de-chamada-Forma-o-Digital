@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Excluir Aluno - Formação Digital</title>
+    <title>Histórico de Alunos - Formação Digital</title>
 
     <link rel="stylesheet"
           href="../css/style.css">
@@ -19,9 +19,10 @@
 
 <div class="layout">
 
+
     <!-- ==========================================
          MENU LATERAL
-    ========================================== -->
+    =========================================== -->
 
     <aside class="sidebar">
 
@@ -35,78 +36,96 @@
 
         <nav class="menu">
 
+
             <a href="../home.html">
                 🏠
                 <span>Início</span>
             </a>
 
 
-            <div class="menu-titulo">
-                ALUNOS
+            <div class="menu-section">
+
+                <span>Alunos</span>
+
+
+                <a href="adicionar-aluno.html">
+                    ➕
+                    <span>Adicionar aluno</span>
+                </a>
+
+
+                <a href="atualizar-aluno.html">
+                    ✏️
+                    <span>Atualizar aluno</span>
+                </a>
+
+
+                <a href="listar-alunos.html">
+                    📋
+                    <span>Listar alunos</span>
+                </a>
+
+
+                <a href="pesquisar-aluno.html">
+                    🔎
+                    <span>Pesquisar aluno</span>
+                </a>
+
+
+                <a href="excluir-aluno.html">
+                    🗑️
+                    <span>Excluir aluno</span>
+                </a>
+
+
+                <a href="chamada-alunos.html">
+                    📝
+                    <span>Chamada</span>
+                </a>
+
+
+                <a href="historico-alunos.html"
+                   class="active">
+                    📊
+                    <span>Histórico</span>
+                </a>
+
             </div>
 
 
-            <a href="adicionar-aluno.html">
-                ➕
-                <span>Adicionar aluno</span>
-            </a>
+            <div class="menu-section">
 
-
-            <a href="atualizar-aluno.html">
-                ✏️
-                <span>Atualizar aluno</span>
-            </a>
-
-
-            <a href="listar-alunos.html">
-                📋
-                <span>Listar alunos</span>
-            </a>
-
-
-            <a href="pesquisar-aluno.html">
-                🔎
-                <span>Pesquisar aluno</span>
-            </a>
-
-
-            <a href="excluir-aluno.html"
-               class="ativo">
-                🗑️
-                <span>Excluir aluno</span>
-            </a>
-
-
-            <a href="chamada-alunos.html">
-                📝
-                <span>Chamada</span>
-            </a>
-
-
-            <a href="historico-alunos.html">
-                📊
-                <span>Histórico</span>
-            </a>
-
-
-            <div class="menu-titulo">
-                VOLUNTÁRIOS
-            </div>
-
-
-            <a href="../voluntarios/adicionar-voluntario.html">
-                👤
                 <span>Voluntários</span>
-            </a>
+
+
+                <a href="../voluntarios/adicionar-voluntario.html">
+                    👤
+                    <span>Voluntários</span>
+                </a>
+
+            </div>
 
         </nav>
+
+
+        <!-- ======================================
+             SAIR
+        ======================================= -->
+
+        <button
+                id="btnSair"
+                class="btn-sair"
+        >
+            🚪 Sair
+        </button>
 
     </aside>
 
 
+
     <!-- ==========================================
          CONTEÚDO PRINCIPAL
-    ========================================== -->
+    =========================================== -->
 
     <main class="main-content">
 
@@ -117,20 +136,21 @@
 
         <header class="topbar">
 
+
             <div class="topbar-page-info">
 
                 <div class="page-icon">
-                    🗑️
+                    📊
                 </div>
 
                 <div>
 
                     <h1>
-                        Excluir aluno
+                        Histórico de alunos
                     </h1>
 
                     <p>
-                        Remova um aluno do sistema de forma rápida e segura.
+                        Consulte o histórico de presença e ausência dos alunos.
                     </p>
 
                 </div>
@@ -138,36 +158,24 @@
             </div>
 
 
-            <div class="admin-area">
+            <div class="admin-info">
 
-                <div class="admin-info">
+                <span>
+                    Administrador
+                </span>
 
-                    <div>
-
-            <span>
-              Olá, Administrador!
-            </span>
-
-                        <strong>
-                            Bem-vindo ao sistema
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <button class="btn-sair">
-                    🚪 Sair
-                </button>
+                <strong id="nomeAdministrador">
+                    Carregando...
+                </strong>
 
             </div>
 
         </header>
 
 
+
         <!-- ======================================
-             ÁREA PRINCIPAL
+             DESTAQUE DA PÁGINA
         ======================================= -->
 
         <section class="page-hero">
@@ -175,17 +183,17 @@
             <div class="page-hero-content">
 
                 <div class="page-hero-icon">
-                    🗑️
+                    📊
                 </div>
 
                 <div>
 
                     <h2>
-                        Excluir aluno
+                        Histórico dos alunos
                     </h2>
 
                     <p>
-                        Remova um aluno do sistema de forma rápida e segura.
+                        Acompanhe as presenças, ausências e o percentual de frequência.
                     </p>
 
                 </div>
@@ -195,78 +203,31 @@
         </section>
 
 
+
         <!-- ======================================
-             FORMULÁRIO
+             CARD DO HISTÓRICO
         ======================================= -->
 
-        <section class="form-container excluir-aluno">
+        <section class="card historico-card">
 
 
-            <div class="form-title">
-
-                <div class="form-title-icon">
-                    👨‍🎓
-                </div>
-
-                <div>
-
-                    <h2>
-                        Excluir aluno
-                    </h2>
-
-                    <p>
-                        Informe id do aluno que deseja excluir.
-                    </p>
-
-                </div>
-
-            </div>
+            <div class="card-header">
 
 
-            <form id="formExcluirAluno">
+                <div class="card-header-content">
 
-
-                <!-- =================================
-                     MATRÍCULA
-                ================================== -->
-
-                <div class="form-group">
-
-                    <label for="id">
-                        ID do aluno
-                    </label>
-
-
-                    <input
-                            type="text"
-                            id="id"
-                            name="id"
-                            placeholder="Digite o id"
-                            min="1"
-                            required
-                    >
-
-                </div>
-
-
-                <!-- =================================
-                     AVISO
-                ================================== -->
-
-                <div class="excluir-aviso">
-
-          <span class="excluir-aviso-icon">
-            ⚠️
-          </span>
+                    <div class="card-header-icon">
+                        📋
+                    </div>
 
                     <div>
 
-                        <strong>
-                            Atenção
-                        </strong>
+                        <h2>
+                            Histórico de presença
+                        </h2>
 
                         <p>
-                            A exclusão do aluno é uma ação que deve ser realizada com cuidado.
+                            Veja os registros de frequência de cada aluno.
                         </p>
 
                     </div>
@@ -274,42 +235,77 @@
                 </div>
 
 
-                <!-- =================================
-                     MENSAGEM
-                ================================== -->
+                <button
+                        id="btnAtualizar"
+                        class="btn-primary"
+                >
+                    🔄
+                    Atualizar
+                </button>
 
-                <div
-                        id="mensagem"
-                        class="mensagem"
-                        style="display: none;"
-                ></div>
-
-
-                <!-- =================================
-                     BOTÕES
-                ================================== -->
-
-                <div class="acoes">
-
-                    <a
-                            href="../home.html"
-                            class="btn-secundario"
-                    >
-                        ← Voltar
-                    </a>
+            </div>
 
 
-                    <button
-                            type="submit"
-                            class="btn-danger"
-                    >
-                        Excluir aluno
-                        <span>→</span>
-                    </button>
 
-                </div>
+            <!-- ==================================
+                 MENSAGEM
+            =================================== -->
 
-            </form>
+            <div
+                    id="mensagem"
+                    class="mensagem"
+            ></div>
+
+
+
+            <!-- ==================================
+                 TABELA
+            =================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Nome
+                        </th>
+
+                        <th>
+                            Turma
+                        </th>
+
+                        <th>
+                            Presenças
+                        </th>
+
+                        <th>
+                            Ausências
+                        </th>
+
+
+                        <th>
+                            Percentual de presença
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaHistorico">
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </section>
 
@@ -318,37 +314,34 @@
 </div>
 
 
+
 <script>
 
     const API =
         "https://formacao-digital-backend.onrender.com";
 
-    const form =
-        document.getElementById("formExcluirAluno");
+
+    const tabelaHistorico =
+        document.getElementById(
+            "tabelaHistorico"
+        );
+
 
     const mensagem =
-        document.getElementById("mensagem");
-
-
-    // ==========================================
-    // LIMPAR AUTENTICAÇÃO
-    // ==========================================
-
-    function limparAutenticacao() {
-
-        localStorage.removeItem(
-            "tokenAdministrador"
+        document.getElementById(
+            "mensagem"
         );
 
-        localStorage.removeItem(
-            "administrador"
+
+    const nomeAdministrador =
+        document.getElementById(
+            "nomeAdministrador"
         );
 
-    }
 
 
     // ==========================================
-    // VERIFICAR ADMINISTRADOR
+    // VERIFICA ADMINISTRADOR
     // ==========================================
 
     async function verificarAdministrador() {
@@ -387,7 +380,13 @@
 
             if (!resposta.ok) {
 
-                limparAutenticacao();
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -395,6 +394,14 @@
                 return;
 
             }
+
+
+            const dados =
+                await resposta.json();
+
+
+            nomeAdministrador.textContent =
+                dados.administrador.nome;
 
 
         } catch (erro) {
@@ -405,7 +412,14 @@
             );
 
 
-            limparAutenticacao();
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
 
             window.location.href =
                 "../login.html";
@@ -415,21 +429,228 @@
     }
 
 
+
+    // ==========================================
+    // CARREGAR HISTÓRICO
+    // ==========================================
+
+    async function carregarHistorico() {
+
+        tabelaHistorico.innerHTML = "";
+
+        mensagem.textContent = "";
+
+        mensagem.className = "mensagem";
+
+
+        try {
+
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const resposta =
+                await fetch(
+                    `${API}/api/alunos`,
+                    {
+                        method: "GET",
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                );
+
+
+            if (resposta.status === 401) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os alunos."
+                );
+
+            }
+
+
+            const alunos =
+                await resposta.json();
+
+
+            if (alunos.length === 0) {
+
+                tabelaHistorico.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        Nenhum aluno cadastrado.
+                    </td>
+                </tr>
+            `;
+
+                return;
+
+            }
+
+
+            alunos.sort(
+                (a, b) =>
+                    a.nome.localeCompare(
+                        b.nome,
+                        "pt-BR"
+                    )
+            );
+
+
+            // ==================================
+            // MONTAR HISTÓRICO
+            // ==================================
+
+            for (const aluno of alunos) {
+
+                const presencas =
+                    Number(aluno.presencas || 0);
+
+
+                const faltas =
+                    Number(aluno.faltas || 0);
+
+
+                const total =
+                    presencas + faltas;
+
+
+                let percentual = 0;
+
+
+                if (total > 0) {
+
+                    percentual =
+                        (presencas / total) * 100;
+
+                }
+
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                <td>
+                    ${aluno.id}
+                </td>
+
+                <td>
+                    ${aluno.nome}
+                </td>
+
+                <td>
+                    ${aluno.turma}
+                </td>
+
+                <td>
+                    ${presencas}
+                </td>
+
+                <td>
+                    ${faltas}
+                </td>
+
+                <td>
+                    ${percentual.toFixed(1)}%
+                </td>
+
+            `;
+
+
+                tabelaHistorico.appendChild(
+                    linha
+                );
+
+            }
+
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar histórico:",
+                erro
+            );
+
+
+            mensagem.textContent =
+                erro.message;
+
+
+            mensagem.classList.add(
+                "erro"
+            );
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // BOTÃO ATUALIZAR
+    // ==========================================
+
+    document
+        .getElementById("btnAtualizar")
+        .addEventListener(
+            "click",
+            carregarHistorico
+        );
+
+
+
     // ==========================================
     // LOGOUT
     // ==========================================
 
-    const btnSair =
-        document.querySelector(".btn-sair");
-
-
-    if (btnSair) {
-
-        btnSair.addEventListener(
+    document
+        .getElementById("btnSair")
+        .addEventListener(
             "click",
-            function() {
+            () => {
 
-                limparAutenticacao();
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -437,178 +658,15 @@
             }
         );
 
-    }
 
 
     // ==========================================
-    // EXCLUIR ALUNO
-    // ==========================================
-
-    form.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            const id =
-                document
-                    .getElementById("id")
-                    .value
-                    .trim();
-
-
-            if (!id) {
-
-                mensagem.style.display =
-                    "block";
-
-                mensagem.className =
-                    "mensagem erro";
-
-                mensagem.textContent =
-                    "Informe o ID do aluno.";
-
-                return;
-
-            }
-
-
-            // ==========================================
-            // CONFIRMAÇÃO
-            // ==========================================
-
-            const confirmar =
-                confirm(
-                    "Tem certeza que deseja excluir o aluno de ID " +
-                    id +
-                    "?"
-                );
-
-
-            if (!confirmar) {
-
-                return;
-
-            }
-
-
-            // ==========================================
-            // EXCLUSÃO
-            // ==========================================
-
-            try {
-
-                const token =
-                    localStorage.getItem(
-                        "tokenAdministrador"
-                    );
-
-
-                if (!token) {
-
-                    limparAutenticacao();
-
-                    window.location.href =
-                        "../login.html";
-
-                    return;
-
-                }
-
-
-                const resposta =
-                    await fetch(
-                        `${API}/api/alunos/${encodeURIComponent(id)}`,
-                        {
-
-                            method: "DELETE",
-
-                            headers: {
-                                "Authorization":
-                                    `Bearer ${token}`
-                            }
-
-                        }
-                    );
-
-
-                const dados =
-                    await resposta.json();
-
-
-                // ==========================================
-                // TOKEN INVÁLIDO
-                // ==========================================
-
-                if (resposta.status === 401) {
-
-                    limparAutenticacao();
-
-                    window.location.href =
-                        "../login.html";
-
-                    return;
-
-                }
-
-
-                if (!resposta.ok) {
-
-                    throw new Error(
-                        dados.mensagem ||
-                        "Não foi possível excluir o aluno."
-                    );
-
-                }
-
-
-                // ==========================================
-                // SUCESSO
-                // ==========================================
-
-                mensagem.style.display =
-                    "block";
-
-                mensagem.className =
-                    "mensagem sucesso";
-
-                mensagem.textContent =
-                    dados.mensagem ||
-                    "Aluno excluído com sucesso!";
-
-
-                form.reset();
-
-
-            } catch (erro) {
-
-                // ==========================================
-                // ERRO
-                // ==========================================
-
-                mensagem.style.display =
-                    "block";
-
-                mensagem.className =
-                    "mensagem erro";
-
-                mensagem.textContent =
-                    erro.message ||
-                    "Erro ao excluir aluno.";
-
-            }
-
-        }
-    );
-
-
-    // ==========================================
-    // INICIAR
+    // INICIALIZAÇÃO
     // ==========================================
 
     verificarAdministrador();
 
+    carregarHistorico();
 
 </script>
 
