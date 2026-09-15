@@ -86,11 +86,23 @@
 
     try {
 
+      const token =
+              localStorage.getItem("tokenAdministrador");
+
+      if (!token) {
+        window.location.href = "login.html";
+        return;
+      }
+
       const resposta =
               await fetch(
                       `${API}/api/administrador/me`,
                       {
-                        credentials: "include"
+                        method: "GET",
+                        headers: {
+                          "Authorization":
+                                  `Bearer ${token}`
+                        }
                       }
               );
 

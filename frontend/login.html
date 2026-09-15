@@ -154,17 +154,19 @@
             </p>
 
             <p>
-               Dúvidas? contato da criadora
+                Dúvidas? contato da criadora
             </p>
 
             <p>
 
                 Email: thay.ewe02@gmail.com
             </p>
+
             <p>
 
                 Número: (83) 9 9863-7358
             </p>
+
         </div>
 
 
@@ -230,8 +232,6 @@
 
                             },
 
-                            credentials: "include",
-
                             body: JSON.stringify({
 
                                 email: email,
@@ -266,8 +266,46 @@
                 }
 
 
-                // ==================================
+// ==================================
 // LOGIN REALIZADO
+// ==================================
+
+                if (!dados.token) {
+
+                    mensagem.textContent =
+                        "Token de autenticação não recebido.";
+
+                    mensagem.className =
+                        "mensagem mensagem-erro";
+
+                    return;
+                }
+
+
+// ==================================
+// SALVAR TOKEN
+// ==================================
+
+                localStorage.setItem(
+                    "tokenAdministrador",
+                    dados.token
+                );
+
+
+// ==================================
+// SALVAR ADMINISTRADOR
+// ==================================
+
+                localStorage.setItem(
+                    "administrador",
+                    JSON.stringify(
+                        dados.administrador
+                    )
+                );
+
+
+// ==================================
+// MENSAGEM DE SUCESSO
 // ==================================
 
                 mensagem.textContent =
@@ -278,7 +316,9 @@
                     "mensagem mensagem-sucesso";
 
 
-// Ir para a Home
+// ==================================
+// IR PARA HOME
+// ==================================
 
                 setTimeout(
                     function () {

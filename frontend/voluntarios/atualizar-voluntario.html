@@ -645,23 +645,49 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
 
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
+
                 window.location.href =
                     "../login.html";
 
                 return;
-
             }
 
 
@@ -685,13 +711,20 @@
             );
 
 
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
             window.location.href =
                 "../login.html";
 
         }
 
     }
-
 
 
     // ==========================================
@@ -702,12 +735,31 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/voluntarios`,
                     {
                         method: "GET",
-                        credentials: "include"
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
@@ -850,12 +902,31 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/turmas`,
                     {
                         method: "GET",
-                        credentials: "include"
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
@@ -1133,7 +1204,6 @@
             let outroCursoNovo = "";
 
 
-
             // ==================================
             // VALIDAÇÕES
             // ==================================
@@ -1162,7 +1232,6 @@
             }
 
 
-
             // ==================================
             // NOVO NOME
             // ==================================
@@ -1189,7 +1258,6 @@
             }
 
 
-
             // ==================================
             // NOVA TURMA
             // ==================================
@@ -1214,7 +1282,6 @@
                 }
 
             }
-
 
 
             // ==================================
@@ -1265,12 +1332,22 @@
             }
 
 
-
-            // ==================================
-            // ENVIAR PARA O BACKEND
-            // ==================================
-
             try {
+
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+                }
+
 
                 const resposta =
                     await fetch(
@@ -1281,11 +1358,11 @@
 
                             headers: {
                                 "Content-Type":
-                                    "application/json"
-                            },
+                                    "application/json",
 
-                            credentials:
-                                "include",
+                                "Authorization":
+                                    `Bearer ${token}`
+                            },
 
                             body:
                                 JSON.stringify({
@@ -1340,14 +1417,11 @@
                 campoNovoNome.style.display =
                     "none";
 
-
                 campoNovaTurma.style.display =
                     "none";
 
-
                 campoCurso.style.display =
                     "none";
-
 
                 campoOutroCurso.style.display =
                     "none";
@@ -1356,14 +1430,11 @@
                 novoNome.required =
                     false;
 
-
                 novaTurma.required =
                     false;
 
-
                 curso.required =
                     false;
-
 
                 outroCurso.required =
                     false;
@@ -1383,67 +1454,9 @@
                 );
 
             }
-
         }
-    );
 
-
-
-    // ==========================================
-    // MENSAGEM
-    // ==========================================
-
-    function mostrarMensagem(
-        texto,
-        tipo
-    ) {
-
-        mensagem.textContent =
-            texto;
-
-
-        mensagem.className =
-            "mensagem " + tipo;
-
-
-        mensagem.style.display =
-            "block";
-
-    }
-
-
-
-    // ==========================================
-    // LOGOUT
-    // ==========================================
-
-    document
-        .getElementById("btnLogout")
-        .addEventListener(
-            "click",
-            async function () {
-
-                try {
-
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
-
-                } finally {
-
-                    window.location.href =
-                        "../login.html";
-
-                }
-
-            }
         );
-
-
 
     // ==========================================
     // INICIAR

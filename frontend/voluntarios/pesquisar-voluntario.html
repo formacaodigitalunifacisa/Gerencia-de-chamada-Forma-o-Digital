@@ -390,17 +390,44 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -417,6 +444,14 @@
                 !dados ||
                 !dados.administrador
             ) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -436,6 +471,14 @@
                 erro
             );
 
+
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
 
             window.location.href =
                 "../login.html";
@@ -490,6 +533,21 @@
 
             try {
 
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
 
                 // ==========================================
                 // REQUISIÇÃO AO BACKEND
@@ -500,7 +558,10 @@
                         `${API}/api/voluntarios/pesquisar/${encodeURIComponent(valor)}`,
                         {
                             method: "GET",
-                            credentials: "include"
+                            headers: {
+                                "Authorization":
+                                    `Bearer ${token}`
+                            }
                         }
                     );
 
@@ -514,6 +575,24 @@
                 // ==========================================
 
                 if (!resposta.ok) {
+
+                    if (resposta.status === 401) {
+
+                        localStorage.removeItem(
+                            "tokenAdministrador"
+                        );
+
+                        localStorage.removeItem(
+                            "administrador"
+                        );
+
+                        window.location.href =
+                            "../login.html";
+
+                        return;
+
+                    }
+
 
                     throw new Error(
                         dados.mensagem ||
@@ -644,27 +723,15 @@
         .getElementById("btnSair")
         .addEventListener(
             "click",
-            async function () {
+            function () {
 
-                try {
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
 
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
-
-                } catch (erro) {
-
-                    console.error(
-                        "Erro ao fazer logout:",
-                        erro
-                    );
-
-                }
-
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";

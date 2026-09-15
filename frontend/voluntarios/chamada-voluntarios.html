@@ -1535,21 +1535,51 @@
 
     /* =====================================================
        VERIFICAR ADMINISTRADOR
+       AUTENTICAÇÃO POR JWT
     ====================================================== */
 
     async function verificarAdministrador() {
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta = await fetch(
                 `${API}/api/administrador/me`,
                 {
-                    credentials: "include"
+                    method: "GET",
+
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
                 }
             );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -1573,6 +1603,16 @@
 
             console.error(erro);
 
+
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
+
             window.location.href =
                 "../login.html";
 
@@ -1583,21 +1623,63 @@
 
     /* =====================================================
        CARREGAR VOLUNTÁRIOS
+       AUTENTICAÇÃO POR JWT
     ====================================================== */
 
     async function carregarVoluntarios() {
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta = await fetch(
                 `${API}/api/voluntarios`,
                 {
-                    credentials: "include"
+                    method: "GET",
+
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
                 }
             );
 
 
             if (!resposta.ok) {
+
+                if (
+                    resposta.status === 401
+                ) {
+
+                    localStorage.removeItem(
+                        "tokenAdministrador"
+                    );
+
+                    localStorage.removeItem(
+                        "administrador"
+                    );
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
 
                 throw new Error(
                     "Não foi possível carregar os voluntários."
@@ -2162,6 +2244,7 @@
 
     /* =====================================================
        SALVAR CHAMADA
+       AUTENTICAÇÃO POR JWT
     ====================================================== */
 
     btnSalvar.addEventListener(
@@ -2199,6 +2282,22 @@
             }
 
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             this.disabled = true;
 
 
@@ -2220,11 +2319,12 @@
                             headers: {
 
                                 "Content-Type":
-                                    "application/json"
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
 
                             },
-
-                            credentials: "include",
 
                             body:
                                 JSON.stringify({
@@ -2246,6 +2346,26 @@
 
 
                 if (!resposta.ok) {
+
+                    if (
+                        resposta.status === 401
+                    ) {
+
+                        localStorage.removeItem(
+                            "tokenAdministrador"
+                        );
+
+                        localStorage.removeItem(
+                            "administrador"
+                        );
+
+                        window.location.href =
+                            "../login.html";
+
+                        return;
+
+                    }
+
 
                     throw new Error(
                         dados.mensagem ||
@@ -2385,32 +2505,25 @@
 
     /* =====================================================
        LOGOUT
+       AUTENTICAÇÃO POR JWT
     ====================================================== */
 
     document.getElementById(
         "btnLogout"
     ).addEventListener(
         "click",
-        async function () {
+        function () {
 
-            try {
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
 
-                await fetch(
-                    `${API}/api/login/logout`,
-                    {
-                        method: "POST",
+            localStorage.removeItem(
+                "administrador"
+            );
 
-                        credentials:
-                            "include"
-                    }
-                );
-
-            } finally {
-
-                window.location.href =
-                    "../login.html";
-
-            }
+            window.location.href =
+                "../login.html";
 
         }
     );

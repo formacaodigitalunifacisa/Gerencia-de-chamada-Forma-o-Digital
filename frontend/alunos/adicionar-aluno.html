@@ -23,154 +23,6 @@
 
 
     <!-- ==========================================
-         MENU LATERAL
-         Mantido no HTML, mas oculto pelo CSS.
-    =========================================== -->
-
-    <aside class="sidebar">
-
-        <div class="logo">
-
-            <h2>Formação</h2>
-
-            <span>Digital</span>
-
-        </div>
-
-
-        <nav>
-
-            <a href="../home.html">
-                🏠
-                <span>Início</span>
-            </a>
-
-
-            <div class="menu-grupo">
-
-                <div class="menu-titulo">
-                    👨‍🎓
-                    <span>Alunos</span>
-                </div>
-
-
-                <a
-                        href="adicionar-aluno.html"
-                        class="ativo"
-                >
-                    ➕ Adicionar aluno
-                </a>
-
-                <a href="atualizar-aluno.html">
-                    ✏️ Atualizar aluno
-                </a>
-
-                <a href="listar-alunos.html">
-                    📋 Listar alunos
-                </a>
-
-                <a href="pesquisar-aluno.html">
-                    🔎 Pesquisar aluno
-                </a>
-
-                <a href="excluir-aluno.html">
-                    🗑️ Excluir aluno
-                </a>
-
-                <a href="chamada-alunos.html">
-                    📝 Chamada
-                </a>
-
-                <a href="historico-alunos.html">
-                    📊 Histórico
-                </a>
-
-            </div>
-
-
-            <div class="menu-grupo">
-
-                <div class="menu-titulo">
-                    🤝
-                    <span>Voluntários</span>
-                </div>
-
-
-                <a href="../voluntarios/adicionar-voluntario.html">
-                    ➕ Adicionar voluntário
-                </a>
-
-                <a href="../voluntarios/atualizar-voluntario.html">
-                    ✏️ Atualizar voluntário
-                </a>
-
-                <a href="../voluntarios/listar-voluntarios.html">
-                    📋 Listar voluntários
-                </a>
-
-                <a href="../voluntarios/pesquisar-voluntario.html">
-                    🔎 Pesquisar voluntário
-                </a>
-
-                <a href="../voluntarios/excluir-voluntario.html">
-                    🗑️ Excluir voluntário
-                </a>
-
-                <a href="../voluntarios/chamada-voluntarios.html">
-                    📝 Chamada
-                </a>
-
-                <a href="../voluntarios/historico-voluntarios.html">
-                    📊 Histórico
-                </a>
-
-            </div>
-
-
-            <div class="menu-grupo">
-
-                <div class="menu-titulo">
-                    🏫
-                    <span>Turmas</span>
-                </div>
-
-
-                <a href="../turmas/adicionar-turma.html">
-                    ➕ Adicionar turma
-                </a>
-
-            </div>
-
-        </nav>
-
-
-        <div class="sidebar-admin">
-
-            <div class="sidebar-admin-nome">
-
-                👤
-
-                <span id="nomeAdministradorMenu">
-                    Administrador
-                </span>
-
-            </div>
-
-
-            <button
-                    id="btnLogout"
-                    class="btn-sair"
-            >
-                🚪 Sair
-            </button>
-
-        </div>
-
-    </aside>
-
-
-
-    <!-- ==========================================
          CONTEÚDO PRINCIPAL
     =========================================== -->
 
@@ -430,12 +282,6 @@
         );
 
 
-    const nomeAdministradorMenu =
-        document.getElementById(
-            "nomeAdministradorMenu"
-        );
-
-
     const selectTurma =
         document.getElementById(
             "turma"
@@ -454,17 +300,45 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -482,15 +356,20 @@
                 dados.administrador.nome;
 
 
-            nomeAdministradorMenu.textContent =
-                dados.administrador.nome;
-
-
         } catch (erro) {
 
             console.error(
                 "Erro ao verificar administrador:",
                 erro
+            );
+
+
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
             );
 
 
@@ -510,18 +389,56 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/turmas`,
                     {
                         method: "GET",
-                        credentials: "include"
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             const dados =
                 await resposta.json();
+
+
+            if (resposta.status === 401) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
 
 
             if (!resposta.ok) {
@@ -706,6 +623,22 @@
 
             try {
 
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
+
                 const resposta =
                     await fetch(
                         `${API}/api/alunos`,
@@ -714,11 +647,12 @@
 
                             headers: {
                                 "Content-Type":
-                                    "application/json"
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
                             },
 
-                            credentials:
-                                "include",
 
                             body:
                                 JSON.stringify({
@@ -731,6 +665,28 @@
 
                 const dados =
                     await resposta.json();
+
+
+                // ==================================
+                // TOKEN INVÁLIDO
+                // ==================================
+
+                if (resposta.status === 401) {
+
+                    localStorage.removeItem(
+                        "tokenAdministrador"
+                    );
+
+                    localStorage.removeItem(
+                        "administrador"
+                    );
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
 
 
                 // ==================================
@@ -822,24 +778,19 @@
         .getElementById("btnLogout")
         .addEventListener(
             "click",
-            async function () {
+            function () {
 
-                try {
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
 
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
+                localStorage.removeItem(
+                    "administrador"
+                );
 
-                } finally {
 
-                    window.location.href =
-                        "../login.html";
-
-                }
+                window.location.href =
+                    "../login.html";
 
             }
         );

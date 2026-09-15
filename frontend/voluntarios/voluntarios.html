@@ -1456,17 +1456,44 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -1498,6 +1525,14 @@
             );
 
 
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
             window.location.href =
                 "../login.html";
 
@@ -1515,35 +1550,18 @@
         "btnLogout"
     ).addEventListener(
         "click",
-        async function () {
+        function () {
 
-            try {
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
 
-                const resposta =
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
+            localStorage.removeItem(
+                "administrador"
+            );
 
-
-                if (resposta.ok) {
-
-                    window.location.href =
-                        "../login.html";
-
-                }
-
-            } catch (erro) {
-
-                console.error(
-                    "Erro ao sair:",
-                    erro
-                );
-
-            }
+            window.location.href =
+                "../login.html";
 
         }
     );

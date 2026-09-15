@@ -356,15 +356,44 @@
 
         try {
 
-            const resposta = await fetch(
-                `${API}/api/administrador/me`,
-                {
-                    credentials: "include"
-                }
-            );
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
+            const resposta =
+                await fetch(
+                    `${API}/api/administrador/me`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -385,6 +414,19 @@
 
 
         } catch (erro) {
+
+            console.error(
+                "Erro ao verificar administrador:",
+                erro
+            );
+
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
 
             window.location.href =
                 "../login.html";
@@ -439,6 +481,22 @@
 
             try {
 
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
+
                 const resposta =
                     await fetch(
                         `${API}/api/voluntarios/${id}`,
@@ -446,7 +504,10 @@
 
                             method: "DELETE",
 
-                            credentials: "include"
+                            headers: {
+                                "Authorization":
+                                    `Bearer ${token}`
+                            }
 
                         }
                     );
@@ -458,6 +519,24 @@
 
 
                 if (!resposta.ok) {
+
+                    if (resposta.status === 401) {
+
+                        localStorage.removeItem(
+                            "tokenAdministrador"
+                        );
+
+                        localStorage.removeItem(
+                            "administrador"
+                        );
+
+                        window.location.href =
+                            "../login.html";
+
+                        return;
+
+                    }
+
 
                     mensagem.textContent =
                         dados.mensagem ||
@@ -513,27 +592,18 @@
         "btnLogout"
     ).addEventListener(
         "click",
-        async function () {
+        function () {
 
-            try {
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
 
-                await fetch(
-                    `${API}/api/login/logout`,
-                    {
+            localStorage.removeItem(
+                "administrador"
+            );
 
-                        method: "POST",
-
-                        credentials: "include"
-
-                    }
-                );
-
-            } finally {
-
-                window.location.href =
-                    "../login.html";
-
-            }
+            window.location.href =
+                "../login.html";
 
         }
     );

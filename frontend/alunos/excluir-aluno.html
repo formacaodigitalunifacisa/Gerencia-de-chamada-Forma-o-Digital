@@ -144,9 +144,9 @@
 
           <div>
 
-                        <span>
-                            Olá, Administrador!
-                        </span>
+            <span>
+              Olá, Administrador!
+            </span>
 
             <strong>
               Bem-vindo ao sistema
@@ -255,9 +255,9 @@
 
         <div class="excluir-aviso">
 
-                    <span class="excluir-aviso-icon">
-                        ⚠️
-                    </span>
+          <span class="excluir-aviso-icon">
+            ⚠️
+          </span>
 
           <div>
 
@@ -320,115 +320,294 @@
 
 <script>
 
-  const API = "https://formacao-digital-backend.onrender.com";
+  const API =
+          "https://formacao-digital-backend.onrender.com";
 
-  const form = document.getElementById("formExcluirAluno");
+  const form =
+          document.getElementById("formExcluirAluno");
 
-  const mensagem = document.getElementById("mensagem");
-
-
-  form.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
+  const mensagem =
+          document.getElementById("mensagem");
 
 
-    const id =
-            document.getElementById("id").value.trim();
+  // ==========================================
+  // LIMPAR AUTENTICAÇÃO
+  // ==========================================
 
+  function limparAutenticacao() {
 
-    if (!id) {
-
-      mensagem.style.display = "block";
-
-      mensagem.className = "mensagem erro";
-
-      mensagem.textContent =
-              "Informe o ID do aluno.";
-
-      return;
-
-    }
-
-
-    // ==========================================
-    // CONFIRMAÇÃO
-    // ==========================================
-
-    const confirmar = confirm(
-            "Tem certeza que deseja excluir o aluno de ID " +
-            id +
-            "?"
+    localStorage.removeItem(
+            "tokenAdministrador"
     );
 
+    localStorage.removeItem(
+            "administrador"
+    );
 
-    if (!confirmar) {
-
-      return;
-
-    }
+  }
 
 
-    // ==========================================
-    // EXCLUSÃO
-    // ==========================================
+  // ==========================================
+  // VERIFICAR ADMINISTRADOR
+  // ==========================================
+
+  async function verificarAdministrador() {
 
     try {
 
-      const resposta = await fetch(
-              `${API}/api/alunos/${encodeURIComponent(id)}`,
-              {
-                method: "DELETE",
-                credentials: "include"
-              }
-      );
+      const token =
+              localStorage.getItem(
+                      "tokenAdministrador"
+              );
 
 
-      const dados = await resposta.json();
+      if (!token) {
 
+        window.location.href =
+                "../login.html";
 
-      if (!resposta.ok) {
-
-        throw new Error(
-                dados.mensagem ||
-                "Não foi possível excluir o aluno."
-        );
+        return;
 
       }
 
 
-      // ==========================================
-      // SUCESSO
-      // ==========================================
+      const resposta =
+              await fetch(
+                      `${API}/api/administrador/me`,
+                      {
+                        method: "GET",
 
-      mensagem.style.display = "block";
+                        headers: {
+                          "Authorization":
+                                  `Bearer ${token}`
+                        }
+                      }
+              );
 
-      mensagem.className = "mensagem sucesso";
 
-      mensagem.textContent =
-              dados.mensagem ||
-              "Aluno excluído com sucesso!";
+      if (!resposta.ok) {
 
+        limparAutenticacao();
 
-      form.reset();
+        window.location.href =
+                "../login.html";
+
+        return;
+
+      }
 
 
     } catch (erro) {
 
-      // ==========================================
-      // ERRO
-      // ==========================================
+      console.error(
+              "Erro ao verificar administrador:",
+              erro
+      );
 
-      mensagem.style.display = "block";
 
-      mensagem.className = "mensagem erro";
+      limparAutenticacao();
 
-      mensagem.textContent =
-              erro.message ||
-              "Erro ao excluir aluno.";
+      window.location.href =
+              "../login.html";
 
     }
 
-  });
+  }
+
+
+  // ==========================================
+  // LOGOUT
+  // ==========================================
+
+  const btnSair =
+          document.querySelector(".btn-sair");
+
+
+  if (btnSair) {
+
+    btnSair.addEventListener(
+            "click",
+            function() {
+
+              limparAutenticacao();
+
+              window.location.href =
+                      "../login.html";
+
+            }
+    );
+
+  }
+
+
+  // ==========================================
+  // EXCLUIR ALUNO
+  // ==========================================
+
+  form.addEventListener(
+          "submit",
+          async function(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                    document
+                            .getElementById("id")
+                            .value
+                            .trim();
+
+
+            if (!id) {
+
+              mensagem.style.display =
+                      "block";
+
+              mensagem.className =
+                      "mensagem erro";
+
+              mensagem.textContent =
+                      "Informe o ID do aluno.";
+
+              return;
+
+            }
+
+
+            // ==========================================
+            // CONFIRMAÇÃO
+            // ==========================================
+
+            const confirmar =
+                    confirm(
+                            "Tem certeza que deseja excluir o aluno de ID " +
+                            id +
+                            "?"
+                    );
+
+
+            if (!confirmar) {
+
+              return;
+
+            }
+
+
+            // ==========================================
+            // EXCLUSÃO
+            // ==========================================
+
+            try {
+
+              const token =
+                      localStorage.getItem(
+                              "tokenAdministrador"
+                      );
+
+
+              if (!token) {
+
+                limparAutenticacao();
+
+                window.location.href =
+                        "../login.html";
+
+                return;
+
+              }
+
+
+              const resposta =
+                      await fetch(
+                              `${API}/api/alunos/${encodeURIComponent(id)}`,
+                              {
+
+                                method: "DELETE",
+
+                                headers: {
+                                  "Authorization":
+                                          `Bearer ${token}`
+                                }
+
+                              }
+                      );
+
+
+              const dados =
+                      await resposta.json();
+
+
+              // ==========================================
+              // TOKEN INVÁLIDO
+              // ==========================================
+
+              if (resposta.status === 401) {
+
+                limparAutenticacao();
+
+                window.location.href =
+                        "../login.html";
+
+                return;
+
+              }
+
+
+              if (!resposta.ok) {
+
+                throw new Error(
+                        dados.mensagem ||
+                        "Não foi possível excluir o aluno."
+                );
+
+              }
+
+
+              // ==========================================
+              // SUCESSO
+              // ==========================================
+
+              mensagem.style.display =
+                      "block";
+
+              mensagem.className =
+                      "mensagem sucesso";
+
+              mensagem.textContent =
+                      dados.mensagem ||
+                      "Aluno excluído com sucesso!";
+
+
+              form.reset();
+
+
+            } catch (erro) {
+
+              // ==========================================
+              // ERRO
+              // ==========================================
+
+              mensagem.style.display =
+                      "block";
+
+              mensagem.className =
+                      "mensagem erro";
+
+              mensagem.textContent =
+                      erro.message ||
+                      "Erro ao excluir aluno.";
+
+            }
+
+          }
+  );
+
+
+  // ==========================================
+  // INICIAR
+  // ==========================================
+
+  verificarAdministrador();
 
 
 </script>

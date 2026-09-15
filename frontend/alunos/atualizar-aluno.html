@@ -491,17 +491,44 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -531,6 +558,15 @@
             );
 
 
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
+
             window.location.href =
                 "../login.html";
 
@@ -548,12 +584,31 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/alunos`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
@@ -563,6 +618,24 @@
 
 
             if (!resposta.ok) {
+
+                if (resposta.status === 401) {
+
+                    localStorage.removeItem(
+                        "tokenAdministrador"
+                    );
+
+                    localStorage.removeItem(
+                        "administrador"
+                    );
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
 
                 throw new Error(
                     dados.mensagem ||
@@ -692,12 +765,31 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/turmas`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
@@ -707,6 +799,24 @@
 
 
             if (!resposta.ok) {
+
+                if (resposta.status === 401) {
+
+                    localStorage.removeItem(
+                        "tokenAdministrador"
+                    );
+
+                    localStorage.removeItem(
+                        "administrador"
+                    );
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
 
                 throw new Error(
                     dados.mensagem ||
@@ -991,6 +1101,22 @@
 
             try {
 
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
+
                 const resposta =
                     await fetch(
                         `${API}/api/alunos/atualizar`,
@@ -1000,11 +1126,11 @@
 
                             headers: {
                                 "Content-Type":
-                                    "application/json"
-                            },
+                                    "application/json",
 
-                            credentials:
-                                "include",
+                                "Authorization":
+                                    `Bearer ${token}`
+                            },
 
                             body:
                                 JSON.stringify({
@@ -1032,6 +1158,24 @@
 
 
                 if (!resposta.ok) {
+
+                    if (resposta.status === 401) {
+
+                        localStorage.removeItem(
+                            "tokenAdministrador"
+                        );
+
+                        localStorage.removeItem(
+                            "administrador"
+                        );
+
+                        window.location.href =
+                            "../login.html";
+
+                        return;
+
+                    }
+
 
                     mostrarMensagem(
                         dados.mensagem ||
@@ -1121,24 +1265,18 @@
         .getElementById("btnLogout")
         .addEventListener(
             "click",
-            async function () {
+            function () {
 
-                try {
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
 
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
+                localStorage.removeItem(
+                    "administrador"
+                );
 
-                } finally {
-
-                    window.location.href =
-                        "../login.html";
-
-                }
+                window.location.href =
+                    "../login.html";
 
             }
         );

@@ -1356,17 +1356,44 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/administrador/me`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
 
 
             if (!resposta.ok) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
 
                 window.location.href =
                     "../login.html";
@@ -1392,8 +1419,16 @@
             );
 
 
-            nomeAdministrador.textContent =
-                "Administrador";
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
+
+            localStorage.removeItem(
+                "administrador"
+            );
+
+            window.location.href =
+                "../login.html";
 
         }
 
@@ -1409,14 +1444,51 @@
 
         try {
 
+            const token =
+                localStorage.getItem(
+                    "tokenAdministrador"
+                );
+
+
+            if (!token) {
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
+
+
             const resposta =
                 await fetch(
                     `${API}/api/alunos`,
                     {
                         method: "GET",
-                        credentials: "include"
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
                     }
                 );
+
+
+            if (resposta.status === 401) {
+
+                localStorage.removeItem(
+                    "tokenAdministrador"
+                );
+
+                localStorage.removeItem(
+                    "administrador"
+                );
+
+                window.location.href =
+                    "../login.html";
+
+                return;
+
+            }
 
 
             if (!resposta.ok) {
@@ -2018,6 +2090,22 @@
 
             try {
 
+                const token =
+                    localStorage.getItem(
+                        "tokenAdministrador"
+                    );
+
+
+                if (!token) {
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
+
+
                 const resposta =
                     await fetch(
                         `${API}/api/alunos/chamada`,
@@ -2028,12 +2116,12 @@
                             headers: {
 
                                 "Content-Type":
-                                    "application/json"
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
 
                             },
-
-                            credentials:
-                                "include",
 
                             body:
                                 JSON.stringify({
@@ -2052,6 +2140,24 @@
 
                 const dados =
                     await resposta.json();
+
+
+                if (resposta.status === 401) {
+
+                    localStorage.removeItem(
+                        "tokenAdministrador"
+                    );
+
+                    localStorage.removeItem(
+                        "administrador"
+                    );
+
+                    window.location.href =
+                        "../login.html";
+
+                    return;
+
+                }
 
 
                 if (!resposta.ok) {

@@ -1237,35 +1237,18 @@ async function carregarAdministrador() {
         "btnLogout"
     ).addEventListener(
         "click",
-        async function () {
+        function () {
 
-            try {
+            localStorage.removeItem(
+                "tokenAdministrador"
+            );
 
-                const resposta =
-                    await fetch(
-                        `${API}/api/login/logout`,
-                        {
-                            method: "POST",
-                            credentials: "include"
-                        }
-                    );
+            localStorage.removeItem(
+                "administrador"
+            );
 
-
-                if (resposta.ok) {
-
-                    window.location.href =
-                        "login.html";
-
-                }
-
-            } catch (erro) {
-
-                console.error(
-                    "Erro ao sair:",
-                    erro
-                );
-
-            }
+            window.location.href =
+                "login.html";
 
         }
     );
