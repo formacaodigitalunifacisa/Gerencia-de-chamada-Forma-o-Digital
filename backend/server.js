@@ -32,12 +32,16 @@ app.use(express.json());
 // SESSÃO DO ADMINISTRADOR
 // ==========================================
 
+app.set("trust proxy", 1);
+
 app.use(session({
-    secret: "formacao-digital-segredo",
+    secret: process.env.SESSION_SECRET || "formacao-digital-segredo",
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false
+        secure: true,
+        httpOnly: true,
+        sameSite: "none"
     }
 }));
 
